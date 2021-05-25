@@ -8,7 +8,7 @@
 	max-width: 30%;
 	padding: 3px;
 	box-sizing: border-box;
-	display: inline-block;
+	display: inline-block !important;
 	vertical-align:top;
 }
 
