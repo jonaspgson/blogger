@@ -1,7 +1,7 @@
 .amazon::after {
-	color: #cccccc;	
-	font-family: 'Font Awesome 5 Free';
-	content: '\f270';
+	color: #aaaaaa;	
+	font-family: 'Material Design Icons';
+    	content: '\F002D';
 	margin-left: 5px;
 }
 
