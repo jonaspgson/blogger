@@ -1,8 +1,7 @@
 .amazon::after {
-	color: #aaaaaa;	
+	color: #999;	
 	font-family: 'Material Design Icons';
-    	content: '\F002D';
-	margin-left: 5px;
+    	content: ' \F002D';
 }
 
 .gallery-3-columns {
