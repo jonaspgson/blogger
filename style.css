@@ -1,0 +1,31 @@
+.gallery-3-columns {
+	width: 100%;
+	text-align: center;
+}
+
+.gallery-3-columns > *
+{
+	max-width: 30%;
+	padding: 3px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+.gallery-3-columns .tr-caption {
+	height: 3rem;
+	vertical-align: top;
+}
+
+@media screen and (max-width: 500px) {
+	.gallery-3-columns > *
+    {
+        max-width: 48%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+	.gallery-3-columns > *
+    {
+        max-width: 100%;
+    }
+}
