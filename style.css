@@ -86,6 +86,10 @@
     .img-container .img {
         flex-basis: 35%;
     }
+
+    .img-container :is(h2,h3,h4) {
+    	font-size: 75%;
+    }
 }
 
 @media screen and (max-width: 500px) {
