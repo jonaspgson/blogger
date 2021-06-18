@@ -82,8 +82,8 @@
     color:#fff !important;
 }
 
-.img-container h3 { font-size: 1.5rem; }
-.img-container h4 { font-size: 1.2rem; }
+.img-container h3 { font-size: 1.5rem; margin: .1rem 0; }
+.img-container h4 { font-size: 1.2rem; margin: .1rem 0; }
 
 @media screen and (max-width: 650px) {
     .img-container .img {
