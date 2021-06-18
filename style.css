@@ -104,7 +104,7 @@
 
 /* Star rating */
 
-.rating { font-size: 1.5rem; text-align:center; color: #ddd; padding: 20px 0; }
+.rating { font-size: 1.5rem; text-align:center; color: #ddd; padding: 20px 0 40px; }
 .checked { color: #54c5d0; } 
 
 
