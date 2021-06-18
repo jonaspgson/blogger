@@ -83,7 +83,7 @@
 }
 
 .img-container :is(h2,h3,h4) {
-    display: inline;
+    font-size:75% !important;
 }
 
 @media screen and (max-width: 650px) {
