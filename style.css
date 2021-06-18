@@ -77,6 +77,10 @@
     color:#fff !important;
 }
 
+.img-container :is(h2,h3,h4,a) {
+    color:#fff !important;
+}
+
 @media screen and (max-width: 650px) {
     .img-container .img {
         flex-basis: 35%;
