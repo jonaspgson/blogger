@@ -130,6 +130,7 @@
 	margin-right: 7px;
 	background-color: #353942;
 	color: #f30;
+	transition: .3s;
 }
 
 .link-buttons > a:hover {
