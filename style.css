@@ -131,3 +131,8 @@
 	background-color: #353942;
 	color: #f30;
 }
+
+.link-buttons > a:hover {
+	background-color: #f30;
+	text-decoration: none;
+}
