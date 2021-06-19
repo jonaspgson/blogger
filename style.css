@@ -134,5 +134,5 @@
 
 .link-buttons > a:hover {
 	background-color: #f30;
-	text-decoration: none;
+	text-decoration: none !important;
 }
