@@ -95,6 +95,7 @@
 .img-container .amazon-disclaimer {
 	color: #999;
 	font-size: .8rem;
+	margin: 0 0 .5rem !important;
 }
 
 @media screen and (max-width: 650px) {
