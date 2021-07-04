@@ -134,10 +134,16 @@
 }
 
 .link-buttons {
-	margin: 7px 0 15px;	
+	margin-bottom: 15px;	
 }
 .img-container .link-buttons {
 	margin: 0;	
+}
+
+.link-buttons > p {
+	color: #888;
+	font-size: 11px;
+	margin:0;
 }
 
 .link-buttons > a {
