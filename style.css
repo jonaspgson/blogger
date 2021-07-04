@@ -26,6 +26,7 @@
 	box-sizing: border-box;
 	display: inline-block !important;
 	vertical-align:top;
+	margin: auto !important;
 }
 
 
