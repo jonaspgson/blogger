@@ -133,6 +133,13 @@
     	content: ' \F002D';
 }
 
+.link-buttons {
+	margin: 7px 0 15px;	
+}
+.img-container .link-buttons {
+	margin: 0;	
+}
+
 .link-buttons > a {
 	display: inline-block;
 	padding: 5px;
