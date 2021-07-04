@@ -139,12 +139,19 @@
 	border-radius: 3px;
 	margin-right: 7px;
 	margin-bottom: 7px;
-	background-color: #353942;
-	color: #f30;
 	transition: .3s;
+	color: #f30;
+	background-color: #eee;
+}
+
+.img-container .link-buttons > a {
+	background-color: #353942;
 }
 
 .link-buttons > a:hover {
-	background-color: #f30;
 	text-decoration: none !important;
+	background-color: #ddd;
+}
+.img-container .link-buttons > a:hover {
+	background-color: #f30;
 }
