@@ -114,6 +114,10 @@
     }
 }
 
+.dark {
+	background-color: #171c24;
+	color: #fff;
+}
 
 /* Star rating */
 
