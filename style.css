@@ -162,6 +162,7 @@
 
 .img-container .link-buttons > a {
 	background-color: #353942;
+	color: #fff !important;
 }
 
 .link-buttons > a:hover {
