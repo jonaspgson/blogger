@@ -21,11 +21,11 @@
 
 .gallery-2-columns > *
 {
-	max-width: 48%;
-	padding: 3px;
+	max-width: 49.5%;
+	padding: 0;
 	box-sizing: border-box;
 	display: inline-block !important;
-	vertical-align:top;
+	vertical-align: top;
 	margin: auto !important;
 }
 
