@@ -34,8 +34,7 @@
 .gallery-2-columns .tr-caption {
 	height: 3rem;
 	vertical-align: top;
-	text-align: left !important;
-	margin-right:15px;
+	padding: 0 10px;
 }
 
 @media screen and (max-width: 500px) {
