@@ -92,6 +92,11 @@
 	margin: 1rem 0 .5rem 0 !important; 
 }
 
+.img-container .text h5 {
+	color: #999;
+	margin: 0 !important; 
+}
+
 .img-container .amazon-disclaimer {
 	color: #666;
 	font-size: 11px;
