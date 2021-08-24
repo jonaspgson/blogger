@@ -25,7 +25,7 @@
 
 .gallery-2-columns > *
 {
-	max-width: 49.5%;
+	max-width: 49%;
 	padding: 0;
 	box-sizing: border-box;
 	display: inline-block !important;
