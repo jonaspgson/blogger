@@ -19,6 +19,20 @@ function rateThis(n) {
 } 
 
 
+function showcaseProduct(title,subtitle,imageUrl,theme='') {
+
+	var output;
+
+	output = `<div class="img-container ${theme}">`;
+	output += `<div class="img"><img src="${imageUrl}"></div>`;
+	output += `<div class="text">`;
+	output += `<h3>${title}</h3>${subtitle}`;
+	output += createAmazonLinks(title + ' ' + subtitle);
+	output += `</div></div>`;
+
+	document.write(output);
+}
+
 
 function createAmazonLinks(productName) {
 
