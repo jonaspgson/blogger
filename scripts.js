@@ -21,20 +21,21 @@ function rateThis(n) {
 
 function showcaseProduct(title,subtitle,imageUrl,theme='') {
 
-	var output;
+	var output = ``;
 
-	output = `<div class="img-container ${theme}">`;
+	output += `<div class="img-container ${theme}">`;
 	output += `<div class="img"><img src="${imageUrl}"></div>`;
 	output += `<div class="text">`;
 	output += `<h3>${title}</h3>${subtitle}`;
-	output += createAmazonLinks(title + ' ' + subtitle);
+	output += getAmazonLinks(title + ' ' + subtitle);
 	output += `</div></div>`;
 
+	console.log(output);
 	document.write(output);
 }
 
 
-function createAmazonLinks(productName) {
+function getAmazonLinks(productName) {
 
     var searchString = productName.replace(/ /g, "+");
 
@@ -48,7 +49,12 @@ function createAmazonLinks(productName) {
 
     output += '</div><p class="amazon-disclaimer">(As an Amazon and eBay Associate, I earn from qualifying purchases.)</p>';
 
-    document.write(output);
+    return output;
+}
+
+
+function createAmazonLinks(productName) {
+	document.write(getAmazonLinks(productName));
 }
 
 
