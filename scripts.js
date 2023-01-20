@@ -19,15 +19,31 @@ function rateThis(n) {
 } 
 
 
+function showcaseAlbum(artist,title,imageUrl,theme='') {
+
+	var output = ``;
+	
+	output += `<div class="img-container ${theme}">`;
+	output += `<div class="img"><img src="${imageUrl}" alt="${artist} - ${title} album cover"></div>`;
+	output += `<div class="text">`;
+	output += `<h3>${title}</h3>by ${artist}`;
+	output += getAmazonLinks(`${artist} - ${title}`);
+	output += `</div></div>`;
+
+	console.log(output);
+	document.write(output);
+}
+
+
 function showcaseProduct(title,subtitle,imageUrl,theme='') {
 
 	var output = ``;
-
+	
 	output += `<div class="img-container ${theme}">`;
-	output += `<div class="img"><img src="${imageUrl}"></div>`;
+	output += `<div class="img"><img src="${imageUrl}" alt="${title} - ${subtitle} product image"></div>`;
 	output += `<div class="text">`;
 	output += `<h3>${title}</h3>${subtitle}`;
-	output += getAmazonLinks(title + ' ' + subtitle);
+	output += getAmazonLinks(`${title} ${subtitle}`);
 	output += `</div></div>`;
 
 	console.log(output);
@@ -56,8 +72,6 @@ function getAmazonLinks(productName) {
 function createAmazonLinks(productName) {
 	document.write(getAmazonLinks(productName));
 }
-
-
 
 
 
@@ -105,5 +119,7 @@ function labnolIframe(div) {
   }
   
   document.addEventListener("DOMContentLoaded", initYouTubeVideos);
+
+
 
 //]]>
