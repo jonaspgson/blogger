@@ -76,7 +76,7 @@
 .image-grid img {
 	width: 100% !important;
 	height: 100% !important;
-	object-fit: cover;
+	object-fit: cover !important;
 }
 
 .image-grid-col-2 {
