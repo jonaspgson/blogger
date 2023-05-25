@@ -56,8 +56,35 @@
     }
 }
 
+/* Simple 2 and 3 column grid */
 
-/* Image grid */
+.grid2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1px;
+  
+}
+  
+.grid3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1px;
+  
+}
+  
+.grid2 img, .grid3 img {
+  height: auto !important;
+  display: block;
+}
+  
+@media screen and (max-width: 600px) {
+	.grid3 {
+		grid-template-columns: auto auto;
+	}
+}
+
+
+/* Fixed image grid (for mixed aspect ratios) */
 
 .image-grid {
 	--gap: 1px;
