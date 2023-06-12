@@ -99,7 +99,7 @@
 .gallery img {
 	object-fit: cover;
   	display: block; 
-  	height: 250px;
+  	height: 200px;
     width: 100%;
 }
 
