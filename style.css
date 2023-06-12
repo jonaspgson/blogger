@@ -1,7 +1,10 @@
+.post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
+	line-height: 1.4;	
+}
+
 .post-body table {
 	margin-bottom: 20px !important;
 }
-
 
 .gallery-3-columns {
 	width: 100%;
