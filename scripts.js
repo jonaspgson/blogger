@@ -58,7 +58,7 @@ function getAmazonLinks(productName) {
     var output='<h4>Get it on Amazon</h4><div class="link-buttons"><p>Check Price and Availability:</p>';
 
     output += '<a href="https://www.amazon.com/s?k=' + searchString + '&tag=jonzaasprytte-20" target="_blank" title="Buy from the USA"><span class="flag-icon flag-icon-us"></span> US</a>';
-    output += '<a href="https://www.amazon.ca/s?k=' + searchString + '&tag=thejo027-20" target="_blank" title="Buy from Canada"><span class="flag-icon flag-icon-ca"></span> CA</a>';
+    output += '<a href="https://www.amazon.ca/s?k=' + searchString + '&tag=thejo07f-20" target="_blank" title="Buy from Canada"><span class="flag-icon flag-icon-ca"></span> CA</a>';
     output += '<a href="https://www.amazon.co.uk/s?k=' + searchString + '&tag=thejo-21" target="_blank" title="Buy from the UK"><span class="flag-icon flag-icon-gb"></span> UK</a>';
     output += '<a href="https://www.amazon.de/s?k=' + searchString + '&tag=thejo0b-21" target="_blank" title="Buy from Germany"><span class="flag-icon flag-icon-de"></span> DE/EU</a>';
     output += '<a href="https://www.amazon.se/s?k=' + searchString + '&tag=thejo06-21" target="_blank" title="Buy from Sweden"><span class="flag-icon flag-icon-se"></span> SE</a>';
