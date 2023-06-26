@@ -14,7 +14,7 @@
 .gallery-3-columns > *
 {
 	max-width: 32.5%;
-	padding: 3px;
+	padding: 5px;
 	box-sizing: border-box;
 	display: inline-block !important;
 	vertical-align:top;
