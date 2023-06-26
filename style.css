@@ -235,7 +235,7 @@
 /* Pros and Cons Lists */
 
 ul.pros, ul.cons {
-  padding: 0 0 1rem 0;
+  padding: 0 0 1rem 0 !important;
 }
 
 ul.pros {
@@ -267,7 +267,7 @@ ul.cons::before {
   
   
 ul.pros li, ul.cons li {
-  list-style: none;
+  list-style: none !important;
   padding-left: 1rem;
 }
 
