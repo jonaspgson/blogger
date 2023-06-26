@@ -147,12 +147,6 @@
 	margin: 0 !important; 
 }
 
-.img-container .amazon-disclaimer {
-	color: #666;
-	font-size: 11px;
-	margin: 5px 0 0 !important;
-}
-
 @media screen and (max-width: 650px) {
     .img-container .img {
         flex-basis: 35%;
@@ -190,6 +184,12 @@
 	color: #999;	
 	font-family: 'Material Design Icons';
     	content: ' \F002D';
+}
+
+.amazon-disclaimer {
+	color: #666;
+	font-size: 11px;
+	margin: 5px 0 0 !important;
 }
 
 .link-buttons {
