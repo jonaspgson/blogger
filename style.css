@@ -232,7 +232,61 @@
 }
 
 
+/* Pros and Cons Lists */
 
+ul.pros, ul.cons {
+  padding: 0 0 1rem 0;
+}
+
+ul.pros {
+	background-color: #efe;  
+}
+  
+ul.cons {
+	background-color: #fee;  
+}
+  
+ul.pros::before, ul.cons::before {
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+  
+ul.pros::before {
+  content: 'Pros';
+  background-color: #02c39a;
+}
+  
+ul.cons::before {
+  content: 'Cons';
+  background-color: #e63946;
+}
+  
+  
+ul.pros li, ul.cons li {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+ul.pros li::before, ul.cons li::before {	
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  padding-right: 16px;
+  display: inline-block;
+}
+  
+ul.pros li::before {	
+  content: "\f055";
+  color: #02c39a;
+}
+
+ul.cons li::before {	
+  content: '\f056';
+  color: #e63946;
+}
 
 
 /* Light YouTube Embeds ------------------------------- */
