@@ -309,13 +309,13 @@ ul.cons li::before {
 
 /* Style overridees ----------------------------------- */
 
-.post-body table, .image-caption {background-color: #000; border: none;} 
+.post-body table, .image-caption {background-color: #000;} 
 .tr-caption, .image-caption { padding:10px; }
 .tr-caption a, .image-caption a { color: #ffde17; }
 
 .rtl .post-body table{text-align:right}
-.post-body table td,.post-body table th{box-sizing:border-box; padding:0; border:none;} 
-.post-body table tbody td{color: #fff;} /* OBS $(post.text.color) */
+.post-body table td,.post-body table th{box-sizing:border-box;} 
+.post-body table tbody td{color: #fff !important;} /* OBS $(post.text.color) */
 .post-body table img { width: 100%; height:auto; display:block; } /* rad tillagd */
 
 
