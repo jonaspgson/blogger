@@ -309,7 +309,7 @@ ul.cons li::before {
 
 /* Style overridees ----------------------------------- */
 
-.post-body table, .image-caption {background-color: #000;} 
+.post-body table, .image-caption {background-color: #3c3c3c;} 
 .tr-caption, .image-caption { padding:10px; }
 .tr-caption a, .image-caption a { color: #ffde17; }
 
