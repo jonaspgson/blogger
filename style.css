@@ -13,7 +13,7 @@
 	margin: 2em 0;
 	font-size: 110%; 
 }
-.info-box:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
+.info-box>:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
 
 .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
 	line-height: 1.3;	
