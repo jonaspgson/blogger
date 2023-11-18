@@ -250,8 +250,8 @@
 
 .link-buttons-compact > a {
 	display: inline-block;
-	padding: 0;
-	margin: 1px;
+	padding: 5px;
+	margin: 0;
 }
 
 
