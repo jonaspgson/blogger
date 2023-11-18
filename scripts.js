@@ -50,7 +50,35 @@ function showcaseProduct(title,subtitle,imageUrl,theme='') {
 	document.write(output);
 }
 
+//Amazon Associate Tags
+const AMZ_COM_AT = 'jonzaasprytte-20';
+const AMZ_CA_AT  = 'thejo07f-20';
+const AMZ_UK_AT  = 'thejo-21';
+const AMZ_DE_AT  = 'thejo0b-21';
+const AMZ_SE_AT  = '&tag=thejo06-21';
 
+
+function getAmazonLinks(productName) {
+
+    var searchString = productName.replace(/ /g, "+");
+
+    var output='<h4>Get it on Amazon</h4><div class="link-buttons"><p>Check Price and Availability:</p>';
+
+    output += '<a href="https://www.amazon.com/s?k='   + searchString + '&tag=' + AMZ_COM_AT + '" target="_blank" title="Buy from the USA"><span class="flag-icon flag-icon-us"></span> US</a>';
+    output += '<a href="https://www.amazon.ca/s?k='    + searchString + '&tag=' + AMZ_CA_AT  + '" target="_blank" title="Buy from Canada"><span class="flag-icon flag-icon-ca"></span> CA</a>';
+    output += '<a href="https://www.amazon.co.uk/s?k=' + searchString + '&tag=' + AMZ_UK_AT  + '" target="_blank" title="Buy from the UK"><span class="flag-icon flag-icon-gb"></span> UK</a>';
+    output += '<a href="https://www.amazon.de/s?k='    + searchString + '&tag=' + AMZ_DE_AT  + '" target="_blank" title="Buy from Germany"><span class="flag-icon flag-icon-de"></span> DE/EU</a>';
+    output += '<a href="https://www.amazon.se/s?k='    + searchString + '&tag=' + AMZ_SE_AT  + '" target="_blank" title="Buy from Sweden"><span class="flag-icon flag-icon-se"></span> SE</a>';
+
+    output += '<a href="https://www.ebay.com/sch/i.html?_nkw=' + searchString +'&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5338818368&customid=&toolid=10001&mkevt=1" target="_blank" title="Buy Used on eBay"><i class="fab fa-ebay"></i> Buy Used</a>'
+
+    output += '</div><p class="amazon-disclaimer">(As an Amazon and eBay Associate, I earn from qualifying purchases.)</p>';
+
+    return output;
+}
+
+
+/*
 function getAmazonLinks(productName) {
 
     var searchString = productName.replace(/ /g, "+");
@@ -69,7 +97,7 @@ function getAmazonLinks(productName) {
 
     return output;
 }
-
+*/
 
 function createAmazonLinks(productName) {
 	document.write(getAmazonLinks(productName));
