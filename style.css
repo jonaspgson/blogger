@@ -249,9 +249,9 @@
 }
 
 .link-buttons-compact > a {
+	display: inline-block;
 	padding: 0;
 	margin: 1px;
-	background-color: none;
 }
 
 
