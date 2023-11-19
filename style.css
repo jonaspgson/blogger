@@ -110,7 +110,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(153px,1fr));
     grid-template-rows: auto;
-    grid-gap: 1px;
+    grid-gap: 0px;
 }
   
 .gallery img {
