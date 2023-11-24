@@ -254,6 +254,9 @@
 	margin: 0;
 }
 
+.link-buttons-compact p {
+	font-size: .7rem;
+}
 
 /* Pros and Cons Lists */
 
