@@ -189,6 +189,13 @@
     color:#fff !important;
 }
 
+.img-container.rounded .img {
+	padding: 1rem;
+}
+.img-container.rounded img {
+	border-radius: 12%;
+}
+
 /* Star rating */
 
 .rating { font-size: 1.5rem; text-align:center; color: #ddd; padding: 20px 0 40px; }
