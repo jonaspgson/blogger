@@ -190,10 +190,10 @@
 }
 
 .img-container.rounded .img {
+    background: #fff;
+    border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
-    background: #fff;
-    border-radius: 18%;
 }
 
 /* Star rating */
