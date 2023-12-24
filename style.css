@@ -325,7 +325,7 @@ ul.cons li::before {
 /* Style overridees ----------------------------------- */
 
 .post-body table, .post-body .image-caption {background-color: #3c3c3c;} 
-.tr-caption, .image-caption { padding:10px; }
+.tr-caption, .image-caption { padding:10px; text-align:center;}
 .tr-caption a, .image-caption a { color: #ffde17; }
 
 .rtl .post-body table{text-align:right}
