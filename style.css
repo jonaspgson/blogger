@@ -173,9 +173,7 @@
 @media screen and (max-width: 500px) {
     .img-container .img {
         flex-basis: 100%;
-    }
-    .img-container .img img {
-	margin: 15px;
+	padding: 15px;
     }
 }
 
