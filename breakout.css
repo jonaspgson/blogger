@@ -1,4 +1,4 @@
-.entry-content-wrap{position:relative;float:left;width:100%;box-sizing:border-box;margin:0;}
+.entry-content-wrap{margin:0 !important;}
 
 /* OBS */
 #post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
