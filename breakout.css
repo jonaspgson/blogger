@@ -1,13 +1,12 @@
-.entry-content-wrap{padding:0 !important;}
+.entry-content-wrap { padding:0 !important; }
+.entry-tags { margin: 20px 15px 0 !important; }
 
-/* OBS */
 #post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
 	padding-left: 15px; 
 	padding-right: 15px;
 }
 
-/* OBS */
 #post-body.entry-content > :first-child {
-	display:block;
+	display: block;
 	margin-bottom: 1rem;
 }
