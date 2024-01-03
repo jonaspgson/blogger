@@ -1,0 +1,13 @@
+.entry-content-wrap{position:relative;float:left;width:100%;box-sizing:border-box;margin:0;}
+
+/* OBS */
+#post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
+	padding-left: 15px; 
+	padding-right: 15px;
+}
+
+/* OBS */
+#post-body.entry-content > :first-child {
+	display:block;
+	margin-bottom: 1rem;
+}
