@@ -146,11 +146,13 @@
 .fixed-navigation ul {
 	margin:0 !important;
 	padding:0 !important;
+	font-size: 0;
 }
 .fixed-navigation li {
 	display:inline-block;
 	list-style: none;
 	margin:0 !important;
+	font-size: 14px;
 }
 
 .fixed-navigation li a {
