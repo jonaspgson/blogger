@@ -161,10 +161,17 @@
 	padding: .5rem;
 }
 
+.fixed-navigation li a:hover {
+	box-shadow: 0 -5px #f30;
+	text-decoration: none;
+	color: #f30;
+}
+
 .fixed-navigation .start-tab {
 	background:#f30;
 }
 
-.fixed-navigation .start-tab a {
+.fixed-navigation .start-tab a, 
+.fixed-navigation .start-tab a:hover {
 	color:#fff;
 }
