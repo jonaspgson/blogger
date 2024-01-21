@@ -1,4 +1,56 @@
-  .camera-type-grid {  
+/* Blogg-specifika overrides */
+.img-container {margin:0 !important;}
+.post-body h2 {margin-top: 3rem !important;}
+
+
+
+/* GEAR INFO BOX */
+
+.post-body .gear-info {
+    background-color: #123;
+	color: #fff;
+    padding:1em;
+    margin-top:15px;
+	margin-bottom: 3rem;
+}
+
+.post-body .gear-info a {
+	color: #f41;
+	font-weight: 900;
+}
+
+.post-body .gear-info h3::after {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f030";
+	color: #f41;
+    margin: .5rem;
+}
+
+.post-body .gear-info h3 {
+    margin: .2rem 0 1rem;
+    color: #fff;
+    text-align: center !important;
+    border-bottom: 1px solid #345;
+    padding-bottom: 1rem;
+}
+
+.post-body .gear-info h4 {
+ 	color: #fff;
+	margin: .5rem 0;
+}
+
+.post-body .gear-info .footer {
+ 	text-align: center;
+ 	margin-top: 1rem;
+}
+
+
+
+
+
+
+.camera-type-grid {  
     display: grid;
     gap: 1rem;
     padding: 15px;
