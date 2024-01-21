@@ -131,3 +131,38 @@
 		width: 100%;
 	}
 }
+
+
+/* FIXED CAMERA NAVIGATION (bottom) */
+
+.fixed-navigation {
+	position: sticky;
+	bottom:0;
+	left:0;
+	background:#f4f4f4;
+	box-shadow: 0 -4px 10px rgba(0,0,0,.2);
+}
+
+.fixed-navigation ul {
+	margin:0;
+	padding:0;
+}
+.fixed-navigation li {
+	display:inline-block;
+	list-style: none;
+	margin:0;
+}
+
+.fixed-navigation li a {
+	color: #000;
+	display: inline-block;
+	padding: .5rem;
+}
+
+.fixed-navigation .start-tab {
+	background:#f30;
+}
+
+.fixed-navigation .start-tab a {
+	color:#fff;
+}
