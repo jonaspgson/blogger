@@ -144,13 +144,13 @@
 }
 
 .fixed-navigation ul {
-	margin:0;
-	padding:0;
+	margin:0 !important;
+	padding:0 !important;
 }
 .fixed-navigation li {
 	display:inline-block;
 	list-style: none;
-	margin:0;
+	margin:0 !important;
 }
 
 .fixed-navigation li a {
