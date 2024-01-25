@@ -179,7 +179,7 @@
 }
 
 .camera-navigation-bar .active-tab {
-	background:#f30;
+	box-shadow: inset 0px 0px 5px 2px #ccc;
 }
 .camera-navigation-bar .active-tab a, 
 .camera-navigation-bar .active-tab a:hover {
