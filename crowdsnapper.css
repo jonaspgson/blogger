@@ -172,10 +172,14 @@
 }
 
 .camera-navigation-bar .start-tab {
+	font-weight: 700;
+}
+
+.camera-navigation-bar .active-tab {
 	background:#f30;
 }
 
-.camera-navigation-bar .start-tab a, 
-.camera-navigation-bar .start-tab a:hover {
+.camera-navigation-bar .active-tab a, 
+.camera-navigation-bar .active-tab a:hover {
 	color:#fff;
 }
