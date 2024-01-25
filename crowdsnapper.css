@@ -135,44 +135,47 @@
 
 /* FIXED CAMERA NAVIGATION (bottom) */
 
-.fixed-navigation {
+.stick-to-bottom {
 	position: sticky;
-	bottom:0;
-	left:0;
-	background:#f4f4f4;
-	box-shadow: 0 -4px 10px rgba(0,0,0,.2);
+	bottom: 0;
+	left: 0;
+}
+
+.camera-navigation-bar {
+	background: #f4f4f4;
+	box-shadow: 0 0 10px 4px #f30;
 	z-index: 51;
 }
 
-.fixed-navigation ul {
+.camera-navigation-bar ul {
 	margin:0 !important;
 	padding:0 !important;
 	font-size: 0;
 }
-.fixed-navigation li {
+.camera-navigation-bar li {
 	display:inline-block;
 	list-style: none;
 	margin:0 !important;
 	font-size: 14px;
 }
 
-.fixed-navigation li a {
+.camera-navigation-bar li a {
 	color: #000;
 	display: inline-block;
 	padding: .5rem 1rem;
 }
 
-.fixed-navigation li a:hover {
+.camera-navigation-bar li a:hover {
 	box-shadow: 0 -5px #f30;
 	text-decoration: none;
 	color: #f30;
 }
 
-.fixed-navigation .start-tab {
+.camera-navigation-bar .start-tab {
 	background:#f30;
 }
 
-.fixed-navigation .start-tab a, 
-.fixed-navigation .start-tab a:hover {
+.camera-navigation-bar .start-tab a, 
+.camera-navigation-bar .start-tab a:hover {
 	color:#fff;
 }
