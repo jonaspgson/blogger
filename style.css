@@ -204,10 +204,10 @@
 }
 
 .product-list::after {
-	margin: 15px;
-	text-align: center;
+	margin: 5px 15px;
+	text-align: left;
 	color: #666;
-	font-size: .8rem;
+	font-size: .7rem;
 	grid-column: 1 / -1;
 	content: "(As an Amazon and eBay Associate, I earn from qualifying purchases.)";
 }
