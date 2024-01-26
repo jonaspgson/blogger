@@ -204,12 +204,11 @@
 }
 
 .product-list::after {
-	display: block;
-	clear: both;
 	margin: 15px;
 	text-align: center;
 	color: #666;
 	font-size: .8rem;
+	grid-column: 1 / -1;
 	content: "(As an Amazon and eBay Associate, I earn from qualifying purchases.)";
 }
 
@@ -225,10 +224,6 @@
 	border-width: 0 1px 1px 0;
 	border-color: #ccc;
 	border-style: solid;
-}
-
-.product-list .list-item:nth-child(2n-1):last-of-type {
-	grid-column: 1 / -1;
 }
 
 .product-list .list-item :is(h3,p) {
