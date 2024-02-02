@@ -1,4 +1,45 @@
+
+/* Sajtlänkar i toppen */
+
+.navbar-wrap {
+  background: #00378D;
+  box-shadow: 0 1px 3px #000000;
+}
+
+.main-navbar-menu ul li a {
+  color: #95B3E3;
+}
+
+
+/* Huvudnavigation */
+
+.headerify-inner {
+  background: linear-gradient(to right,#00378d,#2670e4);
+}
+
+#gmag-pro-main-menu-nav > li > a {
+  color: #ffde17;
+}
+
+
+/* Inlägg & sidor */
+
 .item-post h1.entry-title {
   font-size: 2.5rem;
   line-height: 1.2em
+}
+
+/*
+Ta bort:
+.post-body table tbody td  (#fff text)
+*/
+
+.post-body .tr-caption-container, 
+.post-body .image-caption {
+  background-color: #3c3c3c;
+  color: #fff;
+}
+
+.tr-caption a, .image-caption a {
+    color: #ffde17;
 }
