@@ -84,7 +84,7 @@ function createAmazonLinks(productName) {
 
 function createCompactAmazonLinks(productName) {
     var searchString = productName.replace(/ /g, "+");
-    var output='<div class="link-buttons-compact"><p>Check local prices (Amazon/eBay):</p>';
+    var output='<div class="link-buttons-compact"><p>Check local prices <span class="muted">(Amazon/eBay):</span></p>';
     output += '<a href="https://www.amazon.com/s?k='   + searchString + '&tag=' + AMZ_COM_AT + '" target="_blank" title="Buy from the USA"><span class="flag-icon flag-icon-us"></span></a>';
     output += '<a href="https://www.amazon.ca/s?k='    + searchString + '&tag=' + AMZ_CA_AT  + '" target="_blank" title="Buy from Canada"><span class="flag-icon flag-icon-ca"></span></a>';
     output += '<a href="https://www.amazon.co.uk/s?k=' + searchString + '&tag=' + AMZ_UK_AT  + '" target="_blank" title="Buy from the UK"><span class="flag-icon flag-icon-gb"></span></a>';
