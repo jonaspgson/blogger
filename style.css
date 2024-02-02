@@ -255,6 +255,11 @@
     	content: ' \f4f4';
 }
 
+.fa-ebay::before {
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
 .amazon-disclaimer {
 	color: #666;
 	font-size: 11px;
