@@ -237,12 +237,17 @@
 .checked { color: #54c5d0; } 
 
 
-/* Adds an Amazon logo after an inline element. For use with text links. Requires Material Design Icons. */
+/* Adds a retailer logo after an inline element. For use with text links. */
 
 .amazon::after {
 	color: #999;	
 	font-family: 'Material Design Icons';
     	content: ' \F002D';
+}
+.ebay::after {
+	color: #999;	
+	font-family: 'Font Awesome 5 Brands';
+    	content: ' \f4f4';
 }
 
 .amazon-disclaimer {
