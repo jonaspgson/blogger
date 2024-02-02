@@ -1,3 +1,7 @@
+.post-body :is(h1,h2,h3,h4) {
+    text-wrap: balance;
+}
+
 .blurred img {
 	-webkit-filter: blur(7px); /* Safari 6.0 - 9.0 */
 	filter: blur(7px);
