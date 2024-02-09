@@ -29,6 +29,15 @@
   line-height: 1.2em
 }
 
+.item-post .blog-entry-header .entry-meta {
+  font-size: 13px;
+  background-color: #ffde17;
+  color: #660;
+  text-align: center;
+  padding: .5em;
+  font-weight: 600;
+}
+
 /*
 Ta bort:
 .post-body table tbody td  (#fff text)
