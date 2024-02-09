@@ -31,9 +31,10 @@
 
 .item-post .blog-entry-header .entry-meta {
   background-color: #ffde17;
-  color: #660;
-  text-align: center;
+  color: #1859c1;
+  text-align: right;
   font-weight: 600;
+  margin-bottom: rem;
 }
 
 /*
