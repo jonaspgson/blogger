@@ -37,6 +37,14 @@
   margin-bottom: 1rem;
 }
 
+a.back-top {
+  background: #00378D !important;
+}
+
+a.back-top::hover {
+  background: #082e6a !important;
+}
+
 /*
 Ta bort:
 .post-body table tbody td  (#fff text)
