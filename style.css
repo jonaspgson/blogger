@@ -11,6 +11,16 @@ h1,h2,h3,h4,h5,h6 {
     text-align: center !important;
 }
 
+.flex-container {
+	display: flex;
+	flex-direction: row;
+}
+@media (max-width: 500px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 .muted {
 	color: #aaa;
     	font-size: .7rem;
