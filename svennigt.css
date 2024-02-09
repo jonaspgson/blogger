@@ -29,6 +29,10 @@
   line-height: 1em
 }
 
+@media screen and (max-width: 680px) {
+  .item-post h1.entry-title { font-size: 3em; }
+}
+
 .item-post .blog-entry-header .entry-meta {
   background-color: #ffde17;
   color: #1859c1;
