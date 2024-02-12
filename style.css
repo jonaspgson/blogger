@@ -388,7 +388,7 @@ ul.cons li::before {
 
 /* Style overridees ----------------------------------- */
 
-.post-body table, .post-body .image-caption {background-color: #3c3c3c; color: #fff;} 
+.post-body .tr-caption-container, .post-body .image-caption {background-color: #3c3c3c; color: #fff;} 
 .tr-caption, .image-caption { padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a { color: #ffde17; }
 
