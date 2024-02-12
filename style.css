@@ -400,7 +400,7 @@ ul.cons li::before {
 @media (max-width: 450px) {
   .table th { display: none; }
   .table :is(td,tr) { display: block; }
-  .table tr:not(:first-of-type) { padding: 1rem 0; } /* 1st row of THs is hidden */
+  .table tr:not(:first-of-type) { padding: 0.5rem 0; } /* 1st row of THs is hidden */
   .table td { padding: 0 1rem; }
   .table td:first-of-type { font-weight: 700; }
   .table td::after { content: " " attr(data-cell); }
