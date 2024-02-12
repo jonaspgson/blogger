@@ -395,12 +395,14 @@ ul.cons li::before {
 
 .post-body table.table { display:table; margin: 0 !important; }
 .table :is(td,th) { padding: 0 1rem; }
+.table tr { padding: .5rem 0; }
 .table tr:nth-of-type(2n) { background-color: #eee; }
   
 @media (max-width: 450px) {
   .table th { display: none; }
   .table :is(td,tr) { display: block; }
-  .table tr:not(:first-of-type) { padding: 1rem 0; }
+  .table tr { padding: 1rem 0; }
+  .table tr:first-of-type { padding: 0; }
   .table td:first-of-type { font-weight: 700; }
   .table td::after { content: " " attr(data-cell); }
 }
