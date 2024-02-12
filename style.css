@@ -391,9 +391,10 @@ ul.cons li::before {
 }
 
 
-/* A Regular Table ----------------------*/
+/* Responsive Table (use data-cell attr in the tds - these replace column headers (th) on mobile) -------------*/
 
 .post-body table.table { display: block; margin: 0 !important; }
+.table tbody { width: 100%; }
 .table :is(td,th) { padding: 0 1rem; }
 .table tr:nth-of-type(2n) { background-color: #eee; }
   
