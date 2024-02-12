@@ -389,12 +389,11 @@ ul.cons li::before {
 /* Style overridees ----------------------------------- */
 
 .post-body .tr-caption-container, .post-body .image-caption {background-color: #3c3c3c; color: #fff;} 
-.tr-caption, .image-caption { padding:10px; text-align:center !important;}
+.tr-caption, .image-caption { color: #fff !important; padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a { color: #ffde17; }
 
-.rtl .post-body table{text-align:right}
 .post-body table td,.post-body table th{box-sizing:border-box;} 
-.post-body table tbody td{color: #fff !important;} /* OBS $(post.text.color) */
+/*.post-body table tbody td{color: #fff !important;} *//* OBS $(post.text.color) */
 .post-body table img { width: 100%; height:auto; display:block; } /* rad tillagd */
 
 
