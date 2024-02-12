@@ -394,15 +394,15 @@ ul.cons li::before {
 /* Responsive Table (use data-cell attr in the tds - these replace column headers (th) on mobile) -------------*/
 
 .post-body table.table { display:table; margin: 0 !important; }
-.table :is(td,th) { padding: 0 1rem; }
-.table tr { padding: .5rem 0; }
+.table :is(td,th) { padding: 0.5rem 1rem; }
 .table tr:nth-of-type(2n) { background-color: #eee; }
   
 @media (max-width: 450px) {
   .table th { display: none; }
   .table :is(td,tr) { display: block; }
   .table tr { padding: 1rem 0; }
-  .table tr:first-of-type { padding: 0; }
+  .table tr:not(:first-of-type) { padding: 0; }
+  .table td { padding: 0 1rem; }
   .table td:first-of-type { font-weight: 700; }
   .table td::after { content: " " attr(data-cell); }
 }
