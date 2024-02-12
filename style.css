@@ -386,6 +386,21 @@ ul.cons li::before {
 }
 
 
+/* A Regular Table ----------------------*/
+
+.post-body table.table { display: block; }
+.table :is(td,th) { padding: 0 1rem; }
+.table tr:nth-of-type(2n) { background-color: #eee; }
+  
+@media (max-width: 450px) {
+  .table th { display: none; }
+  .table :is(td,tr) { display: block; }
+  .table tr:not(:first-of-type) { padding: 1rem 0; }
+  .table td:first-of-type { font-weight: 700; }
+  .table td::after { content: " " attr(data-cell); }
+}
+
+
 /* Style overridees ----------------------------------- */
 
 .post-body .tr-caption-container, .post-body .image-caption {background-color: #3c3c3c; color: #fff;} 
