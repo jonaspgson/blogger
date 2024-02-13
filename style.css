@@ -409,9 +409,9 @@ ul.cons li::before {
 
 /* Style overridees ----------------------------------- */
 
-.post-body .tr-caption-container, .post-body .image-caption {background-color: #3c3c3c; color: #fff;} 
-.tr-caption, .image-caption { color: #fff !important; padding:10px; text-align:center !important;}
-.tr-caption a, .image-caption a { color: #ffde17; }
+.post-body .tr-caption-container, .post-body .image-caption, image-caption {background-color: #3c3c3c; color: #fff; display: block; } 
+.tr-caption, .image-caption, image-caption { color: #fff !important; padding:10px; text-align:center !important;}
+.tr-caption a, .image-caption a, image-caption a { color: #ffde17; }
 
 .post-body table td,.post-body table th{box-sizing:border-box;} 
 .post-body table img { width: 100%; height:auto; display:block; } /* rad tillagd */
