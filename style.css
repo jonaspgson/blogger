@@ -417,12 +417,12 @@ ul.cons li::before {
   animation-name: wiggle;
   animation-duration: 2000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: ease-in-out; 
 }
 @keyframes wiggle {
-	0%   { transform:rotate(-20deg); }
-    	50%  { transform:rotate(20deg); }
-    	100% { transform:rotate(-20deg); }
+/*	0%   { transform:rotate(-15deg); }*/
+    	50%  { transform:rotate(15deg); }
+    	100% { transform:rotate(-15deg); }
 }
 
 
