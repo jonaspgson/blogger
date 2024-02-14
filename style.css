@@ -23,6 +23,7 @@ h1,h2,h3,h4,h5,h6 {
   	.flex-container img, flex-container img {
 		max-height: 80vw;
     		width: max-content;
+		margin: auto;
   	}
 }
 
