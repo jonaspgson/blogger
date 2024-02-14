@@ -9,17 +9,20 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .center-text {
-    text-align: center !important;
+	text-align: center !important;
 }
 
-.flex-container {
+.flex-container, flex-container {
 	display: flex;
 	flex-direction: row;
 }
 @media (max-width: 500px) {
-  .flex-container {
-    flex-direction: column;
-  }
+	.flex-container, flex-container {
+		flex-direction: column;
+  	}
+  	.flex-container img, flex-container img {
+		max-height:50vw;
+  	}
 }
 
 .muted {
