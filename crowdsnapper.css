@@ -1,7 +1,7 @@
 /* Blogg-specifika overrides */
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
-
+.sidebar .ContactForm { display:none; }
 
 
 /* GEAR INFO BOX */
