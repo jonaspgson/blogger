@@ -32,16 +32,22 @@ h1,h2,h3,h4,h5,h6 {
     	font-size: .7rem;
 }
 
-.info-box, info-box {
+info-box, .info-box {
 	display: block;
 	background-color: #eee;
 	padding: 1em;
 	margin: 2em 0;
 	font-size: 110%; 
 }
-.info-box>:first-child, info-box>:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
+info-box>:first-child, .info-box>:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
 
-.fancy-box, fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); }
+fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); }
+
+.post-body .social { padding: 0 1rem; margin: 0; }
+.post-body .social li { list-style: none; font-size: 3rem; display: inline-block; padding: 0 .5rem; transition: .3s; }
+.post-body .social li:hover { transform: scale(1.5); }
+.post-body .social li a { color: #000; }
+social-tag, .social-tag { display:block; font-size: 1.5rem; color: #888; text-align: center; }
 
 .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
 	line-height: 1.3;	
