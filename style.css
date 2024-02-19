@@ -41,6 +41,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 .info-box>:first-child, info-box>:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
 
+.fancy-box, fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); }
+
 .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
 	line-height: 1.3;	
 }
