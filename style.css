@@ -47,7 +47,7 @@ fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, 
 .post-body .social li { list-style: none; font-size: 3rem; display: inline-block; padding: 0 .5rem; transition: .3s; }
 .post-body .social li:hover { transform: scale(1.5); }
 .post-body .social li a { color: #000; }
-social-tag, .social-tag { display:block; font-size: 1.5rem; color: #888; text-align: center; padding-bottom: 1rem; }
+social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7); text-align: center; padding-bottom: 1rem; }
 
 .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
 	line-height: 1.3;	
