@@ -43,6 +43,38 @@ info-box>:first-child, .info-box>:first-child { margin-top:0 !important; } /* re
 
 fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); padding: .5rem; }
 
+fancy-box-2, .fancy-box-2 {
+    background: linear-gradient(270deg, #13b6e6, #f05eea, #f0b35e);
+    background-size: 600% 600%;
+
+    -webkit-animation: fancy-animation 30s ease infinite;
+    -moz-animation: fancy-animation 30s ease infinite;
+    -o-animation: fancy-animation 30s ease infinite;
+    animation: fancy-animation 30s ease infinite;
+}
+
+@-webkit-keyframes fancy-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes fancy-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes fancy-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes fancy-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
 .post-body .social { padding: 0 1rem; margin: 0; }
 .post-body .social li { list-style: none; font-size: 4rem; display: inline-block; padding: 0 .6rem; transition: .3s; }
 .post-body .social li:hover { transform: scale(1.3); }
