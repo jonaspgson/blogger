@@ -44,7 +44,7 @@ info-box>:first-child, .info-box>:first-child { margin-top:0 !important; } /* re
 fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); padding: .5rem; }
 
 .post-body .social { padding: 0 1rem; margin: 0; }
-.post-body .social li { list-style: none; font-size: 3rem; display: inline-block; padding: 0 .5rem; transition: .3s; }
+.post-body .social li { list-style: none; font-size: 4rem; display: inline-block; padding: 0 .6rem; transition: .3s; }
 .post-body .social li:hover { transform: scale(1.5); }
 .post-body .social li a { color: #000; }
 social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7); text-align: center; padding-bottom: 1rem; }
