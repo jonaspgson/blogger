@@ -32,6 +32,9 @@ h1,h2,h3,h4,h5,h6 {
     	font-size: .7rem;
 }
 
+
+/* Boxes ------------------*/
+
 info-box, .info-box {
 	display: block;
 	background-color: #eee;
@@ -43,36 +46,7 @@ info-box>:first-child, .info-box>:first-child { margin-top:0 !important; } /* re
 
 fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); padding: .5rem; }
 
-fancy-box-2, .fancy-box-2 {
-    background: linear-gradient(270deg, #13b6e6, #f05eea, #f0b35e);
-    background-size: 600% 600%;
 
-    -webkit-animation: fancy-animation 30s ease infinite;
-    -moz-animation: fancy-animation 30s ease infinite;
-    -o-animation: fancy-animation 30s ease infinite;
-    animation: fancy-animation 30s ease infinite;
-}
-
-@-webkit-keyframes fancy-animation {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes fancy-animation {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-o-keyframes fancy-animation {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes fancy-animation {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
 
 
 .post-body .social { padding: 0 1rem; margin: 0; }
@@ -464,6 +438,70 @@ ul.cons li::before {
 	0%   { transform:rotate(-15deg); }
     	50%  { transform:rotate(15deg); }
     	100% { transform:rotate(-15deg); }
+}
+
+
+/* Email form ------------------------------------*/
+
+.post-body .contact-form-widget {
+	text-align: center;
+} 
+
+.input-wrapper {
+  position: relative;
+  margin-top: 30px;
+}
+
+.input {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: .5rem 1rem;
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  transition: 250ms;
+  background: #f4f4f4; 
+}
+.input:focus {
+  outline: none;
+  border-bottom-color: #777;
+}
+.input::placeholder {
+  color: transparent;
+}
+
+.label {
+  position: absolute;
+  top: 12px;
+  left: 1rem;
+  color: #43454e;
+  pointer-events: none;
+  transform-origin: left center;
+  transition: transform 250ms;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-1.8rem) scale(0.75);
+}
+
+.input:not(:placeholder-shown) {
+  background: #fff;
+}
+
+textarea {
+	resize: vertical;
+}
+  
+.button {
+  font-size: 1.2rem;
+  color: #fff;
+  background: #333;
+  padding: .5rem 1.5rem;
+  margin: 1rem;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,.5);
+  border-radius: 5px;
 }
 
 
