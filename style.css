@@ -542,7 +542,7 @@ textarea {
 
 #featured .widget { padding: 0 !important; box-shadow: none !important; background-color: transparent !important; }
 
-.contact-form-error-message, contact-form-success-message { text-align: center !important } /* left behöver bara tar bort från mallen */
+.contact-form-error-message-with-border, contact-form-success-message { text-align: center !important } /* left behöver bara tar bort från mallen */
 
 /* Light YouTube Embeds ------------------------------- */
 
