@@ -493,7 +493,7 @@ textarea {
   resize: vertical;
 }
   
-.button {
+#post-body .contact-form-button-submit {
   font-size: 1.2rem;
   color: #fff;
   background: #333;
@@ -506,11 +506,11 @@ textarea {
   cursor: pointer;
 }
 
-.button:hover {
+#post-body .contact-form-button-submit:hover {
   background: var(--primary-clr, #f30);
 }
   
-.button:active {
+#post-body .contact-form-button-submit:active {
     box-shadow: 0 0 2px rgba(0,0,0,.5)
 }
 
