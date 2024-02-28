@@ -62,7 +62,7 @@
 	margin:auto;
 }
   
-.card {
+.camera-type-grid .card {
 	box-sizing: border-box;
 	border-radius:.5rem;
 	display:block;
@@ -74,19 +74,19 @@
 	position: relative;
 	align-items: center;
 }
-.card:hover {
+.camera-type-grid .card:hover {
 	background: #9bc; 
 	text-decoration: none !important;
 }
-.card h3 {
+.camera-type-grid .card h3 {
 	text-align: center;
 	margin: 0 0 .5rem !important;
 }
-.card img {
+.camera-type-grid .card img {
 	border-radius: 100%;
 	margin-bottom: 1rem;
 }
-.card p {
+.camera-type-grid .card p {
 	color:#000;
 	font-size:.9em;
 	font-weight:400;
@@ -94,7 +94,7 @@
 	text-align:left; 
 	margin-bottom:.8em;
 }
-.card p.button {
+.camera-type-grid .card p.button {
 	border-radius:.5rem;
 	box-sizing: border-box;
 	width: calc(100% - 1rem);
