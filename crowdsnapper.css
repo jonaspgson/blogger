@@ -74,10 +74,6 @@
 	position: relative;
 	align-items: center;
 }
-.camera-type-grid .card:hover {
-	background: #9bc; 
-	text-decoration: none !important;
-}
 .camera-type-grid .card h3 {
 	text-align: center;
 	margin: 0 0 .5rem !important;
@@ -105,6 +101,18 @@
 	color: #fff;
 	font-weight: 600;
 	text-align: center;
+}
+
+/* hover fx */
+.camera-type-grid .card:hover {
+	background: #9bc; 
+	transform: scale(1.05);
+    	z-index: 10000;
+	text-decoration: none !important;
+}
+.camera-type-grid:hover > .card:not(:hover) {
+   	opacity: 0.8;
+	filter: saturate(70%);
 }
   
 @media screen and (max-width: 600px) {
