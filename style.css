@@ -412,8 +412,8 @@ ul.cons li::before {
 /* Accordion ---------------------------- */
 
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: #222;
+  color: #fff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -425,7 +425,9 @@ ul.cons li::before {
 }
 
 .accordion.active, .accordion:hover {
-  background-color: #ccc;
+  background-color: #fff;
+  border: 2px solid #222;
+	color: #000;
 }
 
 .accordion:after {
