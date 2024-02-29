@@ -426,12 +426,10 @@ ul.cons li::before {
 
 .accordion.active, .accordion:hover {
   background-color: #f30;
-  color: #fff;
 }
 
 .accordion:after {
   content: '\f078';
-  color: #777;
   font-weight: bold;
   float: right;
   margin-left: 5px;
@@ -446,6 +444,7 @@ ul.cons li::before {
 .panel {
   background-color: #f30;
   color: #fff;
+  padding: 0 1rem;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
