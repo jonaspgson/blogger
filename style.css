@@ -438,7 +438,8 @@ ul.cons li::before {
 }
 
 .accordion.active:after {
-  content: "\2212";
+  content: "\f077";
+  font-family: "Font Awesome 6 Free";
 }
 
 .panel {
