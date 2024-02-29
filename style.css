@@ -421,7 +421,7 @@ ul.cons li::before {
   text-align: left;
   outline: none;
   font-size: 1.2rem;
-  transition: 0.4s;
+  transition: 1s;
 }
 
 .accordion.active, .accordion:hover {
