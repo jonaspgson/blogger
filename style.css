@@ -314,8 +314,8 @@ social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7
 	font-family: 'Font Awesome 6 Brands', 'Font Awesome 5 Brands';
     	content: ' \f4f4';
 }
-.amazon::after:hover, 
-.ebay::after:hover { text-decoration: none; }
+.amazon:hover::after, 
+.ebay:hover::after { text-decoration: none; }
 
 .fa-ebay::before {
     font-size: 1.5rem;
