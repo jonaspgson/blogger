@@ -415,19 +415,19 @@ ul.cons li::before {
   background-color: #222;
   color: #fff;
   cursor: pointer;
-  padding: 18px;
+  padding: 1rem;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 1.2rem;
   transition: 0.4s;
 }
 
 .accordion.active, .accordion:hover {
   background-color: #fff;
   border: 2px solid #222;
-	color: #000;
+  color: #000;
 }
 
 .accordion:after {
