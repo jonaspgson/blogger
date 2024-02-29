@@ -544,6 +544,7 @@ textarea {
   transition: 250ms;
   cursor: pointer;
 	width: auto;
+	float: none;
 }
 
 #post-body .contact-form-button-submit:hover {
