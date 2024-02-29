@@ -601,6 +601,7 @@ textarea {
 
 /* Style overridees ----------------------------------- */
 
+body { word-wrap: normal !important; }
 .post-body .tr-caption-container, .post-body .image-caption, image-caption {background-color: #3c3c3c; color: #fff; display: block; margin-bottom: 1rem; } 
 .tr-caption, .image-caption, image-caption { color: #fff !important; padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a, image-caption a { color: #ffde17; }
