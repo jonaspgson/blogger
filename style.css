@@ -311,7 +311,7 @@ social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7
 }
 .ebay::after {
 	color: #999;	
-	font-family: 'Font Awesome 6 Brands' 'Font Awesome 5 Brands';
+	font-family: 'Font Awesome 6 Brands', 'Font Awesome 5 Brands';
     	content: ' \f4f4';
 }
 
