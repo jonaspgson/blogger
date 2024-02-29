@@ -425,9 +425,9 @@ ul.cons li::before {
 }
 
 .accordion.active, .accordion:hover {
-  background-color: #fff;
+  background-color: #f30;
   border: 2px solid #222;
-  color: #000;
+  color: #fff;
 }
 
 .accordion:after {
@@ -445,8 +445,8 @@ ul.cons li::before {
 }
 
 .panel {
-  padding: 0 18px;
-  background-color: white;
+  background-color: #f30;
+  color: #fff;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
