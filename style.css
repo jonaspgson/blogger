@@ -35,15 +35,37 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Boxes ------------------*/
 
+/* Disclaimer box, for affiliate notices, etc. */
+disclaimer {
+	box-sizing: border-box;
+	font-size: 0.8rem;
+	margin: 1rem;
+	padding: .5rem 1rem;
+	text-align: center;
+	border: 1px solid #ddd;
+	display: inline-block;
+	border-radius: 0.5rem;
+	position: relative;
+	color: #333;
+}
+disclaimer::before {
+	content: "Disclosure:";
+	position: absolute;
+	transform: translateY(-1.3rem);
+	background-color: #fff;
+	color: #999;
+}
+
+/* Regular, grey box */
 info-box, .info-box {
 	display: block;
 	background-color: #eee;
 	padding: 1em;
 	margin: 2em 0;
-	font-size: 110%; 
 }
 info-box>:first-child, .info-box>:first-child { margin-top:0 !important; } /* removes excessive blank space from headings */
 
+/* Fancier box, for flashy social icons etc. */
 fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, #fde); padding: .5rem; }
 
 /* On-page social media links */
