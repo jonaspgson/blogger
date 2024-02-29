@@ -450,6 +450,9 @@ ul.cons li::before {
   transition: max-height 0.2s ease-out;
 }
 
+.panel:first-child {
+	padding-top: 1rem:
+}
 
 /* Animations --------------------------- */
 
