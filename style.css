@@ -429,11 +429,12 @@ ul.cons li::before {
 }
 
 .accordion:after {
-  content: '\002B';
+  content: '\f078';
   color: #777;
   font-weight: bold;
   float: right;
   margin-left: 5px;
+  font-family: "Font Awesome 6 Free";
 }
 
 .accordion.active:after {
