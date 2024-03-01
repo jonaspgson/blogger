@@ -192,76 +192,72 @@
 
 /* FIXED CAMERA NAVIGATION (bottom) */
 
-.stick-to-bottom {
-	position: sticky;
+sticky-navigation {
+	background: #f4f4f4;
+	z-index: 51;
+  	position: sticky;
 	bottom: 0;
 	left: 0;
 }
 
-.camera-navigation-bar {
-	background: #f4f4f4;
-/*	box-shadow: 0 0 10px 4px #f30; */
-	z-index: 51;
-}
-
-.camera-navigation-bar ul {
+sticky-navigation ul {
 	margin:0 !important;
 	padding:0 !important;
 	font-size: 0;
 }
-.camera-navigation-bar li {
+sticky-navigation li {
 	display:inline-block;
 	list-style: none;
 	margin:0 !important;
 	font-size: 14px;
 }
 
-.camera-navigation-bar li a {
+sticky-navigation li a {
 	color: #000;
 	display: inline-block;
 	padding: .5rem 1rem;
 }
 
-.camera-navigation-bar li a:hover {
+sticky-navigation li a:hover {
 	box-shadow: 0 -5px #f30;
 	text-decoration: none;
 	color: #f30;
 }
 
-.camera-navigation-bar .start-tab {
+sticky-navigation .start-tab {
 	background: #111;
 }
-.camera-navigation-bar .start-tab a {
+sticky-navigation .start-tab a {
 	color: #fff;
 }
 
-.camera-navigation-bar .active-tab {
+sticky-navigation .active-tab {
 	box-shadow: inset 0px 0px 5px 2px #ccc;
 }
-.camera-navigation-bar .active-tab a {
+sticky-navigation .active-tab a {
 	color: #f30;
 }
 
-/* mobile minimiser toggle */
-.camnav-checkbox, .camnav-toggle {
+/* minimiser toggle, only visible on mobile */
+.cb, .toggle {
 	display: none;
 }
 
 @media screen and (max-width: 770px) {
 	
-	.camera-navigation-bar {
+	sticky-navigation {
 		display: flex;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 	}
 	
-	.camnav-checkbox:checked ~ ul {
+	.cb:checked ~ ul {
 		height:0;
 	}
-	.camnav-checkbox:checked ~ .camnav-toggle {
+	.cb:checked ~ .toggle {
 		transform: rotate(180deg); 
 	}
-	.camnav-toggle {
+	.toggle {
 		display: inline;
 		cursor: pointer;
 		font-size: 1.5rem;
