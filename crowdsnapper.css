@@ -154,17 +154,24 @@
 	text-align: center;
 }
 
-/* hover fx */
 .camera-type-grid .card:hover {
-	background: #9bc; 
-	transform: scale(1.05);
 	text-decoration: none !important;
 }
-.camera-type-grid:hover > .card:not(:hover) {
-   	opacity: 0.8;
-	filter: saturate(70%);
+
+
+@media (min-width: 601px) {
+	/* hover fx on desktop */
+	.camera-type-grid .card:hover {
+		background: #9bc; 
+		transform: scale(1.05);
+		
+	}
+	.camera-type-grid:hover > .card:not(:hover) {
+	   	opacity: 0.8;
+		filter: saturate(70%);
+	}
 }
-  
+
 @media (max-width: 600px) {
 	.camera-type-grid {
 		grid-template-columns: 1fr;
@@ -176,19 +183,19 @@
 		padding: 1rem;
 		text-align: center;
 	}
-	.card img {
+	.camera-type-grid .card img {
 		max-height: 30vh;
 		width: auto;
 	}
-	.card p {
+	.camera-type-grid .card p {
 		font-size: 100%;
 		text-align: center;
 		text-wrap: balance;
 	}
-	.card p.button {
-		position: static !important;
+	.camera-type-grid .card p.button {
+		position: static;
 		margin-top: 1rem;
-		width: 100% !important;
+		width: 100%;
 	}
 }
 
