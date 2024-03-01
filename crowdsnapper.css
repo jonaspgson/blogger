@@ -193,6 +193,7 @@
 /* FIXED CAMERA NAVIGATION (bottom) */
 
 sticky-navigation {
+	display: block;
 	background: #f4f4f4;
 	z-index: 51;
   	position: sticky;
