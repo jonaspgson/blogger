@@ -49,6 +49,7 @@ disclaimer {
 	border-radius: 0.5rem;
 	position: relative;
 	color: #333;
+	text-wrap: balance;
 }
 disclaimer::before {
 	content: "Disclosure:";
