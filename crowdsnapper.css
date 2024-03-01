@@ -186,7 +186,7 @@
 	.card p.button {
 		position: static !important;
 		margin-top: 1rem;
-		
+		width: 100% !important;
 	}
 }
 
