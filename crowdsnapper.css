@@ -135,7 +135,7 @@
 }
 .camera-type-grid .card p {
 	color: #000;
-	font-size: .9rem;
+	font-size: 90%;
 	font-weight: 400;
 	line-height: 1.4;
 	text-align: left; 
@@ -181,7 +181,9 @@
 		width: auto;
 	}
 	.card p {
-		font-size: 1rem;
+		font-size: 100%;
+		text-align: center;
+		text-wrap: balance;
 	}
 	.card p.button {
 		position: static !important;
