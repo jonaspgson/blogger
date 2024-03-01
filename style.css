@@ -479,7 +479,7 @@ ul.cons li::before {
 }
 
 .panel :first-child {
-	padding-top: 1rem;
+	margin-top: 1rem;
 }
 
 /* Animations --------------------------- */
