@@ -184,9 +184,9 @@
 		font-size: 1rem;
 	}
 	.card p.button {
-		position: static;
+		position: static !important;
 		margin-top: 1rem;
-		width: calc(100% - 2rem);
+		
 	}
 }
 
