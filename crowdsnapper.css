@@ -107,7 +107,6 @@
 .camera-type-grid .card:hover {
 	background: #9bc; 
 	transform: scale(1.05);
-    	z-index: 10000;
 	text-decoration: none !important;
 }
 .camera-type-grid:hover > .card:not(:hover) {
