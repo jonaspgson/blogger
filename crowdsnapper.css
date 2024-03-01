@@ -266,4 +266,8 @@ sticky-navigation .active-tab a {
 		background: #f30;
 		color: #fff;
 	}
+	.toggle::before {
+   		font-family: FontAwesome; 
+    		content: '\f103';
+	}
 }
