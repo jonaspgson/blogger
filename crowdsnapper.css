@@ -3,6 +3,10 @@
 .post-body h2 {margin-top: 3rem !important;}
 .sidebar .ContactForm { display:none; }
 
+@media (max-width: 980px) {
+	.back-top { bottom: 40px !important; }
+}
+
 /* GEAR INFO BOX */
 
 .post-body .gear-info {
