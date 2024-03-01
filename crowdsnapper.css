@@ -49,6 +49,53 @@
 }
 
 
+/* Articles Grid - for linking to subpages -------------*/
+
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  	margin: 1rem;
+  }
+  .articles .card {
+    display: block;
+    background: #000;
+    color: #fff;
+    transition:250ms;
+    
+  }
+  
+  .articles .card img {
+  	display: block;  
+  }
+  
+  .articles .card :is(h3,p) {
+  	margin: 0;
+    padding: 1rem;
+    color: #fff;
+  }
+  .articles .card p {
+    padding-top: 0;
+  }
+  
+  .articles .card:hover {
+    text-decoration: none;
+    transform: scale(1.09);
+    z-index: 10000;
+  }
+  .articles:hover > .card:not(:hover) {
+   	opacity: 0.8;    
+  }
+  
+  @media (max-width: 550px) {
+   	.articles {
+      display: block;
+    }
+    .articles .card {
+    	margin-bottom: 1rem; 
+    }
+  }
+
 
 /* CAMERA TYPE GRID */
 
