@@ -4,6 +4,10 @@
 .sidebar .ContactForm { display:none; }
 #custom-content-section .widget-title { display: none; }
 
+.sidebar .widget-content { padding: 0 !important; }
+.sidebar .blurb { margin-bottom: 1px; }
+.sidebar :is(.archive-list, .sidebar-tabs > .widget-content) { padding: 15px; }
+
 @media (max-width: 980px) {
 	.back-top { bottom: 40px !important; }
 }
