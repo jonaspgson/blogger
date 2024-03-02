@@ -88,7 +88,7 @@
     z-index: 10000;
   }
   .articles:hover > .card:not(:hover) {
-   	opacity: 0.8;    
+   	filter: blur(2px);    
   }
   
   @media (max-width: 550px) {
