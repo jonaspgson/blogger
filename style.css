@@ -540,7 +540,7 @@ ul.cons li::before {
   color: transparent;
 }
 
-.label {
+.input-wrapper .label {
   position: absolute;
   top: 12px;
   left: 1rem;
