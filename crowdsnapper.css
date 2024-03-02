@@ -2,7 +2,7 @@
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
 .sidebar .ContactForm { display:none; }
-#custom-content-section { margin-bottom: 25px; }
+#custom-content-section { margin-bottom: 25px; box-shadow: 0 0 15px #fff; }
 #custom-content-section .widget-title { display: none; }
 
 .sidebar .widget-content { padding: 0 !important; }
