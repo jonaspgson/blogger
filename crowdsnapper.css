@@ -2,6 +2,7 @@
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
 .sidebar .ContactForm { display:none; }
+#custom-content-section .widget-title { display: none; }
 
 @media (max-width: 980px) {
 	.back-top { bottom: 40px !important; }
