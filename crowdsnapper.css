@@ -97,6 +97,48 @@
   }
 
 
+/* Blurbs ------------------ */
+
+  .blurb-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    gap: 1px;
+  }
+  .blurb {
+	display: block;
+    position: relative;
+  }
+  
+  .blurb img {
+    display: block;
+    transition: 1s;
+  }
+  .blurb h3 {
+    color: #fff;
+    background: linear-gradient(0deg, black, transparent);
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+  }
+  
+  .blurb:hover img {
+    filter: brightness(150%);
+  }
+  
+  @media (max-width: 500px) {
+    .blurb-container {
+     	display: block; 
+    }
+   	.blurb-container .blurb:not(:first-child) {
+     	display: none;
+    }
+  }
+
+
 /* CAMERA TYPE GRID */
 
 .camera-type-grid {  
