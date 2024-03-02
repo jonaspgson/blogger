@@ -234,7 +234,7 @@ sticky-navigation li a {
 
 sticky-navigation li a:hover {
 	box-shadow: 0 -5px #f30;
-	text-decoration: none;
+	text-decoration: none !important;
 	color: #f30;
 }
 
