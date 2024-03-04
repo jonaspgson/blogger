@@ -2,8 +2,8 @@
 .entry-tags { margin: 20px 15px 0 !important; }
 
 #post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
-	padding-left: 15px; 
-	padding-right: 15px;
+	padding-left: 15px !important; 
+	padding-right: 15px !important;
 }
 
 #post-body.entry-content > :first-child {
