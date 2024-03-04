@@ -3,6 +3,7 @@
 .post-body h2 {margin-top: 3rem !important;}
 .sidebar .ContactForm { display:none; }
 .featured-posts .entry-title { line-height: 1.1; }
+.featured-posts { margin: auto; max-width: 1400px; }
 #custom-content-section { margin-bottom: 25px; box-shadow: 0 0 15px #fff; }
 #custom-content-section .widget-title { display: none; }
 
