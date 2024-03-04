@@ -1,6 +1,22 @@
 /* Blogg-specifika overrides */
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
+
+.item-post .blog-entry-header { background:#000; }
+.item-post h1.entry-title { color:#fff; }
+.item-post .blog-entry-header .entry-meta {
+    font-size: 14px;
+    display: inline-block;
+    background-color: #c22;
+    padding: 3px 3px 3px 7px;
+    margin-top: 5px;
+    color: #fff;
+}
+
+.entry-tags{ margin:1rem 15px 0; }
+
+.entry-category { display: none; }
+
 .sidebar .ContactForm { display:none; }
 .featured-posts .entry-title { line-height: 1.1; }
 .featured-posts { margin: auto !important; max-width: 1400px; }
@@ -13,6 +29,8 @@
 @media (max-width: 980px) {
 	.back-top { bottom: 40px !important; }
 }
+
+
 
 /* GEAR INFO BOX */
 
