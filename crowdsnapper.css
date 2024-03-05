@@ -87,7 +87,7 @@ body {
 .gmag-pro-mobile-menu ul li.has-sub .submenu-toggle::after {
 	font-size: 2.5rem;
 }
-.gmag-pro-mobile-menu .m-sub ul li {
+.gmag-pro-mobile-menu > ul > li > ul > li a {
 	font-size: 1.5rem;
 }
 @media (max-width: 980px) {
