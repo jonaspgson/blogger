@@ -9,6 +9,9 @@ body {
 }
 
 /* Home Page */
+.home #content-wrapper {
+	padding: 3px 0;
+}
 .widget .title-wrap {
 	height: auto;
 	float: none;
