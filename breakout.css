@@ -10,3 +10,9 @@
 	display: block;
 	margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 880px)
+.headerify-wrap .headerify-inner, .navbar-wrap .container, .header-ad-wrap > .container, #featured-wrapper .container, #content-wrapper > .container, #footer-wrapper .container {
+    box-sizing: border-box;
+    padding: 0 !important;
+}
