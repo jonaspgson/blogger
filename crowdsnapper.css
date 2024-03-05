@@ -23,7 +23,10 @@
 #gmag-pro-main-menu ul > li > ul {
 	top: var(--menu-height);
 }
-
+.headerify-inner {
+	background-attachment: none;
+    	background-color: hsla(0, 0%, 100%, 0.9);
+}
 
 body {
 /*background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhO3CTzKIDtX9MMH4D2U0iwcCd2ujL6O8QX1L5uXBKg3__fAXjbAHJVrzGV92_s9yTXLhT_u7VGOIfvOOgkQqNyVU4z8Ea4rXHZ41rkfNPEiSEi29pWLs_
