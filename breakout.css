@@ -1,5 +1,5 @@
 .entry-content-wrap { padding:0 !important; }
-.entry-tags { margin: 20px 15px 0 !important; box-sizing: border-box; }
+.entry-tags, .post-nav { padding: 0 15px !important; box-sizing: border-box; }
 
 #post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
 	padding-left: 15px !important; 
