@@ -33,9 +33,11 @@ body {
 	float: none;
 	background-color: #F64E4E;
 	color: #fff;
+	display: block;
 }
 .widget .title-wrap > a.more:hover {
-	background-color: #000;
+	background-color: #f30;
+	color: #fff;
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
