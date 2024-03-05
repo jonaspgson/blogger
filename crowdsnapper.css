@@ -7,8 +7,8 @@ body {
 	5byDD2V_hYOQP9QtSQNIVhkunegcTSCX0L19so_Ztuv-5Ev_NBP4WvLY1LBGtSIlnaSmT/s16000/web-bg.jpg) 
 	no-repeat scroll center center;*/
 	
-	background-color: #eee;
-	background: linear-gradient(#eee,#fff);
+	background-color: #fff;
+	/* background: linear-gradient(#eee,#fff); */
 }
 
 /* Home Page */
@@ -45,6 +45,8 @@ body {
 
 /* Sidebars */
 .sidebar .ContactForm { display:none; }
+.sidebar > .widget { background-color: #f4f4f4; } /* sidebar content area */
+.sidebar > .widget .widget-title, #sidebar-tabs { background-color: #eee; } /* sidebar head */
 .sidebar .widget-content { padding: 0 !important; }
 .sidebar :is(.archive-list, .sidebar-tabs .widget.tab-active) { padding: 15px !important; }
 
