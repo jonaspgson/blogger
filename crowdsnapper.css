@@ -6,11 +6,15 @@
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
 
+.headerify,
+.headerify-wrap, 
 .headerify-inner, 
 .main-menu-wrap, 
+.search-toggle,
 #gmag-pro-main-menu-nav > li > a {
 	height: var(--menu-height);
 }
+.search-toggle,
 #gmag-pro-main-menu-nav > li > a {
 	line-height: var(--menu-height);
 }
