@@ -232,7 +232,11 @@ body {
      	display: none;
     }
   }
-
+@media (min-width:1000px) {
+	.custom-content-section .blurb h3 {
+		font-size: 2rem;
+	}
+}
 
 /* CAMERA TYPE GRID */
 
