@@ -37,7 +37,7 @@ body {
 }
 .widget .title-wrap > a.more:hover {
 	background-color: #f30;
-	color: #fff;
+	color: #fff !important;
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
