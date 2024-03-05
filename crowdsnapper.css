@@ -232,7 +232,12 @@ body {
      	display: none;
     }
   }
-@media (min-width:1000px) {
+@media (min-width: 750px) {
+	#custom-content-section .blurb h3 {
+		font-size: 1.75rem;
+	}
+}
+@media (min-width: 1000px) {
 	#custom-content-section .blurb h3 {
 		font-size: 2rem;
 	}
