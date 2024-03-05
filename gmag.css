@@ -369,7 +369,7 @@ color: #555;
 .social-mobile ul li{display:inline-block;margin:0 5px}
 .social-mobile ul li a{display:block;font-size:14px;color:#000000;padding:0 5px}
 .social-mobile ul li a:hover{color:#ff3300}
-.is-fixed{position:fixed;top:var(--menu-height);left:0;width:100%;z-index:990;transition:top .17s ease} /* OBS: ändrat from top:-50 */
+.is-fixed{position:fixed; top: calc(-1*var(--menu-height)); left:0;width:100%;z-index:990;transition:top .17s ease} /* OBS: ändrat from top:-50 */
 .headerify.show,.nav-active .headerify.is-fixed{top:0}
 .headerify.is-fixed .headerify-inner{box-shadow:none}
 .headerify.is-fixed.show .headerify-inner{box-shadow:0 1px 5px 0 rgba(0,0,0,0.1)}
