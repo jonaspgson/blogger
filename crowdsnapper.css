@@ -14,7 +14,7 @@ body {
 	float: none;
 	border: none;
 	padding: 15px;
-	line-height: inherit;
+	line-height: 1;
 }
 .widget .title-wrap h3 {
 	font-size: 2rem;
