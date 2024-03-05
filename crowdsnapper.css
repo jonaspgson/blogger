@@ -163,7 +163,7 @@ body {
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-auto-flow: column;
-    gap: 2px;
+    gap: 3px;
   }
   .blurb {
     display: block;
