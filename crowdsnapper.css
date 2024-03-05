@@ -28,7 +28,8 @@ body {
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
 #sidebar-tabs,
-.sidebar > .widget {
+.sidebar > .widget,
+.item-post-inner {
 	box-shadow: none;
 }
 .gmag-pro-content-blocks .widget,
@@ -48,6 +49,7 @@ body {
 .sidebar :is(.archive-list, .sidebar-tabs .widget.tab-active) { padding: 15px !important; }
 
 /* Post Page */
+.item-post-inner { background-color: transparent; }
 .item-post .blog-entry-header { background: #151515; border: none; }
 .item-post h1.entry-title { color:#fff; }
 .item-post .blog-entry-header .entry-meta {
