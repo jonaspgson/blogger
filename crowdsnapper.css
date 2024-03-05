@@ -11,7 +11,9 @@
 #gmag-pro-main-menu-nav > li > a {
 	height: var(--menu-height);
 }
-
+#gmag-pro-main-menu-nav > li > a {
+	line-height: var(--menu-height);
+}
 #gmag-pro-main-menu ul > li > ul {
 	top: var(--menu-height);
 }
