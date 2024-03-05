@@ -11,10 +11,12 @@
 .headerify-inner, 
 .main-menu-wrap, 
 .search-toggle,
+.show-gmag-pro-mobile-menu,
 #gmag-pro-main-menu-nav > li > a {
 	height: var(--menu-height);
 }
 .search-toggle,
+.show-gmag-pro-mobile-menu,
 #gmag-pro-main-menu-nav > li > a {
 	line-height: var(--menu-height);
 }
