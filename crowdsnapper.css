@@ -63,9 +63,11 @@ body {
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
-#sidebar-tabs,
 .sidebar > .widget,
-.item-post-inner {
+.item-post-inner,
+#gmag-pro-header-wrapper,
+#sidebar-tabs
+{
 	box-shadow: none;
 }
 .gmag-pro-content-blocks .widget,
