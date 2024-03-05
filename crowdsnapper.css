@@ -23,7 +23,8 @@ body {
 	line-height: 1;
 }
 .widget .title-wrap h3 {
-	font-size: 2rem;
+	font-size: 2rem; 
+	color: #F64E4E;
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
