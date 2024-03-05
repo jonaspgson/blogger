@@ -233,7 +233,7 @@ body {
     }
   }
 @media (min-width:1000px) {
-	.custom-content-section .blurb h3 {
+	#custom-content-section .blurb h3 {
 		font-size: 2rem;
 	}
 }
