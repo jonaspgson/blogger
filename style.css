@@ -61,7 +61,7 @@ disclaimer::before {
 /* Regular, grey box */
 info-box, .info-box {
 	display: block;
-	background-color: #eee;
+	background-color: #f4f4f4;
 	padding: 1em;
 	margin: 2em 0;
 }
