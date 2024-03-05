@@ -26,10 +26,16 @@ body {
 	font-size: 2rem; 
 	color: #F64E4E;
 	float: none;
+	display: inline-block;
 }
 .widget .title-wrap > a.more { 
-	padding: 6px 0 0; 
+	padding: 5px; 
 	float: none;
+	background-color: #F64E4E;
+	color: #fff;
+}
+.widget .title-wrap > a.more:hover {
+	background-color: #000;
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
