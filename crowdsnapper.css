@@ -19,12 +19,17 @@ body {
 	height: auto;
 	float: none;
 	border: none;
-	padding: 15px;
+	padding: 0 15px;
 	line-height: 1;
 }
 .widget .title-wrap h3 {
 	font-size: 2rem; 
 	color: #F64E4E;
+	float: none;
+}
+.widget .title-wrap > a.more { 
+	padding: 6px 0 0; 
+	float: none;
 }
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
