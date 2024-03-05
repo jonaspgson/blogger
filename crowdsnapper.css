@@ -8,6 +8,31 @@ body {
 	background: linear-gradient(#eee,#fff);
 }
 
+/* Home Page */
+.widget .title-wrap {
+	height: auto;
+	float: none;
+	border: none;
+	padding: 15px;
+}
+.widget .title-wrap h3 {
+	font-size: 2rem;
+}
+.gmag-pro-content-blocks .widget,
+.index #main-wrapper #main,
+#sidebar-tabs,
+.sidebar > .widget {
+	box-shadow: none;
+}
+.gmag-pro-content-blocks .widget,
+.index #main-wrapper #main {
+	background-color: transparent;
+}
+.entry-category { display: none; }
+.featured-posts .entry-title { line-height: 1.1; }
+/* .featured-posts { margin: auto !important; max-width: 1400px; } not used atm */
+
+/* Post Page */
 .item-post .blog-entry-header { background:#000; }
 .item-post h1.entry-title { color:#fff; }
 .item-post .blog-entry-header .entry-meta {
@@ -18,14 +43,12 @@ body {
     margin-top: 5px;
     color: #fff;
 }
-
 .entry-tags{ margin:1rem 15px 0; }
 
-.entry-category { display: none; }
+
 
 .sidebar .ContactForm { display:none; }
-.featured-posts .entry-title { line-height: 1.1; }
-.featured-posts { margin: auto !important; max-width: 1400px; }
+
 #custom-content-section { margin-bottom: 25px; box-shadow: 0 0 15px #fff; }
 #custom-content-section .widget-title { display: none; }
 
