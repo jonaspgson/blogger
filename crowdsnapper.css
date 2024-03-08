@@ -28,6 +28,12 @@
     	background-color: hsla(0, 0%, 100%, 0.9);
 }
 
+#breadcrumb { 
+	margin: 0 0 5px;
+	border-bottom: 1px solid #333;
+	padding: 0 0 10px; 
+}
+
 body {
 /*background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhO3CTzKIDtX9MMH4D2U0iwcCd2ujL6O8QX1L5uXBKg3__fAXjbAHJVrzGV92_s9yTXLhT_u7VGOIfvOOgkQqNyVU4z8Ea4rXHZ41rkfNPEiSEi29pWLs_
 	5byDD2V_hYOQP9QtSQNIVhkunegcTSCX0L19so_Ztuv-5Ev_NBP4WvLY1LBGtSIlnaSmT/s16000/web-bg.jpg) 
