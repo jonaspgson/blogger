@@ -1,11 +1,15 @@
 .entry-content-wrap { padding:0 !important; }
 .entry-tags, .post-nav { padding: 0 15px !important; box-sizing: border-box; }
 
-#post-body.entry-content > :is(p,h1,h2,h3,h4,h5,ol,ul) {
+#post-body.entry-content > :is(p,h1,h2,h3,h4,h5) {
 	padding-left: 15px !important; 
 	padding-right: 15px !important;
 }
 
+#post-body.entry-content > :is(,ol,ul) {
+	padding-left: 3rem;
+}
+	
 #post-body.entry-content > :first-child {
 	display: block;
 	margin-bottom: 1rem;
