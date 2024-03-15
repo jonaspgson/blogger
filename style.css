@@ -186,12 +186,12 @@ gallery, .gallery {
   	height: 200px;
 	width: 100%;
 	box-sizing: border-box;
-	transition: 250ms;
+	transition: 100ms;
 }
 
 :is(gallery, .gallery) img:hover {
 	transform: scale(1.1);
-	filter: brightness(150%);
+	filter: brightness(120%);
   	z-index:2;
 }
 
