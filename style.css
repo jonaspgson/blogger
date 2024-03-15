@@ -173,21 +173,21 @@ social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7
 
 /* Fixed image gallery grid (for mixed aspect ratios) */
 
-.gallery {
+gallery, .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(143px,1fr));
     grid-template-rows: auto;
     grid-gap: 0px;
 }
   
-.gallery img {
+:is(gallery, .gallery) img {
 	object-fit: cover;
   	display: block; 
   	height: 200px;
     width: 100%;
 }
 
-.gallery a { padding:0 !important; margin:0 !important; }
+:is(gallery, .gallery) a { padding:0 !important; margin:0 !important; }
 
 
 /* Horizontal image container. Image goes on the left, text on the right */
