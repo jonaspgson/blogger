@@ -26,8 +26,9 @@
 }
 
 .show-gmag-pro-mobile-menu,
-.search-toggle { 
-	font-size: 20px; /* större hamburgare och sökikon (mobil) */
+.search-toggle,
+.hide-gmag-pro-mobile-menu { 
+	font-size: 20px; /* större hamburgare och sökikon (mobilmenyn) */
 }
 
 .headerify-inner {
