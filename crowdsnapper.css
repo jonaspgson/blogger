@@ -24,6 +24,12 @@
 #gmag-pro-main-menu ul > li > ul {
 	top: var(--menu-height);
 }
+
+.show-gmag-pro-mobile-menu,
+.search-toggle { 
+	font-size: 20px; /* större hamburgare och sökikon (mobil) */
+}
+
 .headerify-inner {
 	background-attachment: none;
     	background-color: hsla(0, 0%, 100%, 0.9);
