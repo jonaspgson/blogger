@@ -193,8 +193,7 @@ max-width:calc(1089px + 50px);
 .social-color .external-link a,.social-color-hover .external-link a:hover{color:#f23000}
 #gmag-pro-header-wrapper{position:relative;float:left;width:100%;margin:0;box-shadow:0 1px 5px 0 rgba(0,0,0,0.05)}
 .headerify-wrap,.headerify{position:relative;float:left;width:100%;height:50px;box-sizing:border-box;padding:0;margin:0}
-.headerify-inner{position:relative;float:left;width:100%;max-width:100%;height:50px;background-color:#ffffff;background:linear-gradient(to right,#ffffff,#ffffff);box-sizing:border-box;padding:0;margin:0}
-.rtl .headerify-inner{background:linear-gradient(to left,#ffffff,#ffffff)}
+.headerify-inner{position:relative;float:left;width:100%;max-width:100%;height:50px;background-color:#ffffff;box-sizing:border-box;padding:0;margin:0}
 .boxed .headerify-inner {
 float:none;
 /*
