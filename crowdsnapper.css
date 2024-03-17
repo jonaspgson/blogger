@@ -174,50 +174,69 @@ body {
 
 /* Articles Grid - for linking to subpages -------------*/
 
-  .articles {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+.articles {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
   	margin: 1rem;
-  }
-  .articles .card {
-    display: block;
-    background: #000;
-    color: #fff;
-    transition:250ms;
-    
-  }
+}
+.articles .card {
+	display: block;
+	background: #000;
+	color: #fff;
+	position: relative;
+  	padding-bottom: 4rem;
+	transition:250ms;
+}
   
-  .articles .card img {
-  	display: block;  
-  }
+.articles .card img {
+	display: block;
+}
+
+.articles .card :is(h3,p) {
+	margin: 0;
+	padding: 1rem;
+	color: #fff;
+}
+.articles .card p {
+	padding-top: 0;
+}
+
+.articles .card button {
+	border: none;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	width: calc(100% - 2rem);
+	padding: 0.5rem !important;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 1rem;
+  	left: 1rem;
+	background: #f30;
+	color: #fff;
+	font-weight: 600;
+	text-align: center;
+}
+
+@media (width > 550px) {
+	.articles .card:hover {
+		text-decoration: none;
+		transform: scale(1.09);
+		z-index: 10000;
+	}
+	.articles:hover > .card:not(:hover) {
+	   	filter: blur(2px);    
+	}
+}
   
-  .articles .card :is(h3,p) {
-  	margin: 0;
-    padding: 1rem;
-    color: #fff;
-  }
-  .articles .card p {
-    padding-top: 0;
-  }
-  
-  .articles .card:hover {
-    text-decoration: none;
-    transform: scale(1.09);
-    z-index: 10000;
-  }
-  .articles:hover > .card:not(:hover) {
-   	filter: blur(2px);    
-  }
-  
-  @media (max-width: 550px) {
-   	.articles {
-      display: block;
-    }
-    .articles .card {
-    	margin-bottom: 1rem; 
-    }
-  }
+@media (width <= 550px) {
+	.articles {
+		display: block;
+	}
+	.articles .card {
+    		margin-bottom: 1rem; 
+  	}
+}
 
 
 /* Blurbs ------------------ */
