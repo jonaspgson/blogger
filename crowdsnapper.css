@@ -217,10 +217,15 @@ body {
 	font-weight: 600;
 	text-align: center;
 	cursor: pointer;
+	transition: 250ms;  
 }
 
 .articles .card:hover {
 	text-decoration: none;
+}
+
+.articles .card:hover button {
+	box-shadow: 0 0 1rem .5rem hsla(12, 100%, 50%, .7); 
 }
 
 @media (width > 550px) {
