@@ -568,9 +568,10 @@ margin-right: 10px;
 .entry-content-wrap{position:relative;float:left;width:100%;box-sizing:border-box;margin:0;}
 #post-body{position:relative;float:left;width:100%;font-family:var(--text-font);font-size:14px;color:#000000;line-height:1.6em;padding:0;margin:0}
 .post-body p{margin-bottom:1rem}
-.post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6{color:#171c24;font-weight:600;margin:2rem 0 1rem;} /* font-size:18px; */
-.post-body h1,.post-body h2{font-size:1.8rem}
-.post-body h3{font-size:1.2rem}
+.post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6{color:#171c24;font-weight:600;margin:2rem 0 1rem;}
+.post-body h1,.post-body h2{font-size:2rem}
+.post-body h3{font-size:1.6rem}
+.post-body h4{font-size:1.3rem}
 blockquote{background-color:rgba(155,155,155,0.05);color:#171c24;font-style:italic;padding:15px 25px;margin:0;border-left:3px solid rgba(155,155,155,0.2)}
 .rtl blockquote{border-left:0;border-right:3px solid rgba(155,155,155,0.2)}
 blockquote:before,blockquote:after{display:inline-block;font-family:'Font Awesome 6 Free';font-style:normal;font-weight:900;color:#171c24;line-height:1}
