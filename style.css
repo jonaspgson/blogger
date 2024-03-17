@@ -191,11 +191,15 @@ gallery, .gallery {
 
 :is(gallery, .gallery) img:hover {
 	transform: scale(1.1);
-	filter: brightness(120%);
+	filter: brightness(110%);
   	z-index:2;
 }
 
-:is(gallery, .gallery) a { padding:0 !important; margin:0 !important; }
+:is(gallery, .gallery) a { 
+	padding:0 !important; 
+	margin:0 !important; 
+	overflow: hidden;
+}
 
 
 
