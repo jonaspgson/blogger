@@ -5,6 +5,10 @@ h1,h2,h3,h4,h5,h6 {
 
 h4 { font-size: 1.05rem; }
 
+.span-1 { display: block; height: 1rem; }
+.span-2 { display: block; height: 2rem; }
+.span-3 { display: block; height: 3rem; }
+
 .blurred img {
 	-webkit-filter: blur(7px); /* Safari 6.0 - 9.0 */
 	filter: blur(7px);
