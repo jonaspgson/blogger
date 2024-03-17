@@ -218,9 +218,12 @@ body {
 	text-align: center;
 }
 
+.articles .card:hover {
+	text-decoration: none;
+}
+
 @media (width > 550px) {
 	.articles .card:hover {
-		text-decoration: none;
 		transform: scale(1.09);
 		z-index: 10000;
 	}
