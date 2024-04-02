@@ -316,6 +316,48 @@ body {
 	}
 }
 
+
+/* Sticky footer blurb */
+
+footer-blurb {
+  display: block;
+  position: sticky;
+  bottom: 0;
+  padding: .2rem;
+}
+
+footer-blurb label {
+  background-color: #333;
+  color: #fff;
+  display: table;
+  font-size: .65rem;
+  padding: .3rem .5rem .5rem;
+  line-height: 1;
+  margin-bottom: -.2rem;
+  border-radius: 3px;
+}
+  
+footer-blurb a {
+  display: block;
+  background-color: #f4f4f4;
+  padding: .3rem;
+  color: #333 !important;
+  font-size: .8rem;
+  text-align: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  transition: 250ms;
+}
+
+footer-blurb a:hover {
+  background-color: #f30;
+  color: #fff !important;
+  border-color: #f30;
+  text-decoration: none !important;
+}
+  
+
+
 /* CAMERA TYPE GRID */
 
 .camera-type-grid {  
