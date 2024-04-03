@@ -325,6 +325,7 @@ footer-blurb {
 	position: sticky;
 	bottom: 0;
 	padding: 1rem;
+	z-index: 2;
 }
 
 footer-blurb label {
