@@ -323,8 +323,8 @@ body {
 footer-blurb {
 	display: inline-block;
 	position: sticky;
-	bottom: .5rem;
-	margin: 1rem;
+	bottom: 1rem;
+	margin: 1rem .5rem;
 	z-index: 2;
 }
 
