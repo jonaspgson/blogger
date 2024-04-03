@@ -341,18 +341,18 @@ footer-blurb label {
   
 footer-blurb a {
 	display: block;
-	background-color: #c22;
+	background-color: hsl(12, 0%, 50%);
 	padding: .5rem;
 	color: #fff !important;
 	text-align: center;
 	border-radius: 4px;
 	transition: 250ms;
+	box-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.3);
 }
 
 footer-blurb a:hover {
-	background-color: #f30;
+	background-color: hsl(12, 100%, 50%);
 	color: #fff !important;
-	border-color: #f30;
 	text-decoration: none !important;
 }
   
