@@ -6,6 +6,7 @@
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
 .page #content-wrapper { padding-bottom: 0; }
+#before-ad, #after-ad { float: none; }
 
 .headerify,
 .headerify-wrap, 
@@ -320,7 +321,7 @@ body {
 /* Sticky footer blurb */
 
 footer-blurb {
-  display: block;
+  display: inline-block;
   position: sticky;
   bottom: 0;
   padding: .2rem;
