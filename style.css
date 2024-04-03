@@ -181,7 +181,7 @@ gallery, .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(143px,1fr));
     grid-template-rows: auto;
-    grid-gap: 1px;
+    grid-gap: 3px;
 }
   
 :is(gallery, .gallery) img {
@@ -190,7 +190,7 @@ gallery, .gallery {
   	height: 200px;
 	width: 100%;
 	box-sizing: border-box;
-	transition: 100ms;
+	transition: 200ms;
 }
 
 :is(gallery, .gallery) img:hover {
