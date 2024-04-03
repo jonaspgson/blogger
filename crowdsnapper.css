@@ -7,6 +7,7 @@
 .post-body h2 {margin-top: 3rem !important;}
 .page #content-wrapper { padding-bottom: 0; }
 #before-ad, #after-ad { float: none; }
+.back-top { display: none; }
 
 .headerify,
 .headerify-wrap, 
@@ -324,7 +325,7 @@ footer-blurb {
 	display: inline-block;
 	position: sticky;
 	bottom: 0;
-	padding: .3rem;
+	padding: 1rem;
 }
 
 footer-blurb label {
