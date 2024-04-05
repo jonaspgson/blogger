@@ -329,7 +329,7 @@ footer-blurb {
 }
 
 footer-blurb label {
-	background-color: rgba(0, 0, 0, .7);
+	background-color: hsl(12, 0%, 50%, .7);
 	color: #fff;
 	display: table;
 	font-size: .7rem;
