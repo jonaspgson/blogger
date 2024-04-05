@@ -177,14 +177,14 @@ social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7
 
 /* Fixed image gallery grid (for mixed aspect ratios) */
 
-gallery, .gallery {
+image-gallery, .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(143px,1fr));
     grid-template-rows: auto;
     grid-gap: 3px;
 }
   
-:is(gallery, .gallery) img {
+:is(image-gallery, .gallery) img {
 	object-fit: cover;
   	display: block; 
   	height: 200px;
@@ -193,13 +193,13 @@ gallery, .gallery {
 	transition: 200ms;
 }
 
-:is(gallery, .gallery) img:hover {
+:is(image-gallery, .gallery) img:hover {
 	transform: scale(1.1);
 	filter: brightness(110%);
   	z-index:2;
 }
 
-:is(gallery, .gallery) a { 
+:is(image-gallery, .gallery) a { 
 	padding:0 !important; 
 	margin:0 !important; 
 	overflow: hidden;
