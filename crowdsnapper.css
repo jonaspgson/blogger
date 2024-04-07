@@ -320,6 +320,78 @@ body {
 
 /* Sticky footer blurb */
 
+.footer-blurb {
+	position: sticky;
+  	bottom: 0;
+ 	z-index: 2;
+  	min-height: 80px;
+  	width: 100%;
+}
+.footer-blurb:hover {
+	text-decoration: none !important;
+}
+.footer-blurb:has(#cb:checked) {
+	position: static !important;
+}
+
+.footer-blurb blurb-header {
+display: block;
+    background: hsla(0, 0%, 0%, .4);
+    color: #fff;
+    font-size: 0.6rem;
+    line-height: 1.2;
+    font-weight: 300;
+    padding: 0 7px;
+    text-align: center;
+}
+  
+.footer-blurb blurb-container {
+  	display: flex;
+  	align-items: center;
+	justify-content: left;
+    background-color: #eee;
+}
+  
+.blurb-thumbnail {
+	display: block;
+	background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKA7gbfjMvfsKuoV4JVzM96_Zx3Vc6-VwNTt8Qjyk2V8zA5gScf_1evHqdBwKBACRdMWxyVXFeIjSAsO2wpZHqc6wuKgQW4qyDQayulFHWsOTHHCXVxVuErFndB4ccpZTzkhjGoLWQKxDV-ZA2JZxYhzQUWLCACSACd3MMmJDIsOL265O0IreT2GB2AA/s700/best-concert-cameras-crowdsnapper.webp');
+	background-size: cover;
+	min-height: 80px;
+	width: 25%;
+  	min-width: 120px;
+}
+  
+.blurb-text {
+	color: #000;
+	margin: auto;
+	text-align: center;
+}
+
+.closer {
+	min-height: 80px;
+	display: block;
+ 	margin: 0;
+}
+  
+.closer:has(#cb:checked) { display: none; }
+  
+.closer label {
+  	padding: 5px;
+ 	color: #999;
+  	cursor: pointer;
+}
+.closer label:hover {
+   color: #000; 
+}
+
+#cb { display: none; }
+
+
+
+
+
+
+/* GAMMAL VERSION NEDAN */
 footer-blurb {
 	display: inline-block;
 	position: sticky;
