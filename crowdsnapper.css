@@ -327,6 +327,7 @@ body {
 	display: inline-block;
   	min-height: 80px;
   	width: 100%;
+	margin-top: 1.8rem;
 }
 .footer-blurb:hover {
 	text-decoration: none !important;
@@ -336,21 +337,21 @@ body {
 }
 
 .footer-blurb blurb-header {
-display: block;
-    background: hsla(0, 0%, 0%, .4);
-    color: #fff;
-    font-size: 0.6rem;
-    line-height: 1.2;
-    font-weight: 300;
-    padding: 0 7px;
-    text-align: center;
+	display: block;
+	background: hsla(0, 0%, 0%, .4);
+	color: #fff;
+	font-size: 0.6rem;
+	line-height: 1.2;
+	font-weight: 300;
+	padding: 0 7px;
+	text-align: center;
 }
   
 .footer-blurb blurb-container {
   	display: flex;
   	align-items: center;
 	justify-content: left;
-    background-color: #eee;
+	background-color: #eee;
 }
   
 .blurb-thumbnail {
