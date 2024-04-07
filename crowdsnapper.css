@@ -324,6 +324,7 @@ body {
 	position: sticky;
   	bottom: 0;
  	z-index: 2;
+	display: inline-block;
   	min-height: 80px;
   	width: 100%;
 }
