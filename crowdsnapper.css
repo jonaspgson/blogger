@@ -388,49 +388,9 @@ body {
 
 #cb { display: none; }
 
-
-
-
-
-
-/* GAMMAL VERSION NEDAN */
-footer-blurb {
-	display: inline-block;
-	position: sticky;
-	bottom: 1rem;
-	margin: 1rem .5rem;
-	z-index: 2;
+@media (width => 430px) {
+	.blurb-text { font-size: 1.2rem; }
 }
-
-footer-blurb label {
-	background-color: hsl(12, 0%, 50%, .7);
-	color: #fff;
-	display: table;
-	font-size: .7rem;
-	padding: .3rem .5rem .5rem;
-	line-height: 1;
-	margin-bottom: -.2rem;
-	border-radius: 3px;
-}
-  
-footer-blurb a {
-	display: block;
-	background-color: hsl(12, 0%, 50%);
-	padding: .5rem;
-	color: #fff !important;
-	text-align: center;
-	border-radius: 4px;
-	transition: 250ms;
-	box-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.3);
-}
-
-footer-blurb a:hover {
-	background-color: hsl(12, 100%, 50%);
-	color: #fff !important;
-	text-decoration: none !important;
-}
-  
-
 
 /* CAMERA TYPE GRID */
 
