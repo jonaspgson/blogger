@@ -388,7 +388,7 @@ body {
 
 #cb { display: none; }
 
-@media (width => 430px) {
+@media (min-width: 430px) {
 	.blurb-text { font-size: 1.2rem; }
 }
 
