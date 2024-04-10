@@ -928,8 +928,8 @@ p.comment-footer span:after{content:'\002A';color:#d63031}
 .errorWrap p{font-size:15px;margin:0 0 15px}
 .errorWrap a{display:inline-block;height:32px;background-color:#ff3300;font-size:14px;color:#ffffff;font-weight:500;line-height:32px;padding:0 30px;margin:15px 0 0;border:0;border-radius:2px}
 .errorWrap a:hover{background-color:#f23000;color:#ffffff}
-.cookie-choices-info { background-color:hsla(0,0%,0%,.9); top:unset!important; bottom:0; }
-.cookie-choices-info .cookie-choices-text { color: #bbb; }
+.cookie-choices-info { background-color:hsla(0,0%,0%,.9) !important; top:unset!important; bottom:0; }
+.cookie-choices-info .cookie-choices-text { color: #bbb !important; }
 a.ads-here{display:block;background-color:#ffffff;text-align:center;font-size:12px;color:#a9b4ba;font-weight:400;font-style:italic;line-height:80px;box-shadow:0 1px 5px 0 rgba(0,0,0,0.05)}
 #main a.ads-here{background-color:rgba(155,155,155,0.1);box-shadow:unset}
 .sidebar a.ads-here{line-height:250px}
