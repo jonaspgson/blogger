@@ -141,6 +141,19 @@ body {
 }
 
 
+/* Inline heading */
+
+i-head { 
+	font-weight: 600;
+	color: #c22;
+	font-size: 1.2em;
+	display: inline-block;
+	margin-right: .3rem;
+	letter-spacing: .2em;
+	padding-right: .3rem;
+	border-right: 2px solid #edd;
+	line-height: 1;
+}
 
 /* GEAR INFO BOX */
 
