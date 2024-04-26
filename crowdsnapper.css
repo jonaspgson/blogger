@@ -145,13 +145,13 @@ body {
 
 i-head { 
 	font-weight: 600;
-	color: #c55;
+	color: #666;
 	font-size: 1.2em;
 	display: inline-block;
 	margin-right: .3rem;
 	letter-spacing: .2em;
 	padding-right: .3rem;
-	border-right: 2px solid #edd;
+	border-right: 2px solid #ccc;
 	line-height: 1;
 }
 
