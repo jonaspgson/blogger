@@ -141,6 +141,27 @@ body {
 }
 
 
+/*---------- Artist List Page ------------*/
+
+artist-list {
+  display:block;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.post-body artist-list ul {
+  margin: 0;
+  padding: 0;
+}
+.post-body artist-list ul li {
+	list-style: none;
+	margin: 0;
+  text-align: center;
+  font-size:1.8em;
+}
+
+
+/*------------- POSTS ---------------*/
+
 /* Inline heading */
 
 inline-heading { 
