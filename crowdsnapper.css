@@ -164,7 +164,7 @@ artist-list {
 
 /* Inline heading */
 
-inline-heading { 
+inline-heading, :is(h1,h2,h3,h4).inline { 
 	font-weight: 600;
 	color: #666;
 	font-size: 1.2em;
