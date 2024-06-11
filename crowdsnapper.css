@@ -162,6 +162,48 @@ artist-list {
 
 /*------------- POSTS ---------------*/
 
+/* BYLINE */
+
+.byline {
+display: flex;
+background: #eee;
+align-items: center;
+}
+
+byline-image, byline-title, byline-name, byline-links { display: block; }
+
+byline-image {
+margin: 1rem;
+width: 80px;
+height: 80px;
+border-radius: 40px;
+background-size: contain;
+}
+
+.byline-jonas byline-image {
+background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9H20qE_5ZEHBNYVhJNeNqUPCIay0nIBJ-rFN4AMxkKUJiLRGVYh9JRkZxcnhfHUtAo3W01XNNmDRgPK3-FJWG3HQekrOflemh-ETpsdhNNd6w7j_drneEQF8Q4DJnmNpYLSMc2fg_497bopx5_ASgQAm1ncIaBEheEmvRCd5PT61XcePyHx_QwbQkUA/s80/jonas-profile-250.webp');
+}
+
+byline-text {
+flex-grow: 1;  
+}
+
+byline-title {
+font-size:.8rem;
+border-bottom: 1px solid #ccc;
+margin-bottom: .5rem;
+}
+
+byline-name {
+font-size:1.2rem;
+}
+
+byline-links a {
+color: #555 !important;
+}
+
+
+
 /* Inline heading */
 
 inline-heading, :is(h1,h2,h3,h4).inline { 
