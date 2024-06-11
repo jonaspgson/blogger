@@ -170,6 +170,7 @@ artist-list {
 display: flex;
 background: #eee;
 align-items: center;
+font-family: var(--body-font);
 }
 
 byline-image, byline-title, byline-name, byline-links { display: block; }
@@ -204,7 +205,14 @@ byline-links a {
 color: #555 !important;
 }
 
-
+/* INGRESS */
+.preamble {
+	padding: 0 1rem;
+	font-family: var(--body-font);
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
+}
 
 /* Inline heading */
 
