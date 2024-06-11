@@ -1,6 +1,6 @@
 :root {
 	--menu-height: 65px;
-	--text-font: 'serif';
+	--text-font: 'Lora','serif';
 }
 
 /* Blogg-specifika overrides */
