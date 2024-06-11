@@ -4,6 +4,7 @@
 }
 
 /* Blogg-specifika overrides */
+#post-body { font-size: 18px; }
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
 .page #content-wrapper { padding-bottom: 0; }
