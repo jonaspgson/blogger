@@ -172,6 +172,7 @@ display: flex;
 background: #eee;
 align-items: center;
 font-family: var(--body-font);
+margin-bottom: 3rem;
 }
 
 byline-image, byline-title, byline-name, byline-links { display: block; }
