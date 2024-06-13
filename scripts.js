@@ -97,7 +97,7 @@ function createCompactAmazonLinks(productName) {
 }
 
 /*
- BYLINE. Input title eg. "written by", "images and words," etc.
+ BYLINE. Input title (optional) could be "written by", "images and words," etc.
 */
 function getByline(title) {
     let o = '<section class="byline byline-jonas">';
