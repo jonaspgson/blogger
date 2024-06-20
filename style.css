@@ -236,6 +236,7 @@ image-gallery, .gallery {
 
 .img-container .text {
     padding: 15px;
+    font-family: var(--body-font);
 }
 
 .img-container .text h3 { 
