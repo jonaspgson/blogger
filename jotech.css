@@ -1,0 +1,11 @@
+:root {
+	--menu-height: 52px;
+	--text-font: 'Lora','serif';
+}
+
+
+.main-logo img {
+  max-width: 100%;
+  height: 42px;
+  margin: 5px 0;
+}
