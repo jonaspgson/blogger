@@ -597,6 +597,7 @@ font-weight: 500;
 .post-body a.colored-button{color:#fff}
 .post-body a.button:hover{background-color:#f23000;color:#ffffff}
 .post-body a.colored-button:hover{background-color:#f23000!important;color:#ffffff!important}
+.post-body a>img { display: block; }
 .button:before{float:left;font-family:'Font Awesome 6 Free';font-weight:900;display:inline-block;margin:0 8px 0 0}
 .rtl .button:before{float:right;margin:0 0 0 8px}
 .button.preview:before{content:"\f06e"}
