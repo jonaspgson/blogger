@@ -690,6 +690,9 @@ textarea {
   .table td::after { content: " " attr(data-cell); }
 }
 
+.table-lined :is(td,th) { padding: 0.3rem 1rem; }
+.table-lined th { padding-top: 1rem; font-size: 1.2rem; }
+.table-lined td { border-bottom: 1px solid #eee; }
 
 /* Style overridees ----------------------------------- */
 
