@@ -9,11 +9,13 @@
 #post-body.entry-content > :is(,ol,ul) {
 	padding-left: 3rem;
 }
-	
+
+/*
 #post-body.entry-content > :first-child {
 	display: block;
 	margin-bottom: 1rem;
 }
+*/
 
 @media screen and (max-width: 880px)
 .headerify-wrap .headerify-inner, .navbar-wrap .container, .header-ad-wrap > .container, #featured-wrapper .container, #content-wrapper > .container, #footer-wrapper .container {
