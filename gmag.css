@@ -580,7 +580,7 @@ blockquote:after,.rtl blockquote:before{content:'\f10e';margin:0 0 0 10px}
 .rtl .post-body ul,.rtl .widget .post-body ol{padding:0 15px 0 0}
 .post-body .responsive-video-wrap{position:relative;width:100%;padding:0;padding-top:56%}
 .post-body .responsive-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-/*.post-body img{height:auto!important} OBS! */
+.post-body img{ display:block; }
 .post-body ul,.widget .post-body ol{line-height:1.5em;font-weight:400;margin:10px 0; padding-left:2.5rem;}
 .post-body li{margin:5px 0;padding:0;line-height:1.5em}
 .post-body ul li{list-style:disc outside}
