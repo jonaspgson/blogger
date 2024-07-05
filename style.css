@@ -87,7 +87,7 @@ color: #555 !important;
 	font-family: var(--body-font);
 	font-size: 1.1rem;
 	font-weight: 500;
-	margin-bottom: 2rem;
+	margin: 1rem 0 2rem;
 }
 
 /* Inline heading */
