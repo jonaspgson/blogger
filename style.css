@@ -276,9 +276,10 @@ image-gallery, .gallery {
 .carousel .title {font-family:var(--body-font); position:absolute;left:0;bottom:0; width:100%; padding:0.2rem 0; color:#fff; background-color: hsla(0, 0%, 0%, 0.6);}
 
 .carousel .button {
-    background-color: hsla(0, 0%, 80%, 0.9);
+    background-color: #ccc;
     color: #000;
     font-size: 20px;
+    font-weight: bold;
     border: none;
     display: inline-block;
     padding: 6px 16px;
