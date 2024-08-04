@@ -275,8 +275,21 @@ image-gallery, .gallery {
 .carousel .slide img { max-width: 100%; }
 .carousel .title {font-family:var(--body-font); position:absolute;left:0;bottom:0; width:100%; padding:0.2rem 0; color:#fff; background-color: hsla(0, 0%, 0%, 0.6);}
 
-.carousel .button {background-color:hsla(0, 0%, 0%, 0.5); color: #fff; border:none;display:inline-block;padding:10px 16px; border-radius:50%; vertical-align:middle;overflow:hidden;text-align:center;cursor:pointer;white-space:nowrap}
-.carousel .button:hover {color:#000!important; background-color:#ccc!important}
+.carousel .button {
+    background-color: hsla(0, 0%, 80%, 0.9);
+    color: #000;
+    font-size: 20px;
+    border: none;
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50%;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.carousel .button:hover {color:#fff!important; background-color:#222!important}
 
 .carousel .button-left {position:absolute;top:50%;left:1%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
 .carousel .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
