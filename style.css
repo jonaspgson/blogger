@@ -273,13 +273,13 @@ image-gallery, .gallery {
 .carousel { position:relative }
 .carousel .slide {display:none; text-align: center; background-color: #eee;}
 .carousel .slide img { max-width: 100%; }
-.carousel .title {position:absolute;left:0;bottom:0; padding:.5rem; color:#fff; background-color: hsla(0, 0%, 0%, 0.5);}
+.carousel .title {position:absolute;left:0;bottom:0; padding:.5rem; color:#fff; background-color: hsla(0, 0%, 0%, 0.6);}
 
-.carousel .button {background-color:hsla(0, 0%, 0%, 0.5); color: #fff; border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-align:center;cursor:pointer;white-space:nowrap}
+.carousel .button {background-color:hsla(0, 0%, 0%, 0.5); color: #fff; border:none;display:inline-block;padding:10px 16px; border-radius:50%; vertical-align:middle;overflow:hidden;text-align:center;cursor:pointer;white-space:nowrap}
 .carousel .button:hover {color:#000!important; background-color:#ccc!important}
 
-.carousel .button-left {position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
-.carousel .button-right{position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
+.carousel .button-left {position:absolute;top:50%;left:1%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.carousel .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
 .carousel .button-left::after { content: '❮'}
 .carousel .button-right::after { content: '❯'}
 
