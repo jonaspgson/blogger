@@ -455,6 +455,7 @@ image-gallery, .gallery {
 
 .link-buttons > a {
 	display: inline-block;
+	font-size: 1rem;
 	padding: 5px;
 	border-radius: 3px;
 	margin-right: 7px;
