@@ -323,6 +323,7 @@ image-gallery, .gallery {
 
 .img-container .text {
     flex-basis: 70%;
+    box-sizing: border-box;
     padding: 15px;
     font-family: var(--body-font);
 }
@@ -347,6 +348,9 @@ image-gallery, .gallery {
     .img-container :is(h2,h3,h4) {
     	font-size: 75%;
     }
+    .img-container img {
+    	margin: 0;
+    ]
 }
 
 @media screen and (max-width: 500px) {
