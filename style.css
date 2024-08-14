@@ -724,9 +724,17 @@ textarea {
 /* Style overridees ----------------------------------- */
 
 body { word-wrap: normal !important; }
-.post-body .tr-caption-container, .post-body .image-caption, image-caption {background-color: #3c3c3c; color: #fff; display: block; margin-bottom: 1rem; } 
+
+.post-body .tr-caption-container, 
+.post-body .image-caption, 
+image-caption {
+	background-color: var(--image-caption-bgcolor, #3c3c3c); 
+	color: var(--image-caption-color, #fff); 
+	display: block; 
+	margin-bottom: 1rem; 
+} 
 .tr-caption, .image-caption, image-caption { color: #fff !important; padding:10px; text-align:center !important;}
-.tr-caption a, .image-caption a, image-caption a { color: #ffde17; }
+.tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
 
 .post-body table td,.post-body table th{box-sizing:border-box;} 
 .post-body table img { width: 100%; height:auto; display:block; } /* rad tillagd */
