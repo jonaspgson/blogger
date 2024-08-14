@@ -271,6 +271,11 @@ inline-heading, :is(h1,h2,h3,h4).inline {
  	margin-top: 1rem;
 }
 
+@media (width < 650px) {
+	.gear-info .grid2 { display:block; }
+	
+	.gear-info .grid2 > div { margin-bottom:2rem; }
+}
 
 /* Articles Grid - for linking to subpages -------------*/
 
