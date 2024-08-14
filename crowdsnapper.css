@@ -118,11 +118,10 @@ body {
 .item-post .blog-entry-header { background: #151515; border: none; }
 .item-post h1.entry-title { color:#fff; }
 .item-post .blog-entry-header .entry-meta {
-    font-size: 14px;
+    font-size: 1em;
     display: inline-block;
     background-color: #c22;
-    padding: 3px 3px 3px 7px;
-    margin-top: 5px;
+    padding: 2px 3px 2px 7px;
     color: #fff;
 }
 
