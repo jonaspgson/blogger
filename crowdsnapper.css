@@ -1,6 +1,9 @@
 :root {
 	--menu-height: 65px;
 	--text-font: 'Lora','serif';
+	--image-caption-bgcolor: #fff;
+	--image-caption-color: #555;
+	/*--image-caption-linkcolor:*/
 }
 
 /* Blogg-specifika overrides */
