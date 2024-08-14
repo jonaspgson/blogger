@@ -236,7 +236,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	background-color: #123;
 	color: #fff;
 	padding:1em;
-	margin-top:15px;
+	margin-top: 2rem;
 	margin-bottom: 3rem;
 }
 
