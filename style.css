@@ -733,7 +733,7 @@ image-caption {
 	display: block; 
 	margin-bottom: 1rem; 
 } 
-.tr-caption, .image-caption, image-caption { color: #fff !important; padding:10px; text-align:center !important;}
+.tr-caption, .image-caption, image-caption { padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
 
 .post-body table td,.post-body table th{box-sizing:border-box;} 
