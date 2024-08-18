@@ -1,8 +1,10 @@
 :root {
---accent-color-dark: #00378d;
---accent-color-bright: #ffde17;
---site-nav-hover-color: var(--accent-color-bright);
---mega-menu-bgcolor: var(--accent-color-dark);
+  --accent-color-dark: #00378d;
+  --accent-color-bright: #ffde17;
+  --site-nav-hover-color: var(--accent-color-bright);
+  --mega-menu-bgcolor: var(--accent-color-dark);
+  --main-nav-link-color: var(--accent-color-bright);
+  --main-nav-link-bgcolor: var(--accent-color-dark);
 }
 
 
@@ -27,10 +29,6 @@
 
 .headerify-inner {
   background: linear-gradient(to right,#00378d,#2670e4);
-}
-
-#gmag-pro-main-menu-nav > li > a {
-  color: #ffde17;
 }
 
 
