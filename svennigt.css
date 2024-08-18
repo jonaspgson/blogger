@@ -2,7 +2,7 @@
 --accent-color-dark: #00378d;
 --accent-color-bright: #ffde17;
 --site-nav-hover-color: var(--accent-color-dark);
-
+--mega-menu-bgcolor: var(--accent-color-dark);
 }
 
 
