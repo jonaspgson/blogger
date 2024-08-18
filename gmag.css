@@ -316,7 +316,7 @@ background-color: var(--site-nav-active-tab-bgcolor,#fff);
 box-shadow: 0 0 5px #ddd;
 }
 .main-navbar-menu ul li:first-child a {
-color: #555;
+  color: var(--site-nav-active-tab-color, #555);
 }
 #main-navbar-social{position:relative;float:right;height:32px;margin:0}
 .rtl #main-navbar-social{float:left}
