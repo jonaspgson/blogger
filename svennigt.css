@@ -14,6 +14,7 @@
 /* Overrides */
 
 .entry-meta span:not(.author) { float: none; }
+.main-navbar-menu ul li:first-child { box-shadow:none; }
 
 
 /* Sajtlänkar i toppen */
