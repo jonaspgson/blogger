@@ -2,7 +2,8 @@
   --accent-color-dark: #00378d;
   --accent-color-bright: #ffde17;
   --clr-baby-blue: #95B3E3;
-  
+
+  --site-nav-color: var(--clr-baby-blue);
   --site-nav-hover-color: var(--accent-color-bright);
   --site-nav-active-tab-color: var(--clr-baby-blue);
   --site-nav-active-tab-bgcolor: var(--accent-color-dark);
