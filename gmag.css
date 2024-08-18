@@ -793,7 +793,7 @@ p.comment-footer span:after{content:'\002A';color:#d63031}
 .rtl .sidebar-tabs .select-tab li > a{margin:0 0 0 15px}
 .sidebar-tabs .select-tab li:last-child > a,.rtl .sidebar-tabs .select-tab li:last-child > a{margin:0}
 .tabs-1 .select-tab li a{cursor:auto}
-.sidebar-tabs .select-tab li.active a,.sidebar-tabs .select-tab li:hover a,.sidebar-tabs .select-tab li.active:hover a{color:#ff3300}
+.sidebar-tabs .select-tab li.active a,.sidebar-tabs .select-tab li:hover a,.sidebar-tabs .select-tab li.active:hover a{color: var(--sidebar-tabs-active-color, #ff3300);}
 .sidebar-tabs .widget{display:none;box-shadow:none;margin:0}
 .sidebar-tabs .widget.tab-active{display:block;margin:0}
 .sidebar ul.social-icons{display:flex;flex-wrap:wrap;margin:0 -1px}
