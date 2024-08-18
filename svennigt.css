@@ -1,3 +1,7 @@
+/* Overrides */
+
+.entry-meta span:not(.author) { float: none; }
+
 
 /* Sajtlänkar i toppen */
 
@@ -38,7 +42,8 @@
   color: #1859c1;
   text-align: right;
   font-weight: 600;
-  margin-bottom: 3em;
+  margin-bottom: 2.5em;
+  margin-top: 1rem;
 }
 
 a.back-top {
