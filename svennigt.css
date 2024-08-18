@@ -1,8 +1,10 @@
 :root {
   --accent-color-dark: #00378d;
   --accent-color-bright: #ffde17;
+  
   --site-nav-hover-color: var(--accent-color-bright);
   --mega-menu-bgcolor: var(--accent-color-dark);
+  --main-nav-link-color: var(--accent-color-bright);
   --main-nav-link-hover-color: var(--accent-color-bright);
   --main-nav-link-hover-bgcolor: var(--accent-color-dark);
 }
