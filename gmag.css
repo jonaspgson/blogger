@@ -323,8 +323,8 @@ box-shadow: 0 0 5px #ddd;
 #main-navbar-social .widget > .widget-title{display:none}
 .main-navbar-social ul li{float:left;height:32px;line-height:32px;margin:0 0 0 18px}
 .rtl .main-navbar-social ul li{float:right;margin:0 18px 0 0}
-.main-navbar-social ul li a{display:block;font-size:13px;color:#171c24}
-.main-navbar-social ul li a:hover{color:#ff3300}
+.main-navbar-social ul li a{display:block;font-size:13px;color:var(--site-nav-color, #171c24);}
+.main-navbar-social ul li a:hover{var(--site-nav-hover-color, color:#ff3300);}
 .overlay{visibility:hidden;opacity:0;position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(23,28,36,0.6);z-index:1000;-webkit-backdrop-filter:saturate(100%) blur(3px);-ms-backdrop-filter:saturate(100%) blur(3px);-o-backdrop-filter:saturate(100%) blur(3px);backdrop-filter:saturate(100%) blur(3px);margin:0;transition:all .25s ease}
 .show-gmag-pro-mobile-menu{display:none;position:absolute;top:0;left:0;width:auto;height:50px;color:#171c24;font-size:16px;font-weight:600;line-height:50px;text-align:center;cursor:pointer;z-index:20;padding:0 15px;margin:0}
 .rtl .show-gmag-pro-mobile-menu{left:auto;right:0}
