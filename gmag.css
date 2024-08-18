@@ -572,9 +572,18 @@ margin-right: 10px;
 .post-body h1,.post-body h2{font-size:2rem}
 .post-body h3{font-size:1.6rem}
 .post-body h4{font-size:1.3rem}
-blockquote{background-color:rgba(155,155,155,0.05);color:#171c24;font-style:italic;padding:15px 25px;margin:0;border-left:3px solid rgba(155,155,155,0.2)}
+blockquote { 
+  background-color:rgba(155,155,155,0.05);
+  color:#171c24;font-style:italic;
+  padding:15px 25px;
+  margin-bottom:2rem;
+  border-left:3px solid rgba(155,155,155,0.2);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+}
 .rtl blockquote{border-left:0;border-right:3px solid rgba(155,155,155,0.2)}
-blockquote:before,blockquote:after{display:inline-block;font-family:'Font Awesome 6 Free';font-style:normal;font-weight:900;color:#171c24;line-height:1}
+blockquote:before,blockquote:after{display:inline-block;font-family:'Font Awesome 6 Free';font-style:normal;font-weight:900;color:#aaa;line-height:1}
 blockquote:before,.rtl blockquote:after{content:'\f10d';margin:0 10px 0 0}
 blockquote:after,.rtl blockquote:before{content:'\f10e';margin:0 0 0 10px}
 .rtl .post-body ul,.rtl .widget .post-body ol{padding:0 15px 0 0}
