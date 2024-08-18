@@ -308,8 +308,8 @@ to{transform:translate3d(0,0,0)}
 #main-navbar-menu .widget > .widget-title{display:none}
 .main-navbar-menu ul li{float:left;height:32px;line-height:32px;padding:0 12px;} /* OBS ändrad (margin till padding) */
 .rtl .main-navbar-menu ul li{float:right;margin:0 0 0 22px}
-.main-navbar-menu ul li a{display:block;font-size:13px;color:#171c24;font-weight:500}
-.main-navbar-menu ul li a:hover{color:#ff3300}
+.main-navbar-menu ul li a{display:block;font-size:13px;color:var(--site-nav-color,#171c24);font-weight:500}
+.main-navbar-menu ul li a:hover{color: var(--site-nav-hover-color, #ff3300);}
 /*OBS flikutseende i sajtmenyn*/
 .main-navbar-menu ul li:first-child {
 background-color: #fff;
