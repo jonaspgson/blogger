@@ -312,7 +312,7 @@ to{transform:translate3d(0,0,0)}
 .main-navbar-menu ul li a:hover{color: var(--site-nav-hover-color, #ff3300);}
 /*OBS flikutseende i sajtmenyn*/
 .main-navbar-menu ul li:first-child {
-background-color: #fff;
+background-color: var(--site-nav-active-tab-bgcolor,#fff);
 box-shadow: 0 0 5px #ddd;
 }
 .main-navbar-menu ul li:first-child a {
