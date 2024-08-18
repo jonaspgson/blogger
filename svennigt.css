@@ -10,6 +10,7 @@
   --main-nav-link-color: var(--accent-color-bright);
   --main-nav-link-hover-color: var(--accent-color-bright);
   --main-nav-link-hover-bgcolor: var(--accent-color-dark);
+  --sidebar-tabs-active-color: var(--accent-color-dark);
 }
 
 
