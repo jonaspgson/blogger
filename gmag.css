@@ -237,7 +237,7 @@ margin:0 auto;
 #gmag-pro-main-menu ul > li:hover > ul,#gmag-pro-main-menu ul > li > ul > li:hover > ul{visibility:visible;opacity:1;-webkit-transform:translate(0);transform:translate(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 #gmag-pro-main-menu ul ul{transition:all .17s ease}
 #gmag-pro-main-menu .mega-menu{position:static!important}
-#gmag-pro-main-menu .mega-menu > ul{width:100%;background-color:#000000;box-sizing:border-box;padding:15px 7.5px}
+#gmag-pro-main-menu .mega-menu > ul{width:100%;background-color: var(--mega-menu-bgcolor,#000000);box-sizing:border-box;padding:15px 7.5px}
 #gmag-pro-main-menu .mega-menu > ul.mega-widget,#gmag-pro-main-menu .mega-menu > ul.complex-tabs{overflow:hidden}
 #gmag-pro-main-menu .mega-menu > ul.complex-tabs > ul.select-tab{position:relative;float:left;width:20%;box-sizing:border-box;padding:15px 0;margin:-15px 0 0 -7.5px}
 .rtl #gmag-pro-main-menu .mega-menu > ul.complex-tabs > ul.select-tab{float:right;margin:-15px -7.5px 0 0}
