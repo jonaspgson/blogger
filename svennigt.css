@@ -1,3 +1,11 @@
+:root {
+--accent-color-dark: #00378d;
+--accent-color-bright: #ffde17;
+--site-nav-hover-color: var(--accent-color-dark);
+
+}
+
+
 /* Overrides */
 
 .entry-meta span:not(.author) { float: none; }
