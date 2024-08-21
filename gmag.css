@@ -632,7 +632,6 @@ font-weight: 500;
 .rtl .post-body table{text-align:right}
 .post-body table td,.post-body table th{box-sizing:border-box;} /*padding:5px 15px;border:1px solid rgba(155,155,155,0.2)*/
 .post-body table thead th{color:#171c24;font-weight:600;vertical-align:bottom}
-.post-body table tbody td{color:#000000}
 .contact-form{overflow:hidden}
 .contact-form .widget-title{display:none}
 .contact-form .contact-form-name{width:calc(50% - 5px)}
