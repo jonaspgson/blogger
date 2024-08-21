@@ -76,7 +76,7 @@ Ta bort:
 .post-body .tr-caption-container, 
 .post-body .image-caption, image-caption {
   background-color: #00378d;
-  color: #fff;
+  color: #fff !important;
 }
 
 .tr-caption a, .image-caption a, image-caption a {
