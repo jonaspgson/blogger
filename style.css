@@ -331,7 +331,12 @@ image-gallery, .gallery {
 .carousel { position:relative }
 .carousel .slide {display:none; text-align: center; background-color: #eee;}
 .carousel .slide img { max-width: 100%; }
-.carousel .title {font-family:var(--body-font); position:absolute;left:0;bottom:0; width:100%; padding:0.2rem 0; color:#fff; background-color: hsla(0, 0%, 0%, 0.6);}
+.carousel .title {
+	font-family:var(--body-font); font-size: 90%; line-height: 1.2; 
+  	position:absolute; left:0; bottom:0; 
+	width:100%; padding:0.2rem 0; 
+	color:#fff; background-color: hsla(0, 0%, 0%, 0.6);
+}
 
 .carousel .button {
     background-color: #ccc;
