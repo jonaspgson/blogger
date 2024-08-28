@@ -668,7 +668,7 @@ ul.cons li::before {
   transition: max-height 0.2s ease-out;
 }
 
-.panel :first-child {
+.panel p:first-child {
 	margin-top: 1rem;
 }
 
