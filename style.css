@@ -294,6 +294,8 @@ social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7
 	}
 }
 
+/* Text grid - Combine with grid2 or grid3 */
+
 .text-grid {
     padding: 0 1rem 1rem;
     gap: 1rem;
