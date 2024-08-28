@@ -325,6 +325,9 @@ image-gallery, .gallery {
 	overflow: hidden;
 }
 
+:is(image-gallery, .gallery) div {
+	clear: none !important;
+}
 
 /* Image carousel - req. additional JS */
 
