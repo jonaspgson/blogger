@@ -40,10 +40,12 @@
 	font-size: 30px; /* större X-stängknapp (mobilmenyn) */
 }
 
+/*
 .headerify-inner {
 	background-attachment: none;
     	background-color: hsla(0, 0%, 100%, 0.9);
 }
+*/
 
 #breadcrumb { 
 	margin: 0 0 5px;
