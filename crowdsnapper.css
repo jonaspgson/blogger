@@ -160,12 +160,18 @@ artist-list {
   padding: 0;
 }
 .post-body artist-list ul li {
-	list-style: none;
-	margin: 0;
+  list-style: none;
+  margin: 0;
+  padding: .4em 0;
   text-align: center;
-  font-size:1.8em;
+  font-size: 1.8em;
 }
 
+@media (max-width: 980px) {
+  .post-body artist-list ul li {
+    font-size: 1.3em;
+  }
+}
 
 /*------------- POSTS ---------------*/
 
