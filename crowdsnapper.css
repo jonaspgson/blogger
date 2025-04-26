@@ -167,6 +167,12 @@ artist-list {
   font-size: 1.5em;
 }
 
+.post-body artist-list ul li a {transition: .7s;}
+.post-body artist-list ul li a:hover {
+    color: darkcyan;
+    text-decoration: none;
+}
+
 @media (max-width: 980px) {
   .post-body artist-list ul li {
     font-size: 1.3em;
