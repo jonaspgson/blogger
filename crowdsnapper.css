@@ -10,8 +10,8 @@
 #post-body { font-size: 18px; }
 .img-container {margin:0 !important;}
 .post-body h2 {margin-top: 3rem !important;}
-.post-body p { margin-bottom: 0; }
-.post-body p + p { text-indent: 4ch; }
+/*.post-body p { margin-bottom: 0; }
+.post-body p + p { text-indent: 4ch; }*/
 .page #content-wrapper { padding-bottom: 0; }
 .back-top { display: none !important; position: unset; }
 
