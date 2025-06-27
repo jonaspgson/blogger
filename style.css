@@ -5,6 +5,15 @@ h1,h2,h3,h4,h5,h6 {
 
 h4 { font-size: 1.05rem; }
 
+.entry-title sub {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.entry-title sub::before {
+  white-space: pre;
+  content: '\a';
+}
+
 .span-1, span-1 { display: block; height: 1rem; }
 .span-2, span-2 { display: block; height: 2rem; }
 .span-3, span-3 { display: block; height: 3rem; }
