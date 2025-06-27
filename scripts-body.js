@@ -6,9 +6,10 @@ if (headlineElement) {
   const parts = text.split("—");
 
   if (parts.length === 2) {
-    headlineElement.innerHTML = `${parts[0].trim()} <span class="subheadline">– ${parts[1].trim()}</span>`;
+    headlineElement.innerHTML = `${parts[0].trim()}<br><span class="subheadline">${parts[1].trim()}</span>`;
   }
 }
+
 
 
 /* Accordion - requires additional CSS. */
