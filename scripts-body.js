@@ -1,3 +1,16 @@
+/* Split post title into subheading */
+
+const headlineElement = document.querySelector(".entry-title");
+if (headlineElement) {
+  const text = headlineElement.textContent;
+  const parts = text.split("–");
+
+  if (parts.length === 2) {
+    headlineElement.innerHTML = `${parts[0].trim()} <span class="subheadline">– ${parts[1].trim()}</span>`;
+  }
+}
+
+
 /* Accordion - requires additional CSS. */
 
 var acc = document.getElementsByClassName("accordion");
