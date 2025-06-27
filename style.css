@@ -7,6 +7,7 @@ h4 { font-size: 1.05rem; }
 
 .entry-title .subheadline {
   font-size: 1.2rem;
+  font-weight: 500;
   line-height: 1;
 }
 .entry-title .subheadline::before {
