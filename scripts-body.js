@@ -3,7 +3,7 @@
 const headlineElement = document.querySelector(".entry-title");
 if (headlineElement) {
   const text = headlineElement.textContent;
-  const parts = text.split("–");
+  const parts = text.split("—");
 
   if (parts.length === 2) {
     headlineElement.innerHTML = `${parts[0].trim()} <span class="subheadline">– ${parts[1].trim()}</span>`;
