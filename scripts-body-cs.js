@@ -1,4 +1,4 @@
-<script>
+
   document.addEventListener("DOMContentLoaded", function() {
     if (location.pathname === "/" || location.pathname === "/index.html") {
       const titles = document.querySelectorAll(".post-title a");
@@ -11,4 +11,18 @@
       });
     }
   });
-</script>
+
+
+/* Split post heading into main and sub-heading */
+
+const headlineElement = document.querySelector(".entry-title");
+if (headlineElement) {
+  const text = headlineElement.textContent;
+  const parts = text.split(":");
+
+  if (parts.length === 2) {
+    headlineElement.innerHTML = `${parts[0].trim()}<span class="subheadline">${parts[1].trim()}</span>`;
+  }
+}
+
+
