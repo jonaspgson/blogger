@@ -131,9 +131,12 @@ body {
 .item-post .blog-entry-header .entry-meta {
     font-size: 1em;
     display: inline-block;
-    background-color: #c22;
+    background-color: /*#c22*/ #ccc;
     padding: 2px 3px 2px 7px;
-    color: #fff;
+    color: #222;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 /* Mobile */
