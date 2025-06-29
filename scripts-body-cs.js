@@ -1,7 +1,9 @@
+/* Hides sub-headings (anything appearing after ':' mark) on the homepage links */
 
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+    // Run only on the homepage
     if (location.pathname === "/" || location.pathname === "/index.html") {
-      const titles = document.querySelectorAll(".post-title a");
+      const titles = document.querySelectorAll(".entry-title a");
       titles.forEach(link => {
         const original = link.textContent;
         const cutoff = original.indexOf(":");
