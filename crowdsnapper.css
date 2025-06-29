@@ -64,6 +64,10 @@ body {
 	/* background: linear-gradient(#eee,#fff); */
 }
 
+/* Popular Posts */
+.PopularPosts .entry-thumb {
+	filter: grayscale(.7);
+}
 
 /* Home Page */
 .home #content-wrapper {
