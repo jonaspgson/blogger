@@ -127,16 +127,22 @@ body {
 /* Post Page */
 .item-post-inner { background-color: transparent; }
 .item-post .blog-entry-header { background: #151515; border: none; }
-.item-post h1.entry-title { color:#fff; }
+.item-post h1.entry-title { 
+	color:#fff;
+	display: block;
+	line-height: unset;
+	margin: 1rem 0;
+}
 .item-post .blog-entry-header .entry-meta {
-    font-size: 1em;
-    display: inline-block;
-    background-color: /*#c22*/ #ccc;
-    padding: 2px 3px 2px 7px;
-    color: #222;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  font-size: 1em;
+  display: inline-block;
+  background-color: #333; /*#c22*/
+  padding: 7px 10px 8px 15px;
+  color: #ddd;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius: 25px 60px;
 }
 
 /* Mobile */
