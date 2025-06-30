@@ -68,19 +68,18 @@ body {
 .home :is(.featured-posts, .videos-block, .popular-post) .entry-title a {
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.4em;
-  max-height: 2.8em;
+  line-height: 1em;
+  max-height: 3em;
 }
 
-/* Only one line of text in the 'featured' section */
-.home :is(.featured-posts, .videos-block) .entry-title a {
-  -webkit-line-clamp: 1;
+.featured-item.item-0 .entry-title {
+	font-size: 1em;
 }
-/* Two lines of text allowed in "popular posts" (sidebar) */
-.home .popular-post .entry-title a {
-  -webkit-line-clamp: 2;
+.featured-item.item-0 .entry-title::first-line {
+	font-size: 2em;
 }
 
 /* Popular Posts */
