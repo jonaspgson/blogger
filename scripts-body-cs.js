@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   
   /* Trims post titles on the homepage */
-  function trimText(selector, maxLength) {
+  /*function trimText(selector, maxLength) {
     const links = document.querySelectorAll(selector);
     links.forEach(link => {
       const original = link.textContent.trim();
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trim visible link titles in hero and video blocks
   trimText(".featured-posts .entry-title a, .videos-block .entry-title a", 40);
   // Sidebar Popular Posts widget
-  trimText(".PopularPosts .item-title a, .PopularPosts .entry-title a", 40);
+  trimText(".PopularPosts .item-title a, .PopularPosts .entry-title a", 40);*/
 
   /* Splits the post heading into main and sub-heading after the ':' sign. */
 
