@@ -37,6 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
-    }, 300); // Wait 300ms for widgets to load
+    }, 1000); // Wait 1s for widgets to load
   });
 });
