@@ -65,7 +65,7 @@ body {
 }
 
 /* Trim homepage link titles to 2 lines of text */
-.home :is(.featured-posts, .videos-block, popular-post) .entry-title a {
+.home :is(.featured-posts, .videos-block, .popular-post) .entry-title a {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
