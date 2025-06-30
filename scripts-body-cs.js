@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   // Featured section (top of homepage)
-  trimText(".featured-posts .entry-title, .featured-posts h2, .featured-posts h3", 40);
+  trimText(".featured-posts .entry-title a, .videos-block .entry-title a", 40);
   // Sidebar Popular Posts widget
   trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
 
