@@ -24,10 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
   /* Adds tooltips to homepage links (useful for clamped titles) */
   const selectors = [
-    ".home .featured-posts .entry-title a",
-    ".home .videos-block .entry-title a",
-    ".PopularPosts .item-title a",
-    ".PopularPosts .entry-title a"
+    ".item-title a",
+    ".entry-title a"
   ];
 
   selectors.forEach(selector => {
