@@ -64,9 +64,8 @@ body {
 	/* background: linear-gradient(#eee,#fff); */
 }
 
-/* Trim link titles */
-.featured-posts .entry-title a,
-.videos-block .entry-title a {
+/* Trim homepage link titles to 2 lines of text */
+.home :is(.featured-posts, .videos-block) .entry-title a {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
