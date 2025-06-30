@@ -64,6 +64,18 @@ body {
 	/* background: linear-gradient(#eee,#fff); */
 }
 
+/* Trim link titles */
+.featured-posts .entry-title a,
+.videos-block .entry-title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  max-height: 2.8em;
+}
+
 /* Popular Posts */
 .PopularPosts .entry-thumb {
 	filter: grayscale(.7);
