@@ -75,10 +75,10 @@ body {
   max-height: 3em;
 }
 
-.featured-item.item-0 .entry-title {
+.featured3 .featured-item.item-0 .entry-title {
 	font-size: 1em;
 }
-.featured-item.item-0 .entry-title::first-line {
+.featured3 .featured-item.item-0 .entry-title ::first-line {
 	font-size: 2em;
 }
 
