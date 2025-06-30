@@ -71,8 +71,8 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1em;
-  max-height: 3em;
+  /*line-height: 1em;
+  max-height: 3em;*/
 }
 
 .featured3 .featured-item.item-0 .entry-title {
