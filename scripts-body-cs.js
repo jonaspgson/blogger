@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* Trims post titles on the homepage */
+  /* Trims post link titles on the homepage */
   
   function trimText(selector, maxLength) {
     const elements = document.querySelectorAll(selector);
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   // Featured section (top of homepage)
-  trimText(".featured-posts .entry-title a, .videos-block .entry-title a", 40);
+  trimText(".featured-posts .entry-title, .videos-block .entry-title", 40);
   // Sidebar Popular Posts widget
   trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
 
