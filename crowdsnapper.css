@@ -142,6 +142,7 @@ body {
 /* Post Page */
 .item-post-inner { background-color: transparent; }
 .item-post .blog-entry-header { background: #151515; border: none; }
+.item-post .has-meta h1.entry-title { border-bottom: unset; }
 .item-post h1.entry-title { 
 	color:#fff;
 	display: block;
