@@ -1,4 +1,4 @@
-/* Hides sub-headings (anything appearing after ':' mark) on the homepage links */
+/* Trims post titles on the homepage */
 
 document.addEventListener("DOMContentLoaded", function () {
   function trimText(selector, maxLength) {
@@ -19,16 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   // Featured section (top of homepage)
   trimText(".featured-posts .entry-title, .featured-posts h2, .featured-posts h3", 40);
-
   // Sidebar Popular Posts widget
   trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
 });
 
 
-/* Split post heading into main and sub-heading */
+/* Splits the post heading into main and sub-heading after the ':' sign. */
 
 const headlineElement = document.querySelector(".entry-title");
 if (headlineElement) {
