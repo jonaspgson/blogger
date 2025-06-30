@@ -20,4 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  
+  /* Adds tooltips to homepage links (useful for clamped titles) */
+  const selectors = [
+    ".home .featured-posts .entry-title a",
+    ".home .videos-block .entry-title a",
+    ".PopularPosts .item-title a",
+    ".PopularPosts .entry-title a"
+  ];
+
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(link => {
+      const fullText = link.textContent.trim();
+      if (!link.hasAttribute("title")) {
+        link.setAttribute("title", fullText);
+      }
+    });
+  });
 });
