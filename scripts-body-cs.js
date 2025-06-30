@@ -1,6 +1,7 @@
-/* Trims post titles on the homepage */
-
 document.addEventListener("DOMContentLoaded", function () {
+
+  /* Trims post titles on the homepage */
+  
   function trimText(selector, maxLength) {
     const elements = document.querySelectorAll(selector);
     elements.forEach(el => {
@@ -23,19 +24,27 @@ document.addEventListener("DOMContentLoaded", function () {
   trimText(".featured-posts .entry-title, .featured-posts h2, .featured-posts h3", 40);
   // Sidebar Popular Posts widget
   trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
+
+
+  /* Splits the post heading into main and sub-heading after the ':' sign. */
+
+  const headlineElement = document.querySelector(".entry-title");
+  if (headlineElement) {
+    const link = headlineElement.querySelector("a");
+    if (link) {
+      const text = link.textContent.trim();
+      const parts = text.split(":");
+
+      if (parts.length === 2) {
+        // Update the innerHTML of the link only, preserving it
+        link.innerHTML = `${parts[0].trim()}<span class="subheadline">${parts[1].trim()}</span>`;
+      }
+    }
+  }
+
 });
 
 
-/* Splits the post heading into main and sub-heading after the ':' sign. */
-
-const headlineElement = document.querySelector(".entry-title");
-if (headlineElement) {
-  const text = headlineElement.textContent;
-  const parts = text.split(":");
-
-  if (parts.length === 2) {
-    headlineElement.innerHTML = `${parts[0].trim()}<span class="subheadline">${parts[1].trim()}</span>`;
-  }
-}
+    
 
 
