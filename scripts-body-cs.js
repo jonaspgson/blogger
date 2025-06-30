@@ -23,20 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   /* Adds tooltips to homepage links (useful for clamped titles) */
-   setTimeout(() => {
-      const selectors = [
-        ".item-title a",
-        ".entry-title a"
-      ];
-
-      selectors.forEach(selector => {
-        document.querySelectorAll(selector).forEach(link => {
-          const fullText = link.textContent.trim();
-          if (!link.hasAttribute("title")) {
-            link.setAttribute("title", fullText);
-          }
-        });
+  function addTooltips() {
+    const selectors = [".item-title a", ".entry-title a"];
+    selectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(link => {
+        const fullText = link.textContent.trim();
+        if (fullText && !link.hasAttribute("title")) {
+          link.setAttribute("title", fullText);
+        }
       });
-    }, 1000); // Wait 1s for widgets to load
+    });
+  }
+
+  // Initial run for anything already on the page
+  addTooltips();
+
+  // Watch for dynamic content (e.g. widgets)
+  const observer = new MutationObserver(addTooltips);
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
   });
 });
