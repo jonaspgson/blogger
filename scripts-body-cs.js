@@ -1,21 +1,31 @@
 /* Hides sub-headings (anything appearing after ':' mark) on the homepage links */
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // Only run on homepage (you can expand this later for label pages)
-    if (location.pathname === "/" || location.pathname === "/index.html") {
-      const links = document.querySelectorAll("h2.entry-title a.entry-title-link");
-
-      links.forEach(link => {
-        const originalText = link.textContent.trim();
-        const colonIndex = originalText.indexOf(":");
-
-        if (colonIndex !== -1) {
-          const trimmedText = originalText.substring(0, colonIndex).trim();
-          link.textContent = trimmedText;
+document.addEventListener("DOMContentLoaded", function () {
+  function trimText(selector, maxLength) {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(el => {
+      const link = el.querySelector("a");
+      if (link) {
+        const original = link.textContent.trim();
+        if (original.length > maxLength) {
+          // Trim at nearest space before maxLength to avoid cutting words
+          let cutoff = original.lastIndexOf(" ", maxLength);
+          if (cutoff === -1) cutoff = maxLength;
+          const trimmed = original.substring(0, cutoff).trim() + "…";
+          
+          link.textContent = trimmed;
+          link.setAttribute("title", original); // Tooltip with full title
         }
-      });
-    }
-  });
+      }
+    });
+  }
+
+  // Featured section (top of homepage)
+  trimText(".featured-posts .entry-title, .featured-posts h2, .featured-posts h3", 40);
+
+  // Sidebar Popular Posts widget
+  trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
+});
 
 
 /* Split post heading into main and sub-heading */
