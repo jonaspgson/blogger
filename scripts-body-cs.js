@@ -1,53 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* -------- Splits the post heading into main and sub-heading after the ':' sign. ---------------- */
-
+  
+  /* ---------- Split post titles at ":" into main title + subheadline span ----------- */
   function splitHeadings(container) {
     const entryTitles = container.querySelectorAll(".entry-title");
-    entryTitles.forEach(headlineElement => {
-      if (headlineElement.textContent.includes(":")) {
-        const text = headlineElement.textContent.trim();
+    entryTitles.forEach(el => {
+      // Avoid splitting if already done
+      if (el.textContent.includes(":") && !el.innerHTML.includes("subheadline")) {
+        const link = el.querySelector("a");
+        const target = link || el;
+        const text = target.textContent.trim();
         const parts = text.split(":");
         if (parts.length === 2) {
           const main = parts[0].trim();
           const sub = parts[1].trim();
-          const link = headlineElement.querySelector("a");
-          if (link) {
-            if (!link.querySelector(".subheadline")) {
-              link.innerHTML = `${main}<span class="subheadline">${sub}</span>`;
-            }
-          } else {
-            if (!headlineElement.querySelector(".subheadline")) {
-              headlineElement.innerHTML = `${main}<span class="subheadline">${sub}</span>`;
-            }
-          }
+          target.innerHTML = `${main}<span class="subheadline">${sub}</span>`;
         }
       }
     });
   }
 
-  // Initial run on page content
+  // Run once at start
   splitHeadings(document);
 
-
-  // Observe .featured-posts and .videos-block for dynamic updates
-  const observerTargets = document.querySelectorAll(".featured-posts, .videos-block");
-  observerTargets.forEach(target => {
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) {
-            splitHeadings(node);
-          }
-        });
+  // Watch the whole body for dynamically injected .entry-title content
+  const splitObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          // Check this node and its descendants
+          splitHeadings(node);
+        }
       });
     });
-    observer.observe(target, { childList: true, subtree: true });
   });
 
+  splitObserver.observe(document.body, { childList: true, subtree: true });
 
-  /* ------------- Adds tooltips to homepage links (useful for clamped titles) ------------------- */
-
+  
+  /* ------------------ Add tooltips to clamped titles ------------------ */
   function addTooltips() {
     const selectors = [".item-title a", ".entry-title a"];
     selectors.forEach(selector => {
@@ -60,10 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Initial run
   addTooltips();
 
-  // Observe entire body for tooltip updates (e.g. dynamic widgets)
   const tooltipObserver = new MutationObserver(addTooltips);
   tooltipObserver.observe(document.body, {
     childList: true,
