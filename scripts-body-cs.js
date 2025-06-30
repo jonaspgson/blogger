@@ -1,30 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* Trims post link titles on the homepage */
   
+  /* Trims post titles on the homepage */
   function trimText(selector, maxLength) {
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(el => {
-      const link = el.querySelector("a");
-      if (link) {
-        const original = link.textContent.trim();
-        if (original.length > maxLength) {
-          // Trim at nearest space before maxLength to avoid cutting words
-          let cutoff = original.lastIndexOf(" ", maxLength);
-          if (cutoff === -1) cutoff = maxLength;
-          const trimmed = original.substring(0, cutoff).trim() + "…";
-          
-          link.textContent = trimmed;
-          link.setAttribute("title", original); // Tooltip with full title
-        }
+    const links = document.querySelectorAll(selector);
+    links.forEach(link => {
+      const original = link.textContent.trim();
+      if (original.length > maxLength) {
+        // Trim at nearest space before maxLength to avoid cutting words
+        let cutoff = original.lastIndexOf(" ", maxLength);
+        if (cutoff === -1) cutoff = maxLength;
+        const trimmed = original.substring(0, cutoff).trim() + "…";
+
+        link.textContent = trimmed;
+        link.setAttribute("title", original); // Tooltip with full title
       }
     });
   }
-  // Featured section (top of homepage)
-  trimText(".featured-posts .entry-title, .videos-block .entry-title", 40);
+  // Trim visible link titles in hero and video blocks
+  trimText(".featured-posts .entry-title a, .videos-block .entry-title a", 40);
   // Sidebar Popular Posts widget
-  trimText(".PopularPosts .item-title, .PopularPosts .entry-title", 40);
-
+  trimText(".PopularPosts .item-title a, .PopularPosts .entry-title a", 40);
 
   /* Splits the post heading into main and sub-heading after the ':' sign. */
 
