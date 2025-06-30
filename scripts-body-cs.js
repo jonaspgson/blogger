@@ -1,14 +1,17 @@
 /* Hides sub-headings (anything appearing after ':' mark) on the homepage links */
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Run only on the homepage
+  document.addEventListener("DOMContentLoaded", function () {
+    // Only run on homepage (you can expand this later for label pages)
     if (location.pathname === "/" || location.pathname === "/index.html") {
-      const titles = document.querySelectorAll(".entry-title a");
-      titles.forEach(link => {
-        const original = link.textContent;
-        const cutoff = original.indexOf(":");
-        if (cutoff !== -1) {
-          link.textContent = original.substring(0, cutoff);
+      const links = document.querySelectorAll("h2.entry-title a.entry-title-link");
+
+      links.forEach(link => {
+        const originalText = link.textContent.trim();
+        const colonIndex = originalText.indexOf(":");
+
+        if (colonIndex !== -1) {
+          const trimmedText = originalText.substring(0, colonIndex).trim();
+          link.textContent = trimmedText;
         }
       });
     }
