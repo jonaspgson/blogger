@@ -23,17 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   /* Adds tooltips to homepage links (useful for clamped titles) */
-  const selectors = [
-    ".item-title a",
-    ".entry-title a"
-  ];
+   setTimeout(() => {
+      const selectors = [
+        ".item-title a",
+        ".entry-title a"
+      ];
 
-  selectors.forEach(selector => {
-    document.querySelectorAll(selector).forEach(link => {
-      const fullText = link.textContent.trim();
-      if (!link.hasAttribute("title")) {
-        link.setAttribute("title", fullText);
-      }
-    });
+      selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(link => {
+          const fullText = link.textContent.trim();
+          if (!link.hasAttribute("title")) {
+            link.setAttribute("title", fullText);
+          }
+        });
+      });
+    }, 300); // Wait 300ms for widgets to load
   });
 });
