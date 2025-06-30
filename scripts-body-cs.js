@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (parts.length === 2) {
           const main = parts[0].trim();
           const sub = parts[1].trim();
-          target.innerHTML = `${main}<span class="subheadline">${sub}</span>`;
+          target.innerHTML = `${main} <span class="subheadline">${sub}</span>`;
         }
       }
     });
