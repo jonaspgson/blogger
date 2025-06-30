@@ -6,14 +6,10 @@ h1,h2,h3,h4,h5,h6 {
 h4 { font-size: 1.05rem; }
 
 .entry-title .subheadline {
-/*  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1;*/
-  display: block;
-  font-size: 0.9em;
-  color: #777;
+  font-size: 0.8em;
+  color: #aaa;
   line-height: 1.3;
-  margin-top: 2px;
+  margin-top: .5em;
 }
 /*
 .entry-title .subheadline::before {
