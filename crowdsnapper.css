@@ -76,9 +76,6 @@ body {
 }
 
 .featured3 .featured-item.item-0 .entry-title {
-	font-size: 1em;
-}
-.featured3 .featured-item.item-0 .entry-title ::first-line {
 	font-size: 2em;
 }
 
