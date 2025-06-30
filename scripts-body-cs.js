@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
+
   /* -------- Splits the post heading into main and sub-heading after the ':' sign. ---------------- */
- 
+
   function splitHeadings(container) {
     const entryTitles = container.querySelectorAll(".entry-title");
     entryTitles.forEach(headlineElement => {
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const sub = parts[1].trim();
           const link = headlineElement.querySelector("a");
           if (link) {
-            // Avoid splitting twice by checking if subheadline already exists
             if (!link.querySelector(".subheadline")) {
               link.innerHTML = `${main}<span class="subheadline">${sub}</span>`;
             }
@@ -27,16 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Initial split on existing content
+  // Initial run on page content
   splitHeadings(document);
 
-  // Observe dynamic changes in .featured-posts and .videos-block
+
+  // Observe .featured-posts and .videos-block for dynamic updates
   const observerTargets = document.querySelectorAll(".featured-posts, .videos-block");
   observerTargets.forEach(target => {
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) { // Element node
+          if (node.nodeType === 1) {
             splitHeadings(node);
           }
         });
@@ -46,9 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  
   /* ------------- Adds tooltips to homepage links (useful for clamped titles) ------------------- */
-  
+
   function addTooltips() {
     const selectors = [".item-title a", ".entry-title a"];
     selectors.forEach(selector => {
@@ -61,14 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Initial run for anything already on the page
+  // Initial run
   addTooltips();
 
-  // Watch for dynamic content (e.g. widgets)
-  const observer = new MutationObserver(addTooltips);
-
-  observer.observe(document.body, {
+  // Observe entire body for tooltip updates (e.g. dynamic widgets)
+  const tooltipObserver = new MutationObserver(addTooltips);
+  tooltipObserver.observe(document.body, {
     childList: true,
     subtree: true
   });
+
 });
