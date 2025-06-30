@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
   /* Splits the post heading into main and sub-heading after the ':' sign. */
-  // Only run on post pages
-  if (document.body.classList.contains("item")) {
-    const headlineElement = document.querySelector(".entry-title");
-    if (headlineElement && headlineElement.textContent.includes(":")) {
+  const entryTitles = document.querySelectorAll(".entry-title");
+
+  entryTitles.forEach(headlineElement => {
+    if (headlineElement.textContent.includes(":")) {
       const text = headlineElement.textContent.trim();
       const parts = text.split(":");
 
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-  }
+  });
 
   
   /* Adds tooltips to homepage links (useful for clamped titles) */
