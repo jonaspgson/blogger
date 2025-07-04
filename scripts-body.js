@@ -20,6 +20,48 @@ for (i = 0; i < acc.length; i++) {
 
 /* Image carousel - requires additional CSS. */
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousels = document.querySelectorAll(".carousel");
+
+    carousels.forEach((carousel) => {
+      const slides = carousel.querySelectorAll(".slide");
+      let currentIndex = 0;
+
+      // Make button left
+      const leftBtn = document.createElement("button");
+      leftBtn.className = "button button-left";
+      carousel.appendChild(leftBtn);
+
+      // Make button right
+      const rightBtn = document.createElement("button");
+      rightBtn.className = "button button-right";
+      carousel.appendChild(rightBtn);
+
+      // Function for displaying the selected slide
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.display = i === index ? "block" : "none";
+        });
+      }
+
+      // Eventlisteners
+      leftBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      });
+
+      rightBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      });
+
+      // Show the first slide
+      showSlide(currentIndex);
+    });
+  });
+
+
+/* GAMMAL KOD
 var slideIndex = 1;
 showDivs(slideIndex);
 
@@ -37,3 +79,4 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
 }
+*/
