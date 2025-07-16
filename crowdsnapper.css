@@ -142,7 +142,7 @@ body {
 /* Post Page */
 .item-post-inner { background-color: transparent; }
 .item-post .blog-entry-header { background: #151515; border: none; }
-.item-post .has-meta h1.entry-title { border-bottom: unset; }
+.item-post .has-meta h1.entry-title { border-bottom: unset; margin-bottom:0; }
 .item-post h1.entry-title { 
 	color:#fff;
 	display: block;
@@ -160,6 +160,7 @@ body {
   top: 0;
   border-bottom-left-radius: 25px 60px;
 }
+
 
 /* Mobile */
 .gmag-pro-mobile-menu ul li {
