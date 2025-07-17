@@ -147,7 +147,7 @@ body {
 .item-post h1.entry-title { 
 	color:#fff;
 	display: block;
-	line-height: unset;
+	line-height: 1.2;
 	margin: 1rem 0 0;
 }
 .item-post .blog-entry-header .entry-meta {
