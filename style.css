@@ -823,6 +823,7 @@ image-caption {
 	color: var(--image-caption-color, #fff); 
 	display: block; 
 	margin-bottom: 1rem; 
+	text-wrap: balance;
 } 
 .tr-caption, .image-caption, image-caption { padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
