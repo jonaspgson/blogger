@@ -59,3 +59,30 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+// Lägger in GAS efter vart fjärde direkta barn under #post-body
+
+document.addEventListener("DOMContentLoaded", function () {
+  const postBody = document.querySelector("#post-body");
+  if (!postBody) return;
+
+  const children = Array.from(postBody.children);
+
+  children.forEach((el, index) => {
+    if ((index + 1) % 4 === 0) {
+      const ad = document.createElement("ins");
+      ad.className = "adsbygoogle";
+      ad.style.display = "block";
+      ad.style.textAlign = "center";
+      ad.setAttribute("data-ad-layout", "in-article");
+      ad.setAttribute("data-ad-format", "fluid");
+      ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
+      ad.setAttribute("data-ad-slot", "7820669675");
+
+      el.parentNode.insertBefore(ad, el.nextSibling);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  });
+});
+
