@@ -61,26 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Lägger in GAS efter vart fjärde direkta barn under #post-body
+// Lägger in GAS efter vart fjärde stycke direkt under #post-body
 
 document.addEventListener("DOMContentLoaded", function () {
   const postBody = document.querySelector("#post-body");
   if (!postBody) return;
 
-  const children = Array.from(postBody.children);
-  let validCount = 0;
+  const paragraphs = Array.from(postBody.children).filter(el => el.tagName === "P");
 
-  for (let i = 0; i < children.length; i++) {
-    const current = children[i];
-    const prev = children[i - 1];
-    const isPrevHeading = prev && /^H[1-6]$/.test(prev.tagName);
-
-    // Skippa om föregående är en rubrik
-    if (isPrevHeading) continue;
-
-    validCount++;
-
-    if (validCount % 4 === 0) {
+  paragraphs.forEach((p, index) => {
+    if ((index + 1) % 4 === 0) {
       const ad = document.createElement("ins");
       ad.className = "adsbygoogle";
       ad.style.display = "block";
@@ -90,10 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
       ad.setAttribute("data-ad-slot", "7820669675");
 
-      current.parentNode.insertBefore(ad, current.nextSibling);
+      p.parentNode.insertBefore(ad, p.nextSibling);
       (adsbygoogle = window.adsbygoogle || []).push({});
     }
-  }
+  });
 });
-
-
