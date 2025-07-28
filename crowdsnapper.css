@@ -113,6 +113,9 @@ body {
 	background-color: #f30;
 	color: #fff !important;
 }
+.home .header-ad .widget {
+	margin:0;
+}
 .gmag-pro-content-blocks .widget,
 .index #main-wrapper #main,
 .sidebar > .widget,
