@@ -104,3 +104,5 @@ function applyAltTexts({ artist, venue, year, credit = 'Jonas Gustafsson/CrowdSn
     });
   });
 }
+
+console.log('applyAltTexts finns?', typeof applyAltTexts);
