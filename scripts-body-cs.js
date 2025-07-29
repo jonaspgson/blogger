@@ -95,14 +95,26 @@ applyAltTexts({
   year: '2025'
 });
 */
-function applyAltTexts({ artist, venue, year, credit = 'Jonas Gustafsson/CrowdSnapper', selector = 'image-gallery img' }) {
-  window.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll(selector);
-    images.forEach((img, index) => {
-      img.alt = `${artist} live at ${venue} ${year} – Photo ${index + 1} by ${credit}`;
-      img.title = `Photo ${index + 1} by ${credit}`;
-    });
-  });
-}
+window.addEventListener('load', function () {
+  const el = document.getElementById('alttext-data');
 
-console.log('applyAltTexts finns?', typeof applyAltTexts);
+  if (!el) {
+    console.warn('Ingen alttext-data hittades på sidan ❌');
+    return;
+  }
+
+  if (typeof applyAltTexts === 'function') {
+    const data = {
+      artist: el.dataset.artist,
+      venue: el.dataset.venue,
+      year: el.dataset.year
+    };
+    console.log('Hittade data för alttexter:', data);
+    applyAltTexts(data);
+  } else {
+    console.warn('applyAltTexts-funktionen finns inte 🙃');
+  }
+
+  const imgs = document.querySelectorAll('image-gallery img');
+  console.log('Hittade', imgs.length, 'bilder i <image-gallery>');
+});
