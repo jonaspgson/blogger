@@ -91,7 +91,7 @@ body {
 
 /* Home Page */
 .home #content-wrapper {
-	padding: 3px 0;
+    margin: 3rem auto 1rem;
 }
 .widget .title-wrap {
 	height: auto;
@@ -137,7 +137,6 @@ body {
 .entry-category { display: none; }
 .featured-posts .entry-title { line-height: 1.2; }
 /* .featured-posts { margin: auto !important; max-width: 1400px; } not used atm */
-#custom-content-section { margin-bottom: 4rem; }
 #custom-content-section .widget-title { display: none; }
 
 /* Sidebars */
