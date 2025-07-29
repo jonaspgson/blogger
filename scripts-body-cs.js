@@ -101,7 +101,7 @@ window.applyAltTexts = function({ artist, venue, year, credit = 'Jonas Gustafsso
   const images = document.querySelectorAll(selector);
   images.forEach((img, index) => {
     img.alt = `${artist} live at ${venue} ${year} – Photo ${index + 1} by ${credit}`;
-    img.title = `Photo ${index + 1} by ${credit}`;
+    img.title = `Photo ${index + 1} of ${artist} at ${venue} – Click/tap to view`;
   });
 };
 
