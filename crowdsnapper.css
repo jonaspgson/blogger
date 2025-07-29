@@ -80,6 +80,10 @@ body {
 	font-size: 2em;
 }
 
+#featured-wrapper .container {
+	margin-bottom: 2px;
+}
+
 /* Popular Posts */
 .PopularPosts .entry-thumb {
 	filter: grayscale(.7);
