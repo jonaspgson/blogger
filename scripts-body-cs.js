@@ -85,3 +85,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+/* Mass-applicerar alttexter i exv bildgallerier 
+Ex på anrop:
+applyAltTexts({
+  artist: 'Miss Li',
+  venue: 'Liseberg',
+  year: '2025'
+});
+*/
+function applyAltTexts({
+  artist,
+  venue,
+  year,
+  credit = 'Jonas Gustafsson/CrowdSnapper',
+  selector = 'image-gallery img'
+}) {
+  window.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll(selector);
+
+    images.forEach((img, index) => {
+      img.alt = `${artist} live at ${venue} ${year} – Photo ${index + 1} by ${credit}`;
+      img.title = `Photo ${index + 1} by ${credit}`;
+    });
+  });
+}
