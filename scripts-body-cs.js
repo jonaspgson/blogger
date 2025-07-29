@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 /* Mass-applicerar alttexter i exv bildgallerier 
 Ex på anrop:
 applyAltTexts({
@@ -95,6 +96,15 @@ applyAltTexts({
   year: '2025'
 });
 */
+
+window.applyAltTexts = function({ artist, venue, year, credit = 'Jonas Gustafsson/CrowdSnapper', selector = 'image-gallery img' }) {
+  const images = document.querySelectorAll(selector);
+  images.forEach((img, index) => {
+    img.alt = `${artist} live at ${venue} ${year} – Photo ${index + 1} by ${credit}`;
+    img.title = `Photo ${index + 1} by ${credit}`;
+  });
+};
+
 window.addEventListener('load', function () {
   const el = document.getElementById('alttext-data');
 
