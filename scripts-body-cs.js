@@ -87,32 +87,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // Användning: <div class="related-posts" data="Ett artistnamn"></div>
 
   const containers = document.querySelectorAll(".related-posts[data]");
+  const currentUrl = window.location.href;
+  const seenUrls = new Set();
 
   containers.forEach((container, containerIndex) => {
     const labels = container.getAttribute("data").split(",").map(l => l.trim());
-    const currentUrl = window.location.href;
-    const seenUrls = new Set(); // För att undvika dubbletter
-
     container.innerHTML = `<h2>See Also</h2>`;
 
     labels.forEach((label, labelIndex) => {
       const sectionId = `related-${containerIndex}-${labelIndex}`;
+      const callbackName = `renderRelatedPosts_${sectionId}`;
+
       const section = document.createElement("div");
       section.id = sectionId;
       section.innerHTML = `<h3>[${label}]</h3><div class="blurb-container" id="${sectionId}-inner"></div>`;
       container.appendChild(section);
 
-      window[`renderRelatedPosts_${sectionId}`] = function(data) {
-        const entries = data.feed.entry || [];
+      // Definiera callback innan scriptet laddas
+      window[callbackName] = function(data) {
+        const entries = data.feed?.entry || [];
         const inner = document.getElementById(`${sectionId}-inner`);
         let count = 0;
 
         entries.forEach(entry => {
-          const postUrl = entry.link.find(l => l.rel === "alternate").href;
-          if (postUrl === currentUrl || seenUrls.has(postUrl)) return;
+          const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
+          if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
 
           seenUrls.add(postUrl);
-          const title = entry.title.$t;
+          const title = entry.title?.$t || "Untitled";
           const content = entry.content?.$t || "";
           const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
           const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
@@ -134,11 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       };
 
+      // Ladda script med korrekt callback
       const script = document.createElement("script");
-      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts_${sectionId}`;
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=${callbackName}`;
       document.body.appendChild(script);
     });
   });
+
 
 
 }); //EventListener DOMContentLoaded
