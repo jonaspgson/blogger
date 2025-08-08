@@ -58,12 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
     subtree: true
   });
 
-});
+  
+  // Lägger in GAS efter vart fjärde stycke direkt under #post-body
 
-
-// Lägger in GAS efter vart fjärde stycke direkt under #post-body
-
-document.addEventListener("DOMContentLoaded", function () {
   const postBody = document.querySelector("#post-body");
   if (!postBody) return;
 
@@ -84,7 +81,61 @@ document.addEventListener("DOMContentLoaded", function () {
       (adsbygoogle = window.adsbygoogle || []).push({});
     }
   });
-});
+
+
+  // Visar relaterade inlägg för en given tagg
+  // Användning: <div class="related-posts" data="Ett artistnamn"></div>
+
+  const containers = document.querySelectorAll(".related-posts[data]");
+
+    containers.forEach((container, index) => {
+      const label = container.getAttribute("data");
+      const uniqueId = `related-posts-${index}`;
+      container.id = uniqueId;
+      container.innerHTML = `<h2>More From ${label}</h2><div class="blurb-container" id="${uniqueId}-inner"></div>`;
+
+      window[`renderRelatedPosts_${index}`] = function(data) {
+        const entries = data.feed.entry || [];
+        const currentUrl = window.location.href;
+        const inner = document.getElementById(`${uniqueId}-inner`);
+        let count = 0;
+
+        entries.forEach(entry => {
+          const postUrl = entry.link.find(l => l.rel === "alternate").href;
+          if (postUrl === currentUrl) return;
+
+          const title = entry.title.$t;
+          const content = entry.content?.$t || "";
+          const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+          const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
+
+          const div = document.createElement("div");
+          div.className = "blurb";
+          div.innerHTML = `
+            <a href="${postUrl}">
+              <img src="${imgSrc}" alt="${title}" />
+              <h3>${title}</h3>
+            </a>
+          `;
+          inner.appendChild(div);
+          count++;
+        });
+
+        // Om inga relaterade inlägg hittades, ta bort hela sektionen
+        if (count === 0) {
+          container.remove();
+        }
+      };
+
+      const script = document.createElement("script");
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts_${index}`;
+      document.body.appendChild(script);
+    });
+  
+
+}); //EventListener DOMContentLoaded
+
+
 
 
 
