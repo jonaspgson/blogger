@@ -135,7 +135,7 @@ function initRelatedPosts() {
       const sectionId = `related-${containerIndex}-${labelIndex}`;
       const section = document.createElement("div");
       section.id = sectionId;
-      section.innerHTML = `<h3>[${label}]</h3><div class="blurb-container" id="${sectionId}-inner"></div>`;
+      section.innerHTML = `<h3>${label}</h3><div class="blurb-container" id="${sectionId}-inner"></div>`;
       container.appendChild(section);
 
       relatedQueue.push({ label, sectionId, currentUrl, seenUrls });
