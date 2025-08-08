@@ -87,34 +87,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Användning: <div class="related-posts" data="Ett artistnamn"></div>
 
   const containers = document.querySelectorAll(".related-posts[data]");
-  const currentUrl = window.location.href;
-  const seenUrls = new Set();
 
-  containers.forEach((container, containerIndex) => {
-    const labels = container.getAttribute("data").split(",").map(l => l.trim());
-    container.innerHTML = `<h2>See Also</h2>`;
+    containers.forEach((container, index) => {
+      const label = container.getAttribute("data");
+      const uniqueId = `related-posts-${index}`;
+      container.id = uniqueId;
+      container.innerHTML = `<h2>More From ${label}</h2><div class="blurb-container" id="${uniqueId}-inner"></div>`;
 
-    labels.forEach((label, labelIndex) => {
-      const sectionId = `related-${containerIndex}-${labelIndex}`;
-      const callbackName = `renderRelatedPosts_${sectionId}`;
-
-      const section = document.createElement("div");
-      section.id = sectionId;
-      section.innerHTML = `<h3>[${label}]</h3><div class="blurb-container" id="${sectionId}-inner"></div>`;
-      container.appendChild(section);
-
-      // Definiera callback innan scriptet laddas
-      window[callbackName] = function(data) {
-        const entries = data.feed?.entry || [];
-        const inner = document.getElementById(`${sectionId}-inner`);
+      window[`renderRelatedPosts_${index}`] = function(data) {
+        const entries = data.feed.entry || [];
+        const currentUrl = window.location.href;
+        const inner = document.getElementById(`${uniqueId}-inner`);
         let count = 0;
 
         entries.forEach(entry => {
-          const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
-          if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
+          const postUrl = entry.link.find(l => l.rel === "alternate").href;
+          if (postUrl === currentUrl) return;
 
-          seenUrls.add(postUrl);
-          const title = entry.title?.$t || "Untitled";
+          const title = entry.title.$t;
           const content = entry.content?.$t || "";
           const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
           const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
@@ -131,18 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
           count++;
         });
 
+        // Om inga relaterade inlägg hittades, ta bort hela sektionen
         if (count === 0) {
-          section.remove();
+          container.remove();
         }
       };
 
-      // Ladda script med korrekt callback
       const script = document.createElement("script");
-      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=${callbackName}`;
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts_${index}`;
       document.body.appendChild(script);
     });
-  });
-
 
 
 }); //EventListener DOMContentLoaded
