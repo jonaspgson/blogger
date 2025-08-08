@@ -88,22 +88,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const containers = document.querySelectorAll(".related-posts[data]");
 
-    containers.forEach((container, index) => {
-      const label = container.getAttribute("data");
-      const uniqueId = `related-posts-${index}`;
-      container.id = uniqueId;
-      container.innerHTML = `<h2>More From ${label}</h2><div class="blurb-container" id="${uniqueId}-inner"></div>`;
+  containers.forEach((container, containerIndex) => {
+    const labels = container.getAttribute("data").split(",").map(l => l.trim());
+    const currentUrl = window.location.href;
+    const seenUrls = new Set(); // För att undvika dubbletter
 
-      window[`renderRelatedPosts_${index}`] = function(data) {
+    container.innerHTML = `<h2>See Also</h2>`;
+
+    labels.forEach((label, labelIndex) => {
+      const sectionId = `related-${containerIndex}-${labelIndex}`;
+      const section = document.createElement("div");
+      section.id = sectionId;
+      section.innerHTML = `<h3>[${label}]</h3><div class="blurb-container" id="${sectionId}-inner"></div>`;
+      container.appendChild(section);
+
+      window[`renderRelatedPosts_${sectionId}`] = function(data) {
         const entries = data.feed.entry || [];
-        const currentUrl = window.location.href;
-        const inner = document.getElementById(`${uniqueId}-inner`);
+        const inner = document.getElementById(`${sectionId}-inner`);
         let count = 0;
 
         entries.forEach(entry => {
           const postUrl = entry.link.find(l => l.rel === "alternate").href;
-          if (postUrl === currentUrl) return;
+          if (postUrl === currentUrl || seenUrls.has(postUrl)) return;
 
+          seenUrls.add(postUrl);
           const title = entry.title.$t;
           const content = entry.content?.$t || "";
           const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
@@ -121,17 +129,17 @@ document.addEventListener("DOMContentLoaded", function () {
           count++;
         });
 
-        // Om inga relaterade inlägg hittades, ta bort hela sektionen
         if (count === 0) {
-          container.remove();
+          section.remove();
         }
       };
 
       const script = document.createElement("script");
-      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts_${index}`;
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts_${sectionId}`;
       document.body.appendChild(script);
     });
-  
+  });
+
 
 }); //EventListener DOMContentLoaded
 
