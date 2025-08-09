@@ -9,7 +9,7 @@
 /* Blogg-specifika overrides */
 #post-body { font-size: 18px; }
 .img-container {margin:0 !important;}
-.post-body h2 {margin-top: 3rem !important;}
+.post-body h2 {margin-top: 3rem;}
 /*.post-body p { margin-bottom: 0; }
 .post-body p + p { text-indent: 4ch; }*/
 .page #content-wrapper { padding-bottom: 0; }
