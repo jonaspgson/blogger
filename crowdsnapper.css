@@ -393,7 +393,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 @media (width > 550px) {
 	.articles .card:hover {
 		transform: scale(1.09);
-		z-index: 10000;
+		z-index: 2;
 	}
 	.articles:hover > .card:not(:hover) {
 	   	filter: blur(2px);    
