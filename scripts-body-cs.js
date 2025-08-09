@@ -86,6 +86,79 @@ function initAds() {
 
 /* ---------- 4. Show related posts for given tags ---------- */
 function initRelatedPosts() {
+  const containers = document.querySelectorAll(".related-posts[data-tag]");
+  const currentUrl = window.location.href;
+  const relatedQueue = [];
+
+  window.renderRelatedPosts = function (data) {
+    const task = relatedQueue.shift();
+    if (!task) return;
+
+    const { label, sectionId, seenUrls, showDate } = task;
+    const entries = data.feed?.entry || [];
+    const inner = document.getElementById(`${sectionId}-inner`);
+    let count = 0;
+
+    entries.forEach(entry => {
+      const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
+      if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
+
+      seenUrls.add(postUrl);
+      const title = entry.title?.$t || "Untitled";
+      const content = entry.content?.$t || "";
+      const published = entry.published?.$t || "";
+      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+      const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
+
+      const dateStr = showDate && published
+        ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
+        : "";
+
+      const div = document.createElement("div");
+      div.className = "blurb";
+      div.innerHTML = `
+        <a href="${postUrl}">
+          <img src="${imgSrc}" alt="${title}" />
+          <h3>${title}</h3>
+          ${dateStr}
+        </a>
+      `;
+      inner.appendChild(div);
+      count++;
+    });
+
+    if (count === 0) {
+      document.getElementById(sectionId)?.remove();
+    }
+  };
+
+  containers.forEach((container, containerIndex) => {
+    const labels = container.getAttribute("data-tag").split(",").map(l => l.trim());
+    const caption = container.getAttribute("data-caption") || "Related Posts";
+    const showDate = container.getAttribute("data-showdate")?.toLowerCase() === "yes";
+    const seenUrls = new Set();
+
+    container.innerHTML = `<h2>${caption}</h2>`;
+
+    labels.forEach((label, labelIndex) => {
+      const sectionId = `related-${containerIndex}-${labelIndex}`;
+      const section = document.createElement("div");
+      section.id = sectionId;
+      section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
+      container.appendChild(section);
+
+      relatedQueue.push({ label, sectionId, currentUrl, seenUrls, showDate });
+
+      const script = document.createElement("script");
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts`;
+      document.body.appendChild(script);
+    });
+  });
+}
+
+
+/*
+function initRelatedPosts() {
   const containers = document.querySelectorAll(".related-posts[data]");
   const currentUrl = window.location.href;
   const relatedQueue = [];
@@ -146,6 +219,8 @@ function initRelatedPosts() {
     });
   });
 }
+*/
+
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
 function initAltTextHandler() {
