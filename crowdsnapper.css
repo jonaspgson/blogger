@@ -521,6 +521,9 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     color:#999;
   }
 
+.post-body .related-posts > .caption {
+	padding: auto 1rem;
+}
 /* Sticky footer blurb */
 
 .footer-blurb {
