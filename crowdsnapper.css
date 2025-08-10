@@ -411,7 +411,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 
 
 /* Blurbs ------------------ */
-  .blurb-container {
+  .blurb-container-duo {
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-auto-flow: column;
@@ -451,7 +451,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     .blurb-container {
      	display: block; 
     }
-   	.blurb-container .blurb:not(:first-child) {
+   	.blurb-container-duo .blurb:not(:first-child) {
      	display: none;
     }
   }
@@ -465,6 +465,39 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 		font-size: 2rem;
 	}
 }
+
+
+.blurb-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-flow: row;
+    gap: 3px;
+}
+  
+  .post-body .related-posts .blurb-container .blurb {
+      max-height:350px;
+  }
+  
+  .post-body .related-posts .blurb-text {
+    background: linear-gradient(0deg, black, transparent);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .post-body .related-posts .blurb-text h3 {
+  	font-size: 1.3rem;
+    background: none; 
+    position: static;
+    margin:0;
+    padding-bottom:0;
+  }
+  
+  .post-body .related-posts .blurb p {
+   	font-family: var(--body-font);
+    font-size:.9rem;
+    margin:0;
+  }
 
 /* Sticky footer blurb */
 
