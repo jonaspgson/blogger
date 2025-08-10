@@ -86,7 +86,7 @@ function initAds() {
 
 /* ---------- 4. Show related posts for given tags ---------- */
 function initRelatedPosts() {
-  const containers = document.querySelectorAll(".related-content[data-tag]");
+  const containers = document.querySelectorAll(".related-content[data-tags]");
   const currentUrl = window.location.href;
   const relatedQueue = [];
 
@@ -135,7 +135,7 @@ function initRelatedPosts() {
   };
 
   containers.forEach((container, containerIndex) => {
-    const labels = container.getAttribute("data-tag").split(",").map(l => l.trim());
+    const labels = container.getAttribute("data-tags").split(",").map(l => l.trim());
     let caption = container.getAttribute("data-caption");
     const showCaption = caption && caption.toLowerCase() !== "none" && caption.toLowerCase() !== "false";
     caption = caption || "See Also";
