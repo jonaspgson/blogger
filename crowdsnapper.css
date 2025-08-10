@@ -458,9 +458,9 @@ inline-heading, :is(h1,h2,h3,h4).inline {
   .blurb-container {
     display: block;
   }
-  .blurb-container .blurb:not(:first-child) {
+  /*.blurb-container .blurb:not(:first-child) {
     display: none;
-  }
+  }*/
 }
 
 /* Responsiv typografi */
