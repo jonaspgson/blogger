@@ -493,11 +493,11 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     gap: 3px;
 }
   
-  .post-body .related-posts .blurb-container .blurb {
+  .post-body .related-content .blurb-container .blurb {
       max-height:350px;
   }
   
-  .post-body .related-posts .blurb-text {
+  .post-body .related-content .blurb-text {
     background: linear-gradient(0deg, black, transparent);
     width: 100%;
     position: absolute;
@@ -505,7 +505,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     padding-bottom: .8rem;
   }
   
-  .post-body .related-posts .blurb-text h3 {
+  .post-body .related-content .blurb-text h3 {
   	font-size: 1.3rem;
     background: none; 
     position: static;
@@ -513,7 +513,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     padding-bottom:.4rem;
   }
   
-  .post-body .related-posts .blurb p {
+  .post-body .related-content .blurb p {
    	font-family: var(--body-font);
     font-size:.8rem;
     margin:0;
@@ -521,7 +521,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     color:#999;
   }
 
-.post-body .related-posts > .caption {
+.post-body .related-content > .caption {
 	padding: auto 1rem;
 }
 /* Sticky footer blurb */
