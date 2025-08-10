@@ -119,8 +119,10 @@ function initRelatedPosts() {
       div.innerHTML = `
         <a href="${postUrl}">
           <img src="${imgSrc}" alt="${title}" />
-          <h3 class="entry-title">${title}</h3>
-          ${dateStr}
+          <div class="blurb-text">
+            <h3 class="entry-title">${title}</h3>
+            ${dateStr}
+          </div>
         </a>
       `;
       inner.appendChild(div);
