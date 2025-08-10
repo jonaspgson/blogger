@@ -451,6 +451,20 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     .blurb-container {
      	display: block; 
     }
+	.blurb-container .blurb {
+	    height: 250px; /* Ändrat från max-height */
+	    overflow: hidden; /* Förhindrar att bilden sticker ut */
+	    position: relative; /* För säkerhets skull om du vill lägga text ovanpå */
+	}
+	
+	.blurb-container .blurb img {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    display: block;
+	}
+
+	  
    	.blurb-container-duo .blurb:not(:first-child) {
      	display: none;
     }
