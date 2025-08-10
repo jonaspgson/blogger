@@ -1,7 +1,7 @@
 .entry-content-wrap { padding:0 !important; }
 .entry-tags, .post-nav { padding: 0 15px !important; box-sizing: border-box; }
 
-:is(#post-body.entry-content, .post-body .related-posts > .caption) > :is(p,h1,h2,h3,h4,h5) {
+:is(#post-body.entry-content, #post-body .related-posts) > :is(p,h1,h2,h3,h4,h5) {
 	padding-left: 15px !important; 
 	padding-right: 15px !important;
 }
