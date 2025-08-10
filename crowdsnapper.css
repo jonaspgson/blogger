@@ -483,6 +483,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     width: 100%;
     position: absolute;
     bottom: 0;
+    padding-bottom: .8rem;
   }
   
   .post-body .related-posts .blurb-text h3 {
@@ -490,13 +491,15 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     background: none; 
     position: static;
     margin:0;
-    padding-bottom:0;
+    padding-bottom:.4rem;
   }
   
   .post-body .related-posts .blurb p {
    	font-family: var(--body-font);
-    font-size:.9rem;
+    font-size:.8rem;
     margin:0;
+    line-height:1;
+    color:#999;
   }
 
 /* Sticky footer blurb */
