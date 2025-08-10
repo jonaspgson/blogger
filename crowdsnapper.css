@@ -411,7 +411,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 
 
 /* Blurbs ------------------ */
-
+/*
 .blurb-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -453,27 +453,24 @@ inline-heading, :is(h1,h2,h3,h4).inline {
   z-index: 2;
 }
 
-/* Mobilanpassning */
 @media (max-width: 500px) {
   .blurb-container {
     display: block;
   }
-  /*.blurb-container .blurb:not(:first-child) {
-    display: none;
-  }*/
 }
 
-/* Responsiv typografi */
 @media (min-width: 750px) {
   .entry-title {
     font-size: 1.75rem;
   }
 }
+
 @media (min-width: 1000px) {
   .entry-title {
     font-size: 2rem;
   }
 }
+*/
 
 /* Sticky footer blurb */
 
