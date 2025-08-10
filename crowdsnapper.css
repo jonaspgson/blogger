@@ -412,61 +412,68 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 
 /* Blurbs ------------------ */
 
-  .blurb-container {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-auto-flow: column;
-    gap: 3px;
-  }
-  .blurb {
-    display: block;
-    position: relative;
-  }
-  
-  .blurb img {
-    display: block;
-    transition: 1s;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .blurb h3 {
-    color: #fff !important;
-    background: linear-gradient(0deg, black, transparent);
-    padding: 1rem;
-    margin: 0 !important;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    box-sizing: border-box;
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 1;
-  }
-  
-  .blurb:hover img {
-    filter: brightness(150%);
-  }
-  
-  @media (max-width: 500px) {
-    .blurb-container {
-     	display: block; 
-    }
-   	.blurb-container .blurb:not(:first-child) {
-     	display: none;
-    }
-  }
-@media (min-width: 750px) {
-	#custom-content-section .blurb h3 {
-		font-size: 1.75rem;
-	}
-}
-@media (min-width: 1000px) {
-	#custom-content-section .blurb h3 {
-		font-size: 2rem;
-	}
+.blurb-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin: 1rem 0;
 }
 
+.blurb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #000;
+}
+
+.blurb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.5s ease;
+}
+
+.blurb:hover img {
+  filter: brightness(120%);
+}
+
+h3, .entry-title {
+  color: #fff !important;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+  padding: 1rem;
+  margin: 0 !important;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+/* Mobilanpassning */
+@media (max-width: 500px) {
+  .blurb-container {
+    display: block;
+  }
+  .blurb-container .blurb:not(:first-child) {
+    display: none;
+  }
+}
+
+/* Responsiv typografi */
+@media (min-width: 750px) {
+  .entry-title {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1000px) {
+  .entry-title {
+    font-size: 2rem;
+  }
+}
 
 /* Sticky footer blurb */
 
