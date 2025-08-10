@@ -438,7 +438,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
   filter: brightness(120%);
 }
 
-h3, .entry-title {
+.blurb h3, .entry-title {
   color: #fff !important;
   background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
   padding: 1rem;
