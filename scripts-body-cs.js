@@ -86,7 +86,7 @@ function initAds() {
 
 /* ---------- 4. Show related posts for given tags ---------- */
 function initRelatedPosts() {
-  const containers = document.querySelectorAll(".related-posts[data-tag]");
+  const containers = document.querySelectorAll(".related-content[data-tag]");
   const currentUrl = window.location.href;
   const relatedQueue = [];
 
