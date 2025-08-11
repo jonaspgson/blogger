@@ -100,6 +100,87 @@ function initRelatedPosts() {
   const DEFAULT_SHOW_DATE = true;
   const DEFAULT_CAPTION = "Also on CrowdSnapper";
 
+  // Global kö
+  window.relatedPostQueue = [];
+
+  // Global callback
+  window.handleRelatedPosts = function(json) {
+    const task = window.relatedPostQueue.shift();
+    if (!task) return;
+
+    const { container, sectionId, showDate, maxResults, seenUrls, relatedPosts, labels, tagIndex } = task;
+
+    const entries = json.feed?.entry || [];
+
+    entries.forEach(entry => {
+      if (relatedPosts.length >= maxResults) return;
+
+      const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
+      if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
+
+      seenUrls.add(postUrl);
+
+      relatedPosts.push({
+        title: entry.title?.$t || "Untitled",
+        link: postUrl,
+        content: entry.content?.$t || "",
+        published: entry.published?.$t || ""
+      });
+    });
+
+    // Fortsätt till nästa tagg om vi inte har tillräckligt
+    if (relatedPosts.length < maxResults && tagIndex + 1 < labels.length) {
+      queueTag(task, tagIndex + 1);
+    } else {
+      renderRelatedPosts(sectionId, container, relatedPosts, showDate);
+    }
+  };
+
+  function queueTag(task, newIndex) {
+    const label = task.labels[newIndex];
+    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=10&callback=handleRelatedPosts`;
+
+    window.relatedPostQueue.push({
+      ...task,
+      tagIndex: newIndex
+    });
+
+    const script = document.createElement("script");
+    script.src = feedUrl;
+    document.body.appendChild(script);
+  }
+
+  function renderRelatedPosts(sectionId, container, relatedPosts, showDate) {
+    const inner = document.getElementById(`${sectionId}-inner`);
+    if (!inner || relatedPosts.length === 0) {
+      container.remove();
+      return;
+    }
+
+    relatedPosts.forEach(post => {
+      const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
+      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
+
+      const dateStr = showDate && post.published
+        ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
+        : "";
+
+      const div = document.createElement("div");
+      div.className = "blurb";
+      div.innerHTML = `
+        <a href="${post.link}">
+          <img src="${imgSrc}" alt="${post.title}" />
+          <div class="blurb-text">
+            <h3 class="entry-title">${post.title}</h3>
+            ${dateStr}
+          </div>
+        </a>
+      `;
+      inner.appendChild(div);
+    });
+  }
+
+  // Initiera varje container
   containers.forEach((container, containerIndex) => {
     const rawTags = container.getAttribute("data-tags");
     if (!rawTags) return;
@@ -130,79 +211,17 @@ function initRelatedPosts() {
     section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
     container.appendChild(section);
 
-    const seenUrls = new Set();
-    const relatedPosts = [];
-    let tagIndex = 0;
-
-    function fetchNextTag() {
-      if (tagIndex >= labels.length || relatedPosts.length >= maxResults) {
-        renderRelatedPosts();
-        return;
-      }
-
-      const label = labels[tagIndex];
-      const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=10`;
-      const callbackName = `handleRelatedPosts_${sectionId}_${tagIndex}`;
-
-      window[callbackName] = function(json) {
-        const entries = json.feed?.entry || [];
-
-        entries.forEach(entry => {
-          if (relatedPosts.length >= maxResults) return;
-
-          const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
-          if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
-
-          seenUrls.add(postUrl);
-
-          relatedPosts.push({
-            title: entry.title?.$t || "Untitled",
-            link: postUrl,
-            content: entry.content?.$t || "",
-            published: entry.published?.$t || ""
-          });
-        });
-
-        tagIndex++;
-        fetchNextTag(); // ⏭️ Gå vidare till nästa tagg
-      };
-
-      const script = document.createElement("script");
-      script.src = `${feedUrl}&callback=${callbackName}`;
-      document.body.appendChild(script);
-    }
-
-    function renderRelatedPosts() {
-      const inner = document.getElementById(`${sectionId}-inner`);
-      if (!inner || relatedPosts.length === 0) {
-        container.remove();
-        return;
-      }
-
-      relatedPosts.forEach(post => {
-        const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
-        const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
-
-        const dateStr = showDate && post.published
-          ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
-          : "";
-
-        const div = document.createElement("div");
-        div.className = "blurb";
-        div.innerHTML = `
-          <a href="${post.link}">
-            <img src="${imgSrc}" alt="${post.title}" />
-            <div class="blurb-text">
-              <h3 class="entry-title">${post.title}</h3>
-              ${dateStr}
-            </div>
-          </a>
-        `;
-        inner.appendChild(div);
-      });
-    }
-
-    fetchNextTag(); // 🚀 Starta med första taggen
+    // Starta med första taggen
+    queueTag({
+      container,
+      sectionId,
+      showDate,
+      maxResults,
+      seenUrls: new Set(),
+      relatedPosts: [],
+      labels,
+      tagIndex: 0
+    }, 0);
   });
 }
 
