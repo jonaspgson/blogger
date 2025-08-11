@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initRelatedPosts();
   initAutoRelatedPosts();
   initAltTextHandler();
+  initTagLabels();
 });
 
 /* ---------- 1. Split post titles at ":" ---------- */
@@ -540,5 +541,21 @@ function initAltTextHandler() {
 
     const imgs = document.querySelectorAll("image-gallery img");
     console.log("Hittade", imgs.length, "bilder i <image-gallery>");
+  });
+}
+
+/* -------------------- 6. Adjust custom post tags -------------------------- */
+
+function initTagLabels() {
+  document.querySelectorAll('.entry-tags a.label-link').forEach(link => {
+    const text = link.textContent.trim();
+
+    if (text.startsWith("z_")) {
+      link.title = text; // Tooltip med originalnamn
+      link.textContent = "🎵 " + text.replace(/^z_/, "");
+    } else if (text.startsWith("Ω")) {
+      link.title = text;
+      link.textContent = "📁 " + text.replace(/^Ω /, "");
+    }
   });
 }
