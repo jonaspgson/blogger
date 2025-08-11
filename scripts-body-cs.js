@@ -178,7 +178,7 @@ function initRelatedPosts() {
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
   const MAX_RELATED_POSTS = 6;
-  const MAX_TAGS = 3;
+  const MAX_TAGS = 2;
   const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
 
   if (document.querySelector(".related-content")) return;
