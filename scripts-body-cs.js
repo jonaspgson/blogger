@@ -146,7 +146,7 @@ function initRelatedPosts() {
 
     const maxPostsAttr = container.getAttribute("data-maxposts");
     const maxPosts = parseInt(maxPostsAttr, 10);
-    const maxResults = isNaN(maxPosts) ? 5 : maxPosts;
+    const maxResults = isNaN(maxPosts) ? 6 : maxPosts;
   
     if (showCaption) {
       container.innerHTML = `<h2 class="caption">${caption}</h2>`;
