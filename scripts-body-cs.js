@@ -191,13 +191,14 @@ function initAutoRelatedPosts() {
   const seenUrls = new Set();
   let pendingFeeds = tags.length;
 
-  tags.forEach(tag => {
+  tags.forEach((tag, index) => {
+    const callbackName = `handleAutoRelatedPosts_${index}`;
     const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=15`;
     const script = document.createElement('script');
-    script.src = `${feedUrl}&callback=handleAutoRelatedPosts_${tag}`;
+    script.src = `${feedUrl}&callback=${callbackName}`;
     document.body.appendChild(script);
 
-    window[`handleAutoRelatedPosts_${tag}`] = function(json) {
+    window[callbackName] = function(json) {
       if (json.feed?.entry) {
         json.feed.entry.forEach(entry => {
           const link = entry.link.find(l => l.rel === 'alternate')?.href;
@@ -220,13 +221,15 @@ function initAutoRelatedPosts() {
   });
 
   function renderRelatedPosts() {
-    if (relatedCandidates.length === 0) return;
-
-    // Sortera efter publiceringsdatum (nyast först)
-    relatedCandidates.sort((a, b) => new Date(b.published) - new Date(a.published));
-
     const container = document.getElementById("related-content-placeholder");
     if (!container) return;
+
+    if (relatedCandidates.length === 0) {
+      container.innerHTML = `<p class="caption">Inga relaterade inlägg hittades.</p>`;
+      return;
+    }
+
+    relatedCandidates.sort((a, b) => new Date(b.published) - new Date(a.published));
 
     const inner = document.createElement("div");
     inner.className = "blurb-container";
@@ -258,6 +261,7 @@ function initAutoRelatedPosts() {
     container.appendChild(inner);
   }
 }
+
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
 function initAltTextHandler() {
