@@ -551,14 +551,14 @@ function initTagLabels() {
     const text = link.textContent.trim();
 
     if (text.startsWith("z_")) {
-      link.title = text; // Tooltip med originalnamn
+      link.title = text;
       link.textContent = "🎵 " + text.replace(/^z_/, "");
     } else if (text.startsWith("Ω")) {
       link.title = text;
       link.textContent = "📁 " + text.replace(/^Ω /, "");
-    } else if (text.endsWith("(event)") {
+    } else if (text.endsWith("(event)")) { // ← Här var felet
       link.title = text;
-      link.textContent = "🎉 " + text.replace(/^ (event)/, "");
+      link.textContent = "🎉 " + text.replace(/\s*\(event\)$/, "");
     }
   });
 }
