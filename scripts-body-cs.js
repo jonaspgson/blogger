@@ -180,7 +180,7 @@ function initAutoRelatedPosts() {
   const manualRelated = document.querySelector(".related-content");
   if (manualRelated) return; // Manuell finns – gör inget
 
-  const tagElements = document.querySelectorAll('.post-labels a');
+  const tagElements = document.querySelectorAll('.entry-tags a.label-link');
   let tags = [];
   tagElements.forEach(el => {
     tags.push(el.textContent.trim());
