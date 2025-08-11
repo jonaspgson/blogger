@@ -136,9 +136,10 @@ function initRelatedPosts() {
 
   containers.forEach((container, containerIndex) => {
     const labels = container.getAttribute("data-tags").split(",").map(l => l.trim());
-    let caption = container.getAttribute("data-caption");
-    const showCaption = caption && caption.toLowerCase() !== "none" && caption.toLowerCase() !== "false";
-    caption = caption || "See Also";
+    
+    const rawCaption = container.getAttribute("data-caption");
+    const caption = rawCaption === null ? "See Also" : rawCaption;
+    const showCaption = caption.trim() !== "";
   
     const showDate = container.getAttribute("data-showdate")?.toLowerCase() === "yes";
     const seenUrls = new Set();
