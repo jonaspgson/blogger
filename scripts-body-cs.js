@@ -556,6 +556,9 @@ function initTagLabels() {
     } else if (text.startsWith("Ω")) {
       link.title = text;
       link.textContent = "📁 " + text.replace(/^Ω /, "");
+    } else if (text.endsWith("(event)") {
+      link.title = text;
+      link.textContent = "🎉 " + text.replace(/^ (event)/, "");
     }
   });
 }
