@@ -143,6 +143,10 @@ function initRelatedPosts() {
   
     const showDate = container.getAttribute("data-showdate")?.toLowerCase() === "yes";
     const seenUrls = new Set();
+
+    const maxPostsAttr = container.getAttribute("data-maxposts");
+    const maxPosts = parseInt(maxPostsAttr, 10);
+    const maxResults = isNaN(maxPosts) ? 5 : maxPosts;
   
     if (showCaption) {
       container.innerHTML = `<h2 class="caption">${caption}</h2>`;
@@ -158,7 +162,7 @@ function initRelatedPosts() {
       relatedQueue.push({ label, sectionId, currentUrl, seenUrls, showDate });
     
       const script = document.createElement("script");
-      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts`;
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=${maxResults}&callback=renderRelatedPosts`;
       document.body.appendChild(script);
     });
   });
