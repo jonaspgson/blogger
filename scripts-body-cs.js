@@ -95,6 +95,134 @@ function initAds() {
 function initRelatedPosts() {
   const containers = document.querySelectorAll(".related-content");
   const currentUrl = window.location.href;
+  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
+  const DEFAULT_MAX_POSTS = 6;
+  const DEFAULT_SHOW_DATE = true;
+  const DEFAULT_CAPTION = "Also on CrowdSnapper";
+
+  const relatedQueue = [];
+
+  window.renderRelatedPosts = function (data) {
+    const task = relatedQueue.find(t => !t.done && t.label === data.feed.category?.[0]?.term);
+    if (!task) return;
+
+    const entries = data.feed?.entry || [];
+    task.done = true;
+
+    entries.forEach(entry => {
+      const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
+      if (!postUrl || postUrl === task.currentUrl || task.seenUrls.has(postUrl)) return;
+
+      task.seenUrls.add(postUrl);
+      const title = entry.title?.$t || "Untitled";
+      const content = entry.content?.$t || "";
+      const published = entry.published?.$t || "";
+      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
+
+      task.results.push({
+        url: postUrl,
+        title,
+        published,
+        imgSrc,
+        tagIndex: task.labels.indexOf(task.label)
+      });
+    });
+
+    // När alla tasks för en section är klara
+    const allDone = relatedQueue.filter(t => t.sectionId === task.sectionId).every(t => t.done);
+    if (!allDone) return;
+
+    const sectionTasks = relatedQueue.filter(t => t.sectionId === task.sectionId);
+    const allPosts = sectionTasks.flatMap(t => t.results);
+
+    // Sortera efter taggordning
+    allPosts.sort((a, b) => a.tagIndex - b.tagIndex);
+
+    // Rendera upp till maxPosts
+    const inner = document.getElementById(`${task.sectionId}-inner`);
+    let count = 0;
+    for (const post of allPosts) {
+      if (count >= task.maxPosts) break;
+
+      const dateStr = task.showDate && post.published
+        ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
+        : "";
+
+      const div = document.createElement("div");
+      div.className = "blurb";
+      div.innerHTML = `
+        <a href="${post.url}">
+          <img src="${post.imgSrc}" alt="${post.title}" />
+          <div class="blurb-text">
+            <h3 class="entry-title">${post.title}</h3>
+            ${tagLabel}
+            ${dateStr}
+          </div>
+        </a>
+      `;
+      inner.appendChild(div);
+      count++;
+    }
+
+    if (count === 0) {
+      document.getElementById(task.sectionId)?.remove();
+    }
+  };
+
+  containers.forEach((container, containerIndex) => {
+    const rawTags = container.getAttribute("data-tags");
+    if (!rawTags) return;
+
+    const labels = rawTags.split(",").map(l => l.trim());
+
+    const rawCaption = container.getAttribute("data-caption");
+    const caption = rawCaption === null ? DEFAULT_CAPTION : rawCaption;
+    const showCaption = caption.trim() !== "";
+
+    const rawShowDate = container.getAttribute("data-showdate");
+    const showDate = rawShowDate === null
+      ? DEFAULT_SHOW_DATE
+      : rawShowDate.toLowerCase() === "yes";
+
+    const maxPostsAttr = container.getAttribute("data-maxposts");
+    const maxPosts = parseInt(maxPostsAttr, 10);
+    const maxResults = isNaN(maxPosts) ? DEFAULT_MAX_POSTS : maxPosts;
+
+    if (showCaption) {
+      container.innerHTML = `<h2 class="caption">${caption}</h2>`;
+    }
+
+    const sectionId = `related-${containerIndex}`;
+    const section = document.createElement("div");
+    section.id = sectionId;
+    section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
+    container.appendChild(section);
+
+    labels.forEach(label => {
+      relatedQueue.push({
+        label,
+        labels,
+        sectionId,
+        currentUrl,
+        seenUrls: new Set(),
+        showDate,
+        maxPosts: maxResults,
+        results: [],
+        done: false
+      });
+
+      const script = document.createElement("script");
+      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=${maxResults}&callback=renderRelatedPosts`;
+      document.body.appendChild(script);
+    });
+  });
+}
+
+/*
+function initRelatedPosts() {
+  const containers = document.querySelectorAll(".related-content");
+  const currentUrl = window.location.href;
   const relatedQueue = [];
 
   const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
@@ -183,7 +311,7 @@ function initRelatedPosts() {
       document.body.appendChild(script);
     });
   });
-}
+}*/
 
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
