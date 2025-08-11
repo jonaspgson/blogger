@@ -177,40 +177,43 @@ function initRelatedPosts() {
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
-  const manualRelated = document.querySelector(".related-content");
-  if (manualRelated) return;
+  // 🔧 Justerbara konstanter
+  const MAX_RELATED_POSTS = 6; // Max antal relaterade inlägg som visas totalt
+  const MAX_TAGS = 3;          // Max antal taggar att hämta inlägg från
+  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
 
+  // 🚫 Avsluta om manuella relaterade inlägg redan finns
+  if (document.querySelector(".related-content")) return;
+
+  // 🏷️ Hämta taggar från inlägget
   const tagElements = document.querySelectorAll('.entry-tags a.label-link');
-  let tags = [];
-  tagElements.forEach(el => {
-    tags.push(el.textContent.trim());
-  });
+  const tags = Array.from(tagElements).map(el => el.textContent.trim()).slice(0, MAX_TAGS);
 
-  tags = tags.slice(0, 2);
-
-  let fetched = 0;
-  let seenUrls = new Set();
+  // 📥 Hämta relaterade inlägg via Blogger JSON-feed
+  const seenUrls = new Set();
+  let totalFetched = 0;
 
   tags.forEach(tag => {
-    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=6`;
+    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=${MAX_RELATED_POSTS}`;
     const script = document.createElement('script');
-    script.src = feedUrl + '&callback=handleAutoRelatedPosts';
+    script.src = `${feedUrl}&callback=handleAutoRelatedPosts`;
     document.body.appendChild(script);
   });
 
+  // 📦 Callback-funktion som hanterar feed-data
   window.handleAutoRelatedPosts = function(json) {
     if (!json.feed || !json.feed.entry) return;
 
     const currentUrl = window.location.href;
     const container = document.getElementById("related-content-placeholder");
-    if (!container) return;
+    if (!container || totalFetched >= MAX_RELATED_POSTS) return;
 
     const inner = document.createElement("div");
     inner.className = "blurb-container";
 
-    let count = 0;
-
     json.feed.entry.forEach(entry => {
+      if (totalFetched >= MAX_RELATED_POSTS) return;
+
       const title = entry.title?.$t || "Untitled";
       const link = entry.link.find(l => l.rel === 'alternate')?.href;
       const content = entry.content?.$t || "";
@@ -220,7 +223,7 @@ function initAutoRelatedPosts() {
       seenUrls.add(link);
 
       const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
+      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
 
       const dateStr = published
         ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
@@ -239,10 +242,10 @@ function initAutoRelatedPosts() {
       `;
 
       inner.appendChild(div);
-      count++;
+      totalFetched++;
     });
 
-    if (count > 0) {
+    if (inner.children.length > 0) {
       container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
       container.appendChild(inner);
     }
