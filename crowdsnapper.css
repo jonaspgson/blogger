@@ -511,7 +511,10 @@ inline-heading, :is(h1,h2,h3,h4).inline {
     background: none; 
     position: static;
     margin:0;
-    padding-bottom:.4rem;
+  }
+  .post-body .related-content .blurb-text .subheadline {
+	font-size:1rem;
+	margin:0;
   }
   
   .post-body .related-content .blurb p {
