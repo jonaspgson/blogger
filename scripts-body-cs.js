@@ -179,7 +179,7 @@ function initRelatedPosts() {
 function initAutoRelatedPosts() {
   // 🔧 Justerbara konstanter
   const MAX_RELATED_POSTS = 6; // Max antal relaterade inlägg som visas totalt
-  const MAX_TAGS = 3;          // Max antal taggar att hämta inlägg från
+  const MAX_TAGS = 2;          // Max antal taggar att hämta inlägg från
   const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
 
   // 🚫 Avsluta om manuella relaterade inlägg redan finns
