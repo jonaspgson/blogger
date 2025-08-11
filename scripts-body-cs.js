@@ -145,7 +145,7 @@ function initRelatedPosts() {
     const labels = container.getAttribute("data-tags").split(",").map(l => l.trim());
     
     const rawCaption = container.getAttribute("data-caption");
-    const caption = rawCaption === null ? "See Also" : rawCaption;
+    const caption = rawCaption === null ? "Also on CrowdSnapper" : rawCaption;
     const showCaption = caption.trim() !== "";
   
     const showDate = container.getAttribute("data-showdate")?.toLowerCase() === "yes";
