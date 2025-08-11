@@ -132,16 +132,17 @@ function initRelatedPosts() {
 
     const seenUrls = new Set();
     const relatedPosts = [];
+    let tagIndex = 0;
 
-    function fetchTag(index) {
-      if (index >= labels.length || relatedPosts.length >= maxResults) {
+    function fetchNextTag() {
+      if (tagIndex >= labels.length || relatedPosts.length >= maxResults) {
         renderRelatedPosts();
         return;
       }
 
-      const label = labels[index];
+      const label = labels[tagIndex];
       const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=10`;
-      const callbackName = `handleRelatedPosts_${sectionId}_${index}`;
+      const callbackName = `handleRelatedPosts_${sectionId}_${tagIndex}`;
 
       window[callbackName] = function(json) {
         const entries = json.feed?.entry || [];
@@ -162,7 +163,8 @@ function initRelatedPosts() {
           });
         });
 
-        fetchTag(index + 1); // Gå vidare till nästa tagg
+        tagIndex++;
+        fetchNextTag(); // ⏭️ Gå vidare till nästa tagg
       };
 
       const script = document.createElement("script");
@@ -200,7 +202,7 @@ function initRelatedPosts() {
       });
     }
 
-    fetchTag(0); // 🚀 Starta med första taggen
+    fetchNextTag(); // 🚀 Starta med första taggen
   });
 }
 
