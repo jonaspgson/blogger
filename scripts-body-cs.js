@@ -148,15 +148,15 @@ function initRelatedPosts() {
       container.innerHTML = `<h2 class="caption">${caption}</h2>`;
     }
   
-    labels.forEach((label, labelIndex) => {
-      const sectionId = `related-${containerIndex}-${labelIndex}`;
-      const section = document.createElement("div");
-      section.id = sectionId;
-      section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
-      container.appendChild(section);
-  
+    const sectionId = `related-${containerIndex}`;
+    const section = document.createElement("div");
+    section.id = sectionId;
+    section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
+    container.appendChild(section);
+    
+    labels.forEach(label => {
       relatedQueue.push({ label, sectionId, currentUrl, seenUrls, showDate });
-  
+    
       const script = document.createElement("script");
       script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=5&callback=renderRelatedPosts`;
       document.body.appendChild(script);
