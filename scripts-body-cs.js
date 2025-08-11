@@ -177,79 +177,86 @@ function initRelatedPosts() {
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
-  // 🔧 Justerbara konstanter
-  const MAX_RELATED_POSTS = 6; // Max antal relaterade inlägg som visas totalt
-  const MAX_TAGS = 2;          // Max antal taggar att hämta inlägg från
+  const MAX_RELATED_POSTS = 6;
+  const MAX_TAGS = 3;
   const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
 
-  // 🚫 Avsluta om manuella relaterade inlägg redan finns
   if (document.querySelector(".related-content")) return;
 
-  // 🏷️ Hämta taggar från inlägget
   const tagElements = document.querySelectorAll('.entry-tags a.label-link');
   const tags = Array.from(tagElements).map(el => el.textContent.trim()).slice(0, MAX_TAGS);
 
-  // 📥 Hämta relaterade inlägg via Blogger JSON-feed
+  const currentUrl = window.location.href;
+  const relatedCandidates = [];
   const seenUrls = new Set();
-  let totalFetched = 0;
+  let pendingFeeds = tags.length;
 
   tags.forEach(tag => {
-    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=${MAX_RELATED_POSTS}`;
+    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=15`;
     const script = document.createElement('script');
-    script.src = `${feedUrl}&callback=handleAutoRelatedPosts`;
+    script.src = `${feedUrl}&callback=handleAutoRelatedPosts_${tag}`;
     document.body.appendChild(script);
+
+    window[`handleAutoRelatedPosts_${tag}`] = function(json) {
+      if (json.feed?.entry) {
+        json.feed.entry.forEach(entry => {
+          const link = entry.link.find(l => l.rel === 'alternate')?.href;
+          if (!link || link === currentUrl || seenUrls.has(link)) return;
+
+          seenUrls.add(link);
+
+          relatedCandidates.push({
+            title: entry.title?.$t || "Untitled",
+            link,
+            content: entry.content?.$t || "",
+            published: entry.published?.$t || ""
+          });
+        });
+      }
+
+      pendingFeeds--;
+      if (pendingFeeds === 0) renderRelatedPosts();
+    };
   });
 
-  // 📦 Callback-funktion som hanterar feed-data
-  window.handleAutoRelatedPosts = function(json) {
-    if (!json.feed || !json.feed.entry) return;
+  function renderRelatedPosts() {
+    if (relatedCandidates.length === 0) return;
 
-    const currentUrl = window.location.href;
+    // Sortera efter publiceringsdatum (nyast först)
+    relatedCandidates.sort((a, b) => new Date(b.published) - new Date(a.published));
+
     const container = document.getElementById("related-content-placeholder");
-    if (!container || totalFetched >= MAX_RELATED_POSTS) return;
+    if (!container) return;
 
     const inner = document.createElement("div");
     inner.className = "blurb-container";
 
-    json.feed.entry.forEach(entry => {
-      if (totalFetched >= MAX_RELATED_POSTS) return;
-
-      const title = entry.title?.$t || "Untitled";
-      const link = entry.link.find(l => l.rel === 'alternate')?.href;
-      const content = entry.content?.$t || "";
-      const published = entry.published?.$t || "";
-
-      if (!link || link === currentUrl || seenUrls.has(link)) return;
-      seenUrls.add(link);
-
-      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+    relatedCandidates.slice(0, MAX_RELATED_POSTS).forEach(post => {
+      const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
       const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
 
-      const dateStr = published
-        ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
+      const dateStr = post.published
+        ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
         : "";
 
       const div = document.createElement("div");
       div.className = "blurb";
       div.innerHTML = `
-        <a href="${link}">
-          <img src="${imgSrc}" alt="${title}" />
+        <a href="${post.link}">
+          <img src="${imgSrc}" alt="${post.title}" />
           <div class="blurb-text">
-            <h3 class="entry-title">${title}</h3>
+            <h3 class="entry-title">${post.title}</h3>
             ${dateStr}
           </div>
         </a>
       `;
 
       inner.appendChild(div);
-      totalFetched++;
     });
 
-    if (inner.children.length > 0) {
-      container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
-      container.appendChild(inner);
-    }
-  };
+    container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
+    container.appendChild(inner);
+  }
 }
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
