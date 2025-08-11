@@ -428,11 +428,11 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	gap: 3px;
 }
   
-.post-body .related-content .blurb-container .blurb {
+.post-body :is(.related-content, .related-content-auto) .blurb-container .blurb {
 	max-height:350px;
 }
 
-.post-body .related-content .blurb-text {
+.post-body :is(.related-content, .related-content-auto) .blurb-text {
 	background: linear-gradient(0deg, black, transparent);
 	width: 100%;
 	position: absolute;
@@ -440,7 +440,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	padding-bottom: .8rem;
 }
 
-.post-body .related-content .blurb-text .entry-title {
+.post-body :is(.related-content, .related-content-auto) .blurb-text .entry-title {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
@@ -453,7 +453,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	position: static;
 }
 
-.post-body .related-content .blurb p {
+.post-body :is(.related-content, .related-content-auto) .blurb p {
 	font-family: var(--body-font);
 	font-size:.8rem;
 	margin:0;
@@ -461,7 +461,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	color:#999;
 }
 
-.post-body .related-content .blurb-text :is(.entry-title, .subheadline) {
+.post-body :is(.related-content, .related-content-auto) .blurb-text :is(.entry-title, .subheadline) {
 	font-size:1em;
   	line-height: 1.2em;
 	margin:0;
