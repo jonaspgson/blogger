@@ -411,69 +411,118 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 
 
 /* Blurbs ------------------ */
-  .blurb-container-duo {
+
+
+.blurb-container {
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    grid-auto-flow: row;
     gap: 3px;
-  }
-  .blurb {
-    display: block;
-    position: relative;
-  }
+}
+
+.blurb-container-duo {
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	grid-auto-flow: column;
+	gap: 3px;
+}
   
-  .blurb img {
-    display: block;
-    transition: 1s;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .blurb h3 {
-    color: #fff !important;
-    background: linear-gradient(0deg, black, transparent);
-    padding: 1rem;
-    margin: 0 !important;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    box-sizing: border-box;
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 1;
-  }
-  
-  .blurb:hover img {
-    filter: brightness(150%);
-  }
-  
-  @media (max-width: 500px) {
-	  .blurb-container {
+.post-body .related-content .blurb-container .blurb {
+	max-height:350px;
+}
+
+.post-body .related-content .blurb-text {
+	background: linear-gradient(0deg, black, transparent);
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	padding-bottom: .8rem;
+}
+
+.post-body .related-content .blurb-text .entry-title {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 3.3em;
+	margin-top: auto;
+	margin-bottom: .2em !important;
+	background: none; 
+	position: static;
+}
+
+.post-body .related-content .blurb p {
+	font-family: var(--body-font);
+	font-size:.8rem;
+	margin:0;
+	line-height:1;
+	color:#999;
+}
+
+.post-body .related-content .blurb-text :is(.entry-title, .subheadline) {
+	font-size:1em;
+  	line-height: 1.2em;
+	margin:0;
+}
+
+
+
+
+.blurb {
+display: block;
+position: relative;
+}
+
+.blurb img {
+display: block;
+transition: 1s;
+max-width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.blurb h3 {
+color: #fff !important;
+background: linear-gradient(0deg, black, transparent);
+padding: 1rem;
+margin: 0 !important;
+width: 100%;
+position: absolute;
+bottom: 0;
+box-sizing: border-box;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1;
+}
+
+.blurb:hover img {
+filter: brightness(150%);
+}
+
+@media (max-width: 500px) {
+	.blurb-container {
 		display: block;
 		width: 100%;
-	  }
+	}
 	
-	  .blurb {
+	.blurb {
 		width: 100%;
 		height: 250px; /* Fast höjd för att kunna beskära bilden */
 		overflow: hidden;
 		position: relative;
-	  }
+	}
 	
-	  .blurb img {
+	.blurb img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-	  }
 	}
-
-
-	  
-   	.blurb-container-duo .blurb:not(:first-child) {
-     	display: none;
-    }
-  }
+	
+	.blurb-container-duo .blurb:not(:first-child) {
+		display: none;
+	}
+}
 @media (min-width: 750px) {
 	#custom-content-section .blurb h3 {
 		font-size: 1.75rem;
@@ -486,47 +535,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 }
 
 
-.blurb-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
-    grid-auto-flow: row;
-    gap: 3px;
-}
-  
-  .post-body .related-content .blurb-container .blurb {
-      max-height:350px;
-  }
-  
-  .post-body .related-content .blurb-text {
-    background: linear-gradient(0deg, black, transparent);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding-bottom: .8rem;
-  }
-  
-  .post-body .related-content .blurb-text h3 {
-  	font-size: 1.3rem;
-    background: none; 
-    position: static;
-    margin:0;
-  }
-  .post-body .related-content .blurb-text .subheadline {
-	font-size:1rem;
-	margin:0;
-  }
-  
-  .post-body .related-content .blurb p {
-   	font-family: var(--body-font);
-    font-size:.8rem;
-    margin:0;
-    line-height:1;
-    color:#999;
-  }
 
-.post-body .related-content > .caption {
-	padding: auto 1rem;
-}
 /* Sticky footer blurb */
 
 .footer-blurb {
