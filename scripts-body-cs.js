@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initTooltips();
   initAds();
   initRelatedPosts();
+  initAutoRelatedPosts();
   initAltTextHandler();
 });
 
@@ -84,7 +85,13 @@ function initAds() {
   });
 }
 
-/* ---------- 4. Show related posts for given tags ---------- */
+/* ---------- 4A. Show related posts for given tags (manual version) ---------- 
+ * Use: <div class="related-content" 
+ *           data-tags="tag 1, tag 2, etc" 
+ *           data-caption="Optional heading"
+ *           data-showdate="yes/no"
+ *           data-maxresults="(number)"></div>
+ */
 function initRelatedPosts() {
   const containers = document.querySelectorAll(".related-content[data-tags]");
   const currentUrl = window.location.href;
@@ -168,6 +175,48 @@ function initRelatedPosts() {
   });
 }
 
+/* ---------- 4B. Show related posts for given tags (automaitic version) ---------- */
+function initAutoRelatedPosts() {
+  const manualRelated = document.querySelector(".related-content");
+  if (manualRelated) return; // Manuell finns – gör inget
+
+  const tagElements = document.querySelectorAll('.post-labels a');
+  let tags = [];
+  tagElements.forEach(el => {
+    tags.push(el.textContent.trim());
+  });
+
+  tags = tags.slice(0, 2); // Begränsa till max 2 taggar
+
+  let relatedPosts = [];
+  let fetched = 0;
+
+  tags.forEach(tag => {
+    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=6`;
+    const script = document.createElement('script');
+    script.src = feedUrl + '&callback=handleAutoRelatedPosts';
+    document.body.appendChild(script);
+  });
+
+  window.handleAutoRelatedPosts = function(json) {
+    if (!json.feed || !json.feed.entry) return;
+    json.feed.entry.forEach(entry => {
+      const title = entry.title.$t;
+      const link = entry.link.find(l => l.rel === 'alternate').href;
+      if (!relatedPosts.some(p => p.link === link) && fetched < 6 && link !== window.location.href) {
+        relatedPosts.push({ title, link });
+        fetched++;
+      }
+    });
+
+    if (relatedPosts.length > 0) {
+      const container = document.getElementById("related-content-placeholder");
+      container.innerHTML = "<h4>Relaterade inlägg</h4><ul>" +
+        relatedPosts.map(p => `<li><a href="${p.link}">${p.title}</a></li>`).join("") +
+        "</ul>";
+    }
+  };
+}
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
 function initAltTextHandler() {
