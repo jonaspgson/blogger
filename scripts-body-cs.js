@@ -199,6 +199,98 @@ function initAutoRelatedPosts() {
   const tags = Array.from(tagElements).map(el => el.textContent.trim()).slice(0, MAX_TAGS);
 
   const currentUrl = window.location.href;
+  const seenUrls = new Set();
+  const relatedCandidates = [];
+
+  const container = document.getElementById("related-content-placeholder");
+  if (!container) return;
+
+  function fetchTag(index) {
+    if (index >= tags.length || relatedCandidates.length >= MAX_RELATED_POSTS) {
+      renderRelatedPosts();
+      return;
+    }
+
+    const tag = tags[index];
+    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=10`;
+    const callbackName = `handleAutoRelatedPosts_${index}`;
+
+    window[callbackName] = function(json) {
+      const entries = json.feed?.entry || [];
+
+      entries.forEach(entry => {
+        if (relatedCandidates.length >= MAX_RELATED_POSTS) return;
+
+        const link = entry.link.find(l => l.rel === 'alternate')?.href;
+        if (!link || link === currentUrl || seenUrls.has(link)) return;
+
+        seenUrls.add(link);
+
+        relatedCandidates.push({
+          title: entry.title?.$t || "Untitled",
+          link,
+          content: entry.content?.$t || "",
+          published: entry.published?.$t || ""
+        });
+      });
+
+      fetchTag(index + 1); // Gå vidare till nästa tagg
+    };
+
+    const script = document.createElement("script");
+    script.src = `${feedUrl}&callback=${callbackName}`;
+    document.body.appendChild(script);
+  }
+
+  function renderRelatedPosts() {
+    if (relatedCandidates.length === 0) return;
+
+    const inner = document.createElement("div");
+    inner.className = "blurb-container";
+
+    relatedCandidates.forEach((post, i) => {
+      const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
+      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
+
+      const dateStr = post.published
+        ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
+        : "";
+
+      const div = document.createElement("div");
+      div.className = "blurb";
+      div.innerHTML = `
+        <a href="${post.link}">
+          <img src="${imgSrc}" alt="${post.title}" />
+          <div class="blurb-text">
+            <h3 class="entry-title">${post.title}</h3>
+            ${dateStr}
+          </div>
+        </a>
+      `;
+
+      inner.appendChild(div);
+    });
+
+    container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
+    container.appendChild(inner);
+  }
+
+  fetchTag(0); // 🚀 Starta med första taggen
+}
+
+
+/*
+function initAutoRelatedPosts() {
+  const MAX_RELATED_POSTS = 6;
+  const MAX_TAGS = 3;
+  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
+
+  if (document.querySelector(".related-content")) return;
+
+  const tagElements = document.querySelectorAll('.entry-tags a.label-link');
+  const tags = Array.from(tagElements).map(el => el.textContent.trim()).slice(0, MAX_TAGS);
+
+  const currentUrl = window.location.href;
   const relatedCandidates = [];
   const seenUrls = new Set();
   let pendingFeeds = tags.length;
@@ -273,6 +365,7 @@ function initAutoRelatedPosts() {
     container.appendChild(inner);
   }
 }
+*/
 
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
