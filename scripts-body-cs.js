@@ -92,7 +92,119 @@ function initAds() {
  *           data-showdate="yes/no"
  *           data-maxresults="(number)"></div>
  */
+function initRelatedPosts() {
+  const containers = document.querySelectorAll(".related-content");
+  const currentUrl = window.location.href;
+  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
+  const DEFAULT_MAX_POSTS = 6;
+  const DEFAULT_SHOW_DATE = true;
+  const DEFAULT_CAPTION = "Also on CrowdSnapper";
 
+  containers.forEach((container, containerIndex) => {
+    const rawTags = container.getAttribute("data-tags");
+    if (!rawTags) return;
+
+    const labels = rawTags.split(",").map(l => l.trim()).filter(Boolean);
+    if (labels.length === 0) return;
+
+    const rawCaption = container.getAttribute("data-caption");
+    const caption = rawCaption === null ? DEFAULT_CAPTION : rawCaption;
+    const showCaption = caption.trim() !== "";
+
+    const rawShowDate = container.getAttribute("data-showdate");
+    const showDate = rawShowDate === null
+      ? DEFAULT_SHOW_DATE
+      : rawShowDate.toLowerCase() === "yes";
+
+    const maxPostsAttr = container.getAttribute("data-maxposts");
+    const maxPosts = parseInt(maxPostsAttr, 10);
+    const maxResults = isNaN(maxPosts) ? DEFAULT_MAX_POSTS : maxPosts;
+
+    if (showCaption) {
+      container.innerHTML = `<h2 class="caption">${caption}</h2>`;
+    }
+
+    const sectionId = `related-${containerIndex}`;
+    const section = document.createElement("div");
+    section.id = sectionId;
+    section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
+    container.appendChild(section);
+
+    const seenUrls = new Set();
+    const relatedPosts = [];
+
+    function fetchTag(index) {
+      if (index >= labels.length || relatedPosts.length >= maxResults) {
+        renderRelatedPosts();
+        return;
+      }
+
+      const label = labels[index];
+      const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=10`;
+      const callbackName = `handleRelatedPosts_${sectionId}_${index}`;
+
+      window[callbackName] = function(json) {
+        const entries = json.feed?.entry || [];
+
+        entries.forEach(entry => {
+          if (relatedPosts.length >= maxResults) return;
+
+          const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
+          if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
+
+          seenUrls.add(postUrl);
+
+          relatedPosts.push({
+            title: entry.title?.$t || "Untitled",
+            link: postUrl,
+            content: entry.content?.$t || "",
+            published: entry.published?.$t || ""
+          });
+        });
+
+        fetchTag(index + 1); // Gå vidare till nästa tagg
+      };
+
+      const script = document.createElement("script");
+      script.src = `${feedUrl}&callback=${callbackName}`;
+      document.body.appendChild(script);
+    }
+
+    function renderRelatedPosts() {
+      const inner = document.getElementById(`${sectionId}-inner`);
+      if (!inner || relatedPosts.length === 0) {
+        container.remove();
+        return;
+      }
+
+      relatedPosts.forEach(post => {
+        const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
+        const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
+
+        const dateStr = showDate && post.published
+          ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
+          : "";
+
+        const div = document.createElement("div");
+        div.className = "blurb";
+        div.innerHTML = `
+          <a href="${post.link}">
+            <img src="${imgSrc}" alt="${post.title}" />
+            <div class="blurb-text">
+              <h3 class="entry-title">${post.title}</h3>
+              ${dateStr}
+            </div>
+          </a>
+        `;
+        inner.appendChild(div);
+      });
+    }
+
+    fetchTag(0); // 🚀 Starta med första taggen
+  });
+}
+
+/*
 function initRelatedPosts() {
   const containers = document.querySelectorAll(".related-content");
   const currentUrl = window.location.href;
@@ -185,7 +297,7 @@ function initRelatedPosts() {
     });
   });
 }
-
+*/
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
