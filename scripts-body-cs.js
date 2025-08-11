@@ -93,9 +93,14 @@ function initAds() {
  *           data-maxresults="(number)"></div>
  */
 function initRelatedPosts() {
-  const containers = document.querySelectorAll(".related-content[data-tags]");
+  const containers = document.querySelectorAll(".related-content");
   const currentUrl = window.location.href;
   const relatedQueue = [];
+
+  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
+  const DEFAULT_MAX_POSTS = 6;
+  const DEFAULT_SHOW_DATE = true;
+  const DEFAULT_CAPTION = "Also on CrowdSnapper";
 
   window.renderRelatedPosts = function (data) {
     const task = relatedQueue.shift();
@@ -115,7 +120,7 @@ function initRelatedPosts() {
       const content = entry.content?.$t || "";
       const published = entry.published?.$t || "";
       const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
+      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
 
       const dateStr = showDate && published
         ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
@@ -142,38 +147,44 @@ function initRelatedPosts() {
   };
 
   containers.forEach((container, containerIndex) => {
-    const labels = container.getAttribute("data-tags").split(",").map(l => l.trim());
-    
+    const rawTags = container.getAttribute("data-tags");
+    if (!rawTags) return; // 🚫 Hoppa över om inga taggar finns
+
+    const labels = rawTags.split(",").map(l => l.trim());
+
     const rawCaption = container.getAttribute("data-caption");
-    const caption = rawCaption === null ? "Also on CrowdSnapper" : rawCaption;
+    const caption = rawCaption === null ? DEFAULT_CAPTION : rawCaption;
     const showCaption = caption.trim() !== "";
-  
-    const showDate = container.getAttribute("data-showdate")?.toLowerCase() === "yes";
-    const seenUrls = new Set();
+
+    const rawShowDate = container.getAttribute("data-showdate");
+    const showDate = rawShowDate === null
+      ? DEFAULT_SHOW_DATE
+      : rawShowDate.toLowerCase() === "yes";
 
     const maxPostsAttr = container.getAttribute("data-maxposts");
     const maxPosts = parseInt(maxPostsAttr, 10);
-    const maxResults = isNaN(maxPosts) ? 6 : maxPosts;
-  
+    const maxResults = isNaN(maxPosts) ? DEFAULT_MAX_POSTS : maxPosts;
+
     if (showCaption) {
       container.innerHTML = `<h2 class="caption">${caption}</h2>`;
     }
-  
+
     const sectionId = `related-${containerIndex}`;
     const section = document.createElement("div");
     section.id = sectionId;
     section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
     container.appendChild(section);
-    
+
     labels.forEach(label => {
-      relatedQueue.push({ label, sectionId, currentUrl, seenUrls, showDate });
-    
+      relatedQueue.push({ label, sectionId, currentUrl, seenUrls: new Set(), showDate });
+
       const script = document.createElement("script");
       script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=${maxResults}&callback=renderRelatedPosts`;
       document.body.appendChild(script);
     });
   });
 }
+
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
