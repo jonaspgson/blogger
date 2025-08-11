@@ -175,10 +175,10 @@ function initRelatedPosts() {
   });
 }
 
-/* ---------- 4B. Show related posts for given tags (automaitic version) ---------- */
+/* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
   const manualRelated = document.querySelector(".related-content");
-  if (manualRelated) return; // Manuell finns – gör inget
+  if (manualRelated) return;
 
   const tagElements = document.querySelectorAll('.entry-tags a.label-link');
   let tags = [];
@@ -186,10 +186,10 @@ function initAutoRelatedPosts() {
     tags.push(el.textContent.trim());
   });
 
-  tags = tags.slice(0, 2); // Begränsa till max 2 taggar
+  tags = tags.slice(0, 2);
 
-  let relatedPosts = [];
   let fetched = 0;
+  let seenUrls = new Set();
 
   tags.forEach(tag => {
     const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=6`;
@@ -200,20 +200,51 @@ function initAutoRelatedPosts() {
 
   window.handleAutoRelatedPosts = function(json) {
     if (!json.feed || !json.feed.entry) return;
+
+    const currentUrl = window.location.href;
+    const container = document.getElementById("related-content-placeholder");
+    if (!container) return;
+
+    const inner = document.createElement("div");
+    inner.className = "blurb-container";
+
+    let count = 0;
+
     json.feed.entry.forEach(entry => {
-      const title = entry.title.$t;
-      const link = entry.link.find(l => l.rel === 'alternate').href;
-      if (!relatedPosts.some(p => p.link === link) && fetched < 6 && link !== window.location.href) {
-        relatedPosts.push({ title, link });
-        fetched++;
-      }
+      const title = entry.title?.$t || "Untitled";
+      const link = entry.link.find(l => l.rel === 'alternate')?.href;
+      const content = entry.content?.$t || "";
+      const published = entry.published?.$t || "";
+
+      if (!link || link === currentUrl || seenUrls.has(link)) return;
+      seenUrls.add(link);
+
+      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+      const imgSrc = imgMatch ? imgMatch[1] : "https://via.placeholder.com/500x300";
+
+      const dateStr = published
+        ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
+        : "";
+
+      const div = document.createElement("div");
+      div.className = "blurb";
+      div.innerHTML = `
+        <a href="${link}">
+          <img src="${imgSrc}" alt="${title}" />
+          <div class="blurb-text">
+            <h3 class="entry-title">${title}</h3>
+            ${dateStr}
+          </div>
+        </a>
+      `;
+
+      inner.appendChild(div);
+      count++;
     });
 
-    if (relatedPosts.length > 0) {
-      const container = document.getElementById("related-content-placeholder");
-      container.innerHTML = "<h4>Relaterade inlägg</h4><ul>" +
-        relatedPosts.map(p => `<li><a href="${p.link}">${p.title}</a></li>`).join("") +
-        "</ul>";
+    if (count > 0) {
+      container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
+      container.appendChild(inner);
     }
   };
 }
