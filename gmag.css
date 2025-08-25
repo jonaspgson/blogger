@@ -591,7 +591,8 @@ blockquote:after,.rtl blockquote:before{content:'\f10e';margin:0 0 0 10px}
 .post-body .responsive-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 .post-body img{ display:block; }
 .post-body > a img { margin-top: 2rem; } /* OBS */
-.post-body ul,.widget .post-body ol{line-height:1.5em;font-weight:400;margin:10px 0; padding-left:1.5rem;}
+.post-body ul{line-height:1.5em;font-weight:400;margin:10px 0; padding-left:1.5rem;}
+.widget .post-body ol{line-height:1.5em;font-weight:400;margin:10px 0;}
 .post-body li{margin:5px 0;padding:0;line-height:1.5em}
 .post-body ul li{list-style:disc outside}
 .post-body ol li{list-style:decimal outside}
