@@ -61,6 +61,7 @@ image-container {
   width: 100%;
   background-color: #000;
   text-align: center;
+  overflow: hidden;
 }
 
 image-container a {
@@ -68,11 +69,12 @@ image-container a {
 }
 
 image-container img {
-  display: inline-block;
+  display: inline-block !important;
   max-width: 100%;
   height: auto;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  vertical-align: bottom;
 }
 
 image-container img:hover {
@@ -922,6 +924,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
