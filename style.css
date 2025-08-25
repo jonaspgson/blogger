@@ -56,28 +56,28 @@ h4 { font-size: 1.05rem; }
 }
 
 /* Image container for vertical images – can be used in the enclosing <a> tag. */
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+image-container {
+  display: block;
   width: 100%;
-  background-color: #000;
-  overflow: hidden;
-  text-decoration: none;
+  background-color: #f4f4f4;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.image-container img {
+image-container img {
   max-width: 100%;
   height: auto;
+  border-radius: 6px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  /*border-radius: 6px;*/
-  margin-top:0 !important;
 }
 
-.image-container:hover img {
+image-container img:hover {
   transform: scale(1.05);
 }
+
 
 /* Blurbs ------------------ */
 /*
@@ -919,5 +919,6 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
