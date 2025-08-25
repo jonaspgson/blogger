@@ -55,6 +55,30 @@ h4 { font-size: 1.05rem; }
 	font-family: var(--body-font);
 }
 
+/* Image container for vertical images – can be used in the enclosing <a> tag. */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  /*border-radius: 6px;*/
+  margin-top:0 !important;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
 /* Blurbs ------------------ */
 /*
   .blurb-container {
@@ -895,4 +919,5 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
