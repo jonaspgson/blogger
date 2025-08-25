@@ -63,6 +63,10 @@ image-container {
   text-align: center;
 }
 
+image-container a {
+  display: inline-block;
+}
+
 image-container img {
   display: inline-block;
   max-width: 100%;
@@ -918,6 +922,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
