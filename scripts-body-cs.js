@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  initSplitHeadings();
   initTooltips();
+  initSplitHeadings();
   initAds();
   initRelatedPosts();
   initAutoRelatedPosts();
