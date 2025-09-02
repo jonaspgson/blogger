@@ -116,6 +116,7 @@ max-width:calc(1089px + 50px);
 .social .instagram a:before{content:"\f16d"}
 .social .pinterest a:before{content:"\f0d2"}
 .social .pinterest-p a:before{content:"\f231"}
+.social .tiktok a:before{content:"\e07b"}
 .social .twitch a:before{content:"\f1e8"}
 .social .delicious a:before{content:"\f1a5"}
 .social .codepen a:before{content:"\f1cb"}
