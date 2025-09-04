@@ -384,6 +384,73 @@ image-gallery, .gallery {
 	clear: none !important;
 }
 
+/* Gallery Wrapper (for "Show More" functionality from JS */
+
+.gallery-wrapper {
+  position: relative;
+  max-height: 560px; /*630px;*/
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+}
+
+/* Gradient fade */
+.gallery-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index:10;
+}
+
+.gallery-wrapper.expanded {
+  max-height: 5000px; /* stort värde för att simulera "auto" */
+}
+
+/* Ta bort fade när expanderad */
+.gallery-wrapper.expanded::after {
+  opacity: 0;
+}
+  
+.toggle-gallery {
+  cursor: pointer;
+  color: #ffffff;
+  text-shadow: 0px 0px 5px rgba(0,0,0,1);
+  text-align: center;
+  margin-top: 0px !important;
+  position: relative;
+  z-index: 1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: block;
+  background: #222;
+  padding: 10px 12px;
+  border-radius: 0px;
+  font-family: var(--body-font);
+  transition: .2s;
+
+  /* Centrera */
+  left: 50%;
+  transform: translateX(-50%);
+}
+  
+.toggle-gallery:hover {
+  background-color: #f30;
+}
+
+.gallery-wrapper .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-right: 6px;
+}
+.gallery-wrapper.expanded + .toggle-gallery .arrow {
+  transform: rotate(180deg);
+}
+
 /* Image carousel - req. additional JS */
 
 .carousel { position:relative; margin-top: 2rem; }
@@ -927,6 +994,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
