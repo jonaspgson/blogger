@@ -89,7 +89,7 @@ function initGalleryToggle() {
         toggle.className = "toggle-gallery";
         toggle.type = "button";
         toggle.setAttribute("aria-expanded", "false");
-        toggle.innerHTML = '<span class="arrow">▼</span> Show More';
+        toggle.innerHTML = '<span class="arrow">▼</span> <span class="label">Show More</span>';
 
         // Lägg till efter wrappern
         wrapper.parentNode.insertBefore(toggle, wrapper.nextSibling);
@@ -98,9 +98,7 @@ function initGalleryToggle() {
         toggle.addEventListener("click", function () {
           const expanded = wrapper.classList.toggle("expanded");
           toggle.setAttribute("aria-expanded", expanded);
-          toggle.innerHTML = expanded
-            ? '<span class="arrow">▲</span> Minimise'
-            : '<span class="arrow">▼</span> Show More';
+          toggle.querySelector(".label").textContent = expanded ? "Minimise" : "Show More";
         });
       } else {
         // Om galleriet är kort – ta bort max-height och fade
