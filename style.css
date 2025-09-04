@@ -442,9 +442,12 @@ image-gallery, .gallery {
   transition: transform 0.3s ease;
   margin-right: 6px;
 }
+
+/* Rotera pilen när wrapper är expanderad */
 .gallery-wrapper.expanded + .toggle-gallery .arrow {
   transform: rotate(180deg);
 }
+
 
 /* Image carousel - req. additional JS */
 
@@ -989,6 +992,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
