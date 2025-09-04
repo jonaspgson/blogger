@@ -421,21 +421,16 @@ image-gallery, .gallery {
   color: #ffffff;
   text-shadow: 0px 0px 5px rgba(0,0,0,1);
   text-align: center;
-  margin-top: 0px !important;
   position: relative;
   z-index: 1;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: block;
   background: #222;
   padding: 10px 12px;
   border-radius: 0px;
   font-family: var(--body-font);
   transition: .2s;
-
-  /* Centrera */
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  border: none;
+  margin-top: 4px;
 }
   
 .toggle-gallery:hover {
@@ -994,6 +989,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
