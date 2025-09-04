@@ -437,7 +437,7 @@ image-gallery, .gallery {
   background-color: #f30;
 }
 
-.gallery-wrapper .arrow {
+.toggle-gallery .arrow {
   display: inline-block;
   transition: transform 0.3s ease;
   margin-right: 6px;
@@ -989,6 +989,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
