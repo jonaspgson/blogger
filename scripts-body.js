@@ -43,9 +43,10 @@ function initImageCarousels() {
     // Visa vald slide
     function showSlide(index) {
       slides.forEach((slide, i) => {
-        slide.style.display = i === index ? "block" : "none";
+        slide.classList.remove("active");
         slide.style.transform = "translateX(0)";
       });
+      slides[index].classList.add("active");
     }
 
     // Klick på knappar
