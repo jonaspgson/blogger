@@ -31,25 +31,24 @@ function initImageCarousels() {
     const slides = carousel.querySelectorAll(".slide");
     let currentIndex = 0;
 
-    // Skapa navigeringsknappar
+    // Make button left
     const leftBtn = document.createElement("button");
     leftBtn.className = "button button-left";
     carousel.appendChild(leftBtn);
 
+    // Make button right
     const rightBtn = document.createElement("button");
     rightBtn.className = "button button-right";
     carousel.appendChild(rightBtn);
 
-    // Visa vald slide
+    // Function for displaying the selected slide
     function showSlide(index) {
       slides.forEach((slide, i) => {
-        slide.classList.remove("active");
-        slide.style.transform = "translateX(0)";
+        slide.style.display = i === index ? "block" : "none";
       });
-      slides[index].classList.add("active");
     }
 
-    // Klick på knappar
+    // Eventlisteners
     leftBtn.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
@@ -60,99 +59,7 @@ function initImageCarousels() {
       showSlide(currentIndex);
     });
 
-    // 🟦 Touch-swipe (mobil)
-    let touchStartX = 0;
-    carousel.addEventListener("touchstart", (e) => {
-      touchStartX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener("touchend", (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diffX = touchEndX - touchStartX;
-
-      if (Math.abs(diffX) > 50) {
-        currentIndex = diffX < 0
-          ? (currentIndex + 1) % slides.length
-          : (currentIndex - 1 + slides.length) % slides.length;
-        showSlide(currentIndex);
-      }
-    });
-
-    // 🖱️ Mouse-drag (desktop med visuell feedback)
-    let isDragging = false;
-    let startX = 0;
-    let currentX = 0;
-    let animationID;
-    let activeSlide, nextSlide;
-    
-    function setSlidePositions(offsetX) {
-      if (activeSlide) activeSlide.style.transform = `translateX(${offsetX}px)`;
-      if (nextSlide) nextSlide.style.transform = `translateX(${offsetX + (offsetX < 0 ? carousel.offsetWidth : -carousel.offsetWidth)}px)`;
-    }
-    
-    function animation() {
-      const offsetX = currentX - startX;
-      setSlidePositions(offsetX);
-      if (isDragging) requestAnimationFrame(animation);
-    }
-    
-    carousel.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      currentX = startX;
-      activeSlide = slides[currentIndex];
-      activeSlide.style.transition = "none";
-    
-      // Förbered nästa/föregående slide
-      const nextIndex = e.clientX < carousel.offsetWidth / 2
-        ? (currentIndex + 1) % slides.length
-        : (currentIndex - 1 + slides.length) % slides.length;
-    
-      nextSlide = slides[nextIndex];
-      nextSlide.style.display = "block";
-      nextSlide.style.transition = "none";
-    
-      animationID = requestAnimationFrame(animation);
-    });
-    
-    carousel.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      currentX = e.clientX;
-    });
-    
-    carousel.addEventListener("mouseup", () => {
-      if (!isDragging) return;
-      isDragging = false;
-      cancelAnimationFrame(animationID);
-    
-      const movedBy = currentX - startX;
-      const threshold = carousel.offsetWidth / 4;
-    
-      activeSlide.style.transition = "transform 0.3s ease";
-      nextSlide.style.transition = "transform 0.3s ease";
-    
-      if (movedBy < -threshold) {
-        currentIndex = (currentIndex + 1) % slides.length;
-      } else if (movedBy > threshold) {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      }
-    
-      showSlide(currentIndex);
-      activeSlide = null;
-      nextSlide = null;
-    });
-    
-    carousel.addEventListener("mouseleave", () => {
-      if (isDragging) {
-        isDragging = false;
-        cancelAnimationFrame(animationID);
-        if (activeSlide) activeSlide.style.transition = "transform 0.3s ease";
-        if (nextSlide) nextSlide.style.transition = "transform 0.3s ease";
-        setSlidePositions(0);
-      }
-    });
-
-    // Visa första bilden
+    // Show the first slide
     showSlide(currentIndex);
   });
 }
