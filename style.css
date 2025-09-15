@@ -451,8 +451,19 @@ image-gallery, .gallery {
 
 /* Image carousel - req. additional JS */
 
-.carousel { position:relative; margin-top: 2rem; }
-.carousel .slide {display:none; text-align: center; background-color: #eee;}
+.carousel {
+	position: relative;
+	margin-top: 2rem;
+	overflow: hidden;
+  	cursor: grab;
+}
+.carousel .slide { 
+	display:none;
+	text-align: center;
+	background-color: #eee;
+	transition: transform 0.3s ease;
+  	will-change: transform;
+}
 .carousel .slide img { max-width: 100%; margin: auto; }
 .carousel .title {
 	/*font-family:var(--body-font);*/ 
@@ -992,6 +1003,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
