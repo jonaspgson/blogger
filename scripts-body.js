@@ -31,24 +31,24 @@ function initImageCarousels() {
     const slides = carousel.querySelectorAll(".slide");
     let currentIndex = 0;
 
-    // Make button left
+    // Skapa navigeringsknappar
     const leftBtn = document.createElement("button");
     leftBtn.className = "button button-left";
     carousel.appendChild(leftBtn);
 
-    // Make button right
     const rightBtn = document.createElement("button");
     rightBtn.className = "button button-right";
     carousel.appendChild(rightBtn);
 
-    // Function for displaying the selected slide
+    // Visa vald slide
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.style.display = i === index ? "block" : "none";
+        slide.style.transform = "translateX(0)";
       });
     }
 
-    // Eventlisteners
+    // Klick på knappar
     leftBtn.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
@@ -59,29 +59,90 @@ function initImageCarousels() {
       showSlide(currentIndex);
     });
 
-    // Swipe handling
-    let startX = 0;
+    // 🟦 Touch-swipe (mobil)
+    let touchStartX = 0;
     carousel.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
+      touchStartX = e.touches[0].clientX;
     });
+
     carousel.addEventListener("touchend", (e) => {
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchEndX - touchStartX;
+
       if (Math.abs(diffX) > 50) {
-        if (diffX < 0) {
-          currentIndex = (currentIndex + 1) % slides.length;
-        } else {
-          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        }
+        currentIndex = diffX < 0
+          ? (currentIndex + 1) % slides.length
+          : (currentIndex - 1 + slides.length) % slides.length;
         showSlide(currentIndex);
       }
-    }); //Swipe end
+    });
 
-    // Show the first slide
+    // 🖱️ Mouse-drag (desktop med visuell feedback)
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID;
+    let activeSlide;
+
+    function setPosition(x) {
+      if (activeSlide) activeSlide.style.transform = `translateX(${x}px)`;
+    }
+
+    function animation() {
+      setPosition(currentTranslate);
+      if (isDragging) requestAnimationFrame(animation);
+    }
+
+    carousel.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      activeSlide = slides[currentIndex];
+      activeSlide.style.transition = "none";
+      animationID = requestAnimationFrame(animation);
+    });
+
+    carousel.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      const currentX = e.clientX;
+      const diff = currentX - startX;
+      currentTranslate = prevTranslate + diff;
+    });
+
+    carousel.addEventListener("mouseup", (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+
+      const movedBy = currentTranslate - prevTranslate;
+      activeSlide.style.transition = "transform 0.3s ease";
+
+      if (movedBy < -100 && currentIndex < slides.length - 1) {
+        currentIndex++;
+      } else if (movedBy > 100 && currentIndex > 0) {
+        currentIndex--;
+      }
+
+      showSlide(currentIndex);
+      currentTranslate = 0;
+      prevTranslate = 0;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      if (isDragging) {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        if (activeSlide) {
+          activeSlide.style.transition = "transform 0.3s ease";
+          setPosition(0);
+        }
+      }
+    });
+
+    // Visa första bilden
     showSlide(currentIndex);
   });
 }
-
 
 /* Adds a "Show More" button to image galleries larger than a specific height that can be clicked to expand them. */
 function initGalleryToggle() {
