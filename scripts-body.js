@@ -59,6 +59,24 @@ function initImageCarousels() {
       showSlide(currentIndex);
     });
 
+    // Swipe handling
+    let startX = 0;
+    carousel.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+    carousel.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
+      if (Math.abs(diffX) > 50) {
+        if (diffX < 0) {
+          currentIndex = (currentIndex + 1) % slides.length;
+        } else {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        }
+        showSlide(currentIndex);
+      }
+    }); //Swipe end
+
     // Show the first slide
     showSlide(currentIndex);
   });
