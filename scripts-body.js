@@ -80,62 +80,74 @@ function initImageCarousels() {
     // 🖱️ Mouse-drag (desktop med visuell feedback)
     let isDragging = false;
     let startX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
+    let currentX = 0;
     let animationID;
-    let activeSlide;
-
-    function setPosition(x) {
-      if (activeSlide) activeSlide.style.transform = `translateX(${x}px)`;
+    let activeSlide, nextSlide;
+    
+    function setSlidePositions(offsetX) {
+      if (activeSlide) activeSlide.style.transform = `translateX(${offsetX}px)`;
+      if (nextSlide) nextSlide.style.transform = `translateX(${offsetX + (offsetX < 0 ? carousel.offsetWidth : -carousel.offsetWidth)}px)`;
     }
-
+    
     function animation() {
-      setPosition(currentTranslate);
+      const offsetX = currentX - startX;
+      setSlidePositions(offsetX);
       if (isDragging) requestAnimationFrame(animation);
     }
-
+    
     carousel.addEventListener("mousedown", (e) => {
       isDragging = true;
       startX = e.clientX;
+      currentX = startX;
       activeSlide = slides[currentIndex];
       activeSlide.style.transition = "none";
+    
+      // Förbered nästa/föregående slide
+      const nextIndex = e.clientX < carousel.offsetWidth / 2
+        ? (currentIndex + 1) % slides.length
+        : (currentIndex - 1 + slides.length) % slides.length;
+    
+      nextSlide = slides[nextIndex];
+      nextSlide.style.display = "block";
+      nextSlide.style.transition = "none";
+    
       animationID = requestAnimationFrame(animation);
     });
-
+    
     carousel.addEventListener("mousemove", (e) => {
       if (!isDragging) return;
-      const currentX = e.clientX;
-      const diff = currentX - startX;
-      currentTranslate = prevTranslate + diff;
+      currentX = e.clientX;
     });
-
-    carousel.addEventListener("mouseup", (e) => {
+    
+    carousel.addEventListener("mouseup", () => {
       if (!isDragging) return;
       isDragging = false;
       cancelAnimationFrame(animationID);
-
-      const movedBy = currentTranslate - prevTranslate;
+    
+      const movedBy = currentX - startX;
+      const threshold = carousel.offsetWidth / 4;
+    
       activeSlide.style.transition = "transform 0.3s ease";
-
-      if (movedBy < -100 && currentIndex < slides.length - 1) {
-        currentIndex++;
-      } else if (movedBy > 100 && currentIndex > 0) {
-        currentIndex--;
+      nextSlide.style.transition = "transform 0.3s ease";
+    
+      if (movedBy < -threshold) {
+        currentIndex = (currentIndex + 1) % slides.length;
+      } else if (movedBy > threshold) {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       }
-
+    
       showSlide(currentIndex);
-      currentTranslate = 0;
-      prevTranslate = 0;
+      activeSlide = null;
+      nextSlide = null;
     });
-
+    
     carousel.addEventListener("mouseleave", () => {
       if (isDragging) {
         isDragging = false;
         cancelAnimationFrame(animationID);
-        if (activeSlide) {
-          activeSlide.style.transition = "transform 0.3s ease";
-          setPosition(0);
-        }
+        if (activeSlide) activeSlide.style.transition = "transform 0.3s ease";
+        if (nextSlide) nextSlide.style.transition = "transform 0.3s ease";
+        setSlidePositions(0);
       }
     });
 
