@@ -474,6 +474,7 @@ image-carousel image-caption {
 	color:#fff; background-color: hsla(0, 0%, 0%, 0.6);
 	box-sizing: border-box;
   	text-wrap: balance;
+	margin-bottom: 0;
 }
 
 :is(.carousel, image-carousel) .button {
@@ -1005,6 +1006,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
