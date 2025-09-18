@@ -451,10 +451,20 @@ image-gallery, .gallery {
 
 /* Image carousel - req. additional JS */
 
-.carousel { position:relative; margin-top: 2rem; }
-.carousel .slide {display:none; text-align: center; background-color: #eee;}
-.carousel .slide img { max-width: 100%; margin: auto; }
-.carousel .title {
+.carousel, 
+image-carousel { 
+	position:relative; margin-top: 2rem;
+}
+.carousel .slide,
+image-carousel carousel-slide {
+	display:none; text-align: center; background-color: #eee;
+}
+.carousel .slide img,
+image-carousel carousel-slide img { 
+	max-width: 100%; margin: auto; 
+}
+.carousel .title,
+image-carousel image-caption {
 	/*font-family:var(--body-font);*/ 
 	font-size: 90%; line-height: 1.2; 
   	position:absolute; left:0; bottom:0; 
@@ -464,7 +474,7 @@ image-gallery, .gallery {
   	text-wrap: balance;
 }
 
-.carousel .button {
+:is(.carousel, image-carousel) .button {
     background-color: #ccc;
     color: #000;
     font-size: 20px;
@@ -479,12 +489,12 @@ image-gallery, .gallery {
     cursor: pointer;
     white-space: nowrap;
 }
-.carousel .button:hover {color:#fff!important; background-color:#222!important}
+:is(.carousel, image-carousel) .button:hover {color:#fff!important; background-color:#222!important}
 
-.carousel .button-left {position:absolute;top:50%;left:1%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
-.carousel .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
-.carousel .button-left::after { content: '❮'}
-.carousel .button-right::after { content: '❯'}
+:is(.carousel, image-carousel) .button-left {position:absolute;top:50%;left:1%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+:is(.carousel, image-carousel) .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
+:is(.carousel, image-carousel) .button-left::after { content: '❮'}
+:is(.carousel, image-carousel) .button-right::after { content: '❯'}
 
 
 
@@ -993,6 +1003,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
