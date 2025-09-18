@@ -25,30 +25,33 @@ function initAccordions() {
 
 /* Image carousel - requires additional CSS. */
 function initImageCarousels() {
-  const carousels = document.querySelectorAll(".carousel");
+  const carousels = [
+    ...document.querySelectorAll(".carousel"),
+    ...document.querySelectorAll("image-carousel")
+  ];
 
   carousels.forEach((carousel) => {
-    const slides = carousel.querySelectorAll(".slide");
+    const isXmlStyle = carousel.tagName.toLowerCase() === "image-carousel";
+    const slides = isXmlStyle
+      ? carousel.querySelectorAll("carousel-slide")
+      : carousel.querySelectorAll(".slide");
+
     let currentIndex = 0;
 
-    // Make button left
     const leftBtn = document.createElement("button");
     leftBtn.className = "button button-left";
     carousel.appendChild(leftBtn);
 
-    // Make button right
     const rightBtn = document.createElement("button");
     rightBtn.className = "button button-right";
     carousel.appendChild(rightBtn);
 
-    // Function for displaying the selected slide
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.style.display = i === index ? "block" : "none";
       });
     }
 
-    // Eventlisteners
     leftBtn.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
@@ -59,7 +62,6 @@ function initImageCarousels() {
       showSlide(currentIndex);
     });
 
-    // Show the first slide
     showSlide(currentIndex);
   });
 }
