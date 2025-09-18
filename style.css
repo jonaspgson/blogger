@@ -451,6 +451,8 @@ image-gallery, .gallery {
 
 /* Image carousel - req. additional JS */
 
+image-carousel, image-slide { display:block; }
+
 .carousel, 
 image-carousel { 
 	position:relative; margin-top: 2rem;
@@ -1003,6 +1005,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
