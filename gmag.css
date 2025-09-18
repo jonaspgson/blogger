@@ -559,7 +559,7 @@ to{opacity:1;transform:translate3d(0,0,0)}
 .rtl #breadcrumb .delimiter:after, .rtl #breadcrumb delimiter:after{content:'\f053'}
 .item-post .blog-entry-header{position:relative;float:left;width:100%;overflow:hidden;box-sizing:border-box;padding:15px;margin:0;border-bottom:1px solid rgba(155,155,155,0.1); }
 .item-post h1.entry-title {
-font-size:29px;
+font-size: 1.8rem; /*29px*/
 font-weight:700;
 position:relative;
 display: inline;
