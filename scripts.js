@@ -1,6 +1,4 @@
 
-
-
 /* Requires Font-Awesome and additional CSS. */
 function rateThis(n) {
 	var startWrap = "<div class='rating'>";
@@ -159,7 +157,3 @@ function labnolIframe(div) {
   }
   
   document.addEventListener("DOMContentLoaded", initYouTubeVideos);
-
-
-//<![CDATA[
-//]]>
