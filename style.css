@@ -145,17 +145,18 @@ image-container img:hover {
 /* BYLINE */
 
 .byline {
-display: flex;
-background: #eee;
-align-items: center;
-font-family: var(--body-font);
-margin-bottom: 3rem;
+	display: flex;
+	background: #eee;
+	align-items: center;
+	font-family: var(--body-font);
+	padding: 1rem;
+	margin-bottom: 3rem;
 }
 
 byline-image, byline-title, byline-name, byline-links { display: block; }
 
 byline-image {
-	margin: 1rem;
+	margin-right: 1rem;
 }
 
 byline-image, byline-image img {
@@ -166,11 +167,11 @@ byline-image, byline-image img {
 }
 
 .byline-jonas byline-image {
-background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9H20qE_5ZEHBNYVhJNeNqUPCIay0nIBJ-rFN4AMxkKUJiLRGVYh9JRkZxcnhfHUtAo3W01XNNmDRgPK3-FJWG3HQekrOflemh-ETpsdhNNd6w7j_drneEQF8Q4DJnmNpYLSMc2fg_497bopx5_ASgQAm1ncIaBEheEmvRCd5PT61XcePyHx_QwbQkUA/s80/jonas-profile-250.webp');
+	background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9H20qE_5ZEHBNYVhJNeNqUPCIay0nIBJ-rFN4AMxkKUJiLRGVYh9JRkZxcnhfHUtAo3W01XNNmDRgPK3-FJWG3HQekrOflemh-ETpsdhNNd6w7j_drneEQF8Q4DJnmNpYLSMc2fg_497bopx5_ASgQAm1ncIaBEheEmvRCd5PT61XcePyHx_QwbQkUA/s80/jonas-profile-250.webp');
 }
 
 byline-text {
-flex-grow: 1;  
+	flex-grow: 1;  
 }
 
 byline-title {
@@ -1011,6 +1012,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
