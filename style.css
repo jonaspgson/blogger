@@ -187,7 +187,7 @@ font-size:1.2rem;
 byline-links a {
 	color: #555 !important;
 	display: inline-block;
-	margin-right: .2em;
+	margin-right: .35em;
 }
 
 /* INGRESS */
@@ -1012,6 +1012,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
