@@ -87,6 +87,7 @@ function initAds() {
   });
 
   // Lägg till annons efter sista .byline
+  /*
   const bylines = postBody.querySelectorAll(".byline");
   if (bylines.length > 0) {
     const lastByline = bylines[bylines.length - 1];
@@ -102,32 +103,10 @@ function initAds() {
     lastByline.parentNode.insertBefore(ad, lastByline.nextSibling);
     (adsbygoogle = window.adsbygoogle || []).push({});
   }
+  */
 }
 
-/*
-function initAds() {
-  const postBody = document.querySelector("#post-body");
-  if (!postBody) return;
 
-  const paragraphs = Array.from(postBody.children).filter(el => el.tagName === "P");
-
-  paragraphs.forEach((p, index) => {
-    if ((index + 1) % 4 === 0) {
-      const ad = document.createElement("ins");
-      ad.className = "adsbygoogle";
-      ad.style.display = "block";
-      ad.style.textAlign = "center";
-      ad.setAttribute("data-ad-layout", "in-article");
-      ad.setAttribute("data-ad-format", "fluid");
-      ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
-      ad.setAttribute("data-ad-slot", "7820669675");
-
-      p.parentNode.insertBefore(ad, p.nextSibling);
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    }
-  });
-}
-*/
 
 /* ---------- 4A. Show related posts for given tags (manual version) ---------- 
  * Use: <div class="related-content" 
