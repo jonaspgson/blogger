@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/* Creates byline. Use <byline-AUTHOR> where AUTHOR works as the ID. Use the optional attribute "data-title" to change the default title in the byline (eg. "Images and Words".) */
 function initBylines() {
   const authors = {
     jg: {
