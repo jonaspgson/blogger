@@ -1,4 +1,4 @@
-//<![CDATA[
+
 
 
 /* Requires Font-Awesome and additional CSS. */
@@ -161,5 +161,5 @@ function labnolIframe(div) {
   document.addEventListener("DOMContentLoaded", initYouTubeVideos);
 
 
-
+//<![CDATA[
 //]]>
