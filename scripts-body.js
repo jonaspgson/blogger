@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* Creates byline. Use <byline-AUTHOR> where AUTHOR works as the ID. Use the optional attribute "data-title" to change the default title in the byline (eg. "Images and Words".) */
+/* Creates byline. Usage: <byline-AUTHOR> tag where AUTHOR works as the ID. 
+   Use the optional attribute "data-title" to change the default title in the byline (eg. "Images and Words".) 
+*/
 function initBylines() {
   const authors = {
     jg: {
@@ -34,10 +36,22 @@ function initBylines() {
   };
 
   Object.keys(authors).forEach(authorKey => {
-    const tagName = `byline-${authorKey}`;
-    document.querySelectorAll(tagName).forEach(el => {
-      const author = authors[authorKey];
-      const title = el.dataset.title || author.defaultTitle;
+	const tagName = `byline-${authorKey}`;
+	document.querySelectorAll(tagName).forEach(el => {
+	  const author = authors[authorKey];
+	  const title = el.dataset.title || author.defaultTitle;
+	
+	  // 🧠 Hämta fallback-text från markupen
+	  const fallbackText = el.textContent.trim();
+	
+	  // 📦 Skapa byline-section
+	  const section = document.createElement("section");
+	  section.className = `byline byline-${authorKey}`;
+	
+	  // 🔒 Lägg till fallback-text som aria-label (för SEO/tillgänglighet)
+	  if (fallbackText) {
+	    section.setAttribute("aria-label", fallbackText);
+	  }
 
       // Build social links dynamically
       let socialLinks = "";
@@ -57,18 +71,22 @@ function initBylines() {
         socialLinks += `<a href="${author.links.youtube}" target="_blank"><i class="fa-brands fa-youtube"></i></a>`;
       }
 
-      // Build markup
-      const section = document.createElement("section");
-      section.className = `byline byline-${authorKey}`;
-      section.innerHTML = `
-          ${author.image ? `<byline-image><img src="${author.image}" alt="${author.name}"></byline-image>` : ""}
-          <byline-text>
-            ${title ? `<byline-title>${title}</byline-title>` : ""}
-            <byline-name>${author.name}</byline-name>
-            ${socialLinks ? `<byline-links>${socialLinks}</byline-links>` : ""}
-    </byline-text>
-        `;
+	  // 🖼️ Bild (om så angivits)
+	  const imageMarkup = author.image
+	    ? `<byline-image><img src="${author.image}" alt="${author.name}"></byline-image>`
+	    : "";
 
+	  // 🧩 Sätt ihop hela markupen
+	  section.innerHTML = `
+	    ${imageMarkup}
+	    <byline-text>
+		  ${title ? `<byline-title>${title}</byline-title>` : ""}
+		  <byline-name>${author.name}</byline-name>
+		  ${socialLinks ? `<byline-links>${socialLinks}</byline-links>` : ""}
+	    </byline-text>
+	  `;
+
+	  // 🔄 Ersätt original-elementet
       el.replaceWith(section);
     });
   });
