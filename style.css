@@ -154,12 +154,15 @@ margin-bottom: 3rem;
 
 byline-image, byline-title, byline-name, byline-links { display: block; }
 
+byline-image {
+	margin: 1rem;
+}
+
 byline-image, byline-image img {
-margin: 1rem;
-width: 80px;
-height: 80px;
-border-radius: 40px;
-background-size: contain;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	background-size: contain;
 }
 
 .byline-jonas byline-image {
@@ -1008,6 +1011,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
