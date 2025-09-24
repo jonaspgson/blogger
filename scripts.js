@@ -109,14 +109,11 @@ function getByline(title) {
     o += '  <byline-name>Jonas Gustafsson</byline-name>';
     o += '  <byline-links>';
     o += '    <a href="https://www.instagram.com/jonas_thejo" target="_blank">';
-    o += '      <i class="fa-brands fa-instagram"></i>';
-    o += '    </a>';
+    o += '      <i class="fa-brands fa-instagram"></i></a>';
     o += '    <a href="https://x.com/jonasen" target="_blank">';
-    o += '      <i class="fa-brands fa-x-twitter"></i>';
-    o += '    </a>';
+    o += '      <i class="fa-brands fa-x-twitter"></i></a>';
     o += '    <a href="https://www.youtube.com/@jonasthejo" target="_blank">';
-    o += '      <i class="fa-brands fa-youtube"></i>';
-    o += '    </a>';
+    o += '      <i class="fa-brands fa-youtube"></i></a>';
     o += '  </byline-links>';
     o += '</byline-text>';
     o += '</section>';
