@@ -1,8 +1,77 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initBylines();
   initAccordions();
   initImageCarousels();
   initGalleryToggle();
 });
+
+
+function initBylines() {
+  const authors = {
+    jg: {
+      name: "Jonas Gustafsson",
+      defaultTitle: "Photos and Words",
+      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9H20qE_5ZEHBNYVhJNeNqUPCIay0nIBJ-rFN4AMxkKUJiLRGVYh9JRkZxcnhfHUtAo3W01XNNmDRgPK3-FJWG3HQekrOflemh-ETpsdhNNd6w7j_drneEQF8Q4DJnmNpYLSMc2fg_497bopx5_ASgQAm1ncIaBEheEmvRCd5PT61XcePyHx_QwbQkUA/s80/jonas-profile-250.webp",
+      links: {
+        instagram: "https://www.instagram.com/jonas_thejo",
+        tiktok: "https://www.tiktok.com/@crowdsnapper",
+        x: "https://x.com/jonasen",
+        youtube: "https://www.youtube.com/@jonasthejo"
+      }
+    },
+    x: {
+      name: "Guest Writer",
+      defaultTitle: "Words",
+      /*image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiX4HO05NoCEM3S3POkmS7QjAnaNS-LFAdtmH5iLW6CaECnQOws_cAXdGoVQXnxwg5Ln9Ph6wc0Rk7K7P5kOIf7Vu1GnGNkZT7tD8hgTVU8iwk7lFdYiy_a_-vzf2DC_tited7LAQokeRbX5WGvCjs4LhVdzE2cn4Jw5hf_rx-Yr7MGmhrCSOFMSejFA/s400-rw/hardcore-superstar-oasen-festival-2025-crowdsnapper-5.webp",*/
+      links: {
+        instagram: "https://www.instagram.com/agda_art",
+        /*x: "https://x.com/agdasvensson",*/
+        youtube: "https://www.youtube.com/@agdasvensson"
+      }
+    }
+    // Lägg till fler personer här
+  };
+
+  Object.keys(authors).forEach(authorKey => {
+    const tagName = `byline-${authorKey}`;
+    document.querySelectorAll(tagName).forEach(el => {
+      const author = authors[authorKey];
+      const title = el.dataset.title || author.defaultTitle;
+
+      // Build social links dynamically
+      let socialLinks = "";
+      if (author.links.facebook) {
+        socialLinks += `<a href="${author.links.instagram}" target="_blank"><i class="fa-brands fa-facebook"></i></a>`;
+      }
+      if (author.links.instagram) {
+        socialLinks += `<a href="${author.links.instagram}" target="_blank"><i class="fa-brands fa-instagram"></i></a>`;
+      }
+      if (author.links.tiktok) {
+        socialLinks += `<a href="${author.links.tiktok}" target="_blank"><i class="fa-brands fa-tiktok"></i></a>`;
+      }
+	  if (author.links.x) {
+        socialLinks += `<a href="${author.links.x}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>`;
+      }
+      if (author.links.youtube) {
+        socialLinks += `<a href="${author.links.youtube}" target="_blank"><i class="fa-brands fa-youtube"></i></a>`;
+      }
+
+      // Build markup
+      const section = document.createElement("section");
+      section.className = `byline byline-${authorKey}`;
+      section.innerHTML = `
+          ${author.image ? `<byline-image><img src="${author.image}" alt="${author.name}"></byline-image>` : ""}
+          <byline-text>
+            ${title ? `<byline-title>${title}</byline-title>` : ""}
+            <byline-name>${author.name}</byline-name>
+            ${socialLinks ? `<byline-links>${socialLinks}</byline-links>` : ""}
+    </byline-text>
+        `;
+
+      el.replaceWith(section);
+    });
+  });
+}
 
 
 /* Accordion - requires additional CSS. */
