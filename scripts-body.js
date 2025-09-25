@@ -73,7 +73,7 @@ function initBylines() {
 
 	  // 🖼️ Bild (om så angivits)
 	  const imageMarkup = author.image
-	    ? `<byline-image><img src="${author.image}" alt="${author.name}"></byline-image>`
+	    ? `<byline-image><img src="${author.image}" alt="${author.name} byline image" title="${author.name} byline image"></byline-image>`
 	    : "";
 
 	  // 🧩 Sätt ihop hela markupen
