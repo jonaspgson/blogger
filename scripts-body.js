@@ -56,19 +56,19 @@ function initBylines() {
       // Build social links dynamically
       let socialLinks = "";
       if (author.links.facebook) {
-        socialLinks += `<a href="${author.links.instagram}" target="_blank"><i class="fa-brands fa-facebook"></i></a>`;
+        socialLinks += `<a href="${author.links.facebook}" title="Facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>`;
       }
       if (author.links.instagram) {
-        socialLinks += `<a href="${author.links.instagram}" target="_blank"><i class="fa-brands fa-instagram"></i></a>`;
+        socialLinks += `<a href="${author.links.instagram}" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>`;
       }
       if (author.links.tiktok) {
-        socialLinks += `<a href="${author.links.tiktok}" target="_blank"><i class="fa-brands fa-tiktok"></i></a>`;
+        socialLinks += `<a href="${author.links.tiktok}" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a>`;
       }
 	  if (author.links.x) {
-        socialLinks += `<a href="${author.links.x}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>`;
+        socialLinks += `<a href="${author.links.x}" title="X (Twitter)" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>`;
       }
       if (author.links.youtube) {
-        socialLinks += `<a href="${author.links.youtube}" target="_blank"><i class="fa-brands fa-youtube"></i></a>`;
+        socialLinks += `<a href="${author.links.youtube}" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a>`;
       }
 
 	  // 🖼️ Bild (om så angivits)
