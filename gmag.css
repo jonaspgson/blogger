@@ -1055,7 +1055,7 @@ font-size:25px;
 .featured-item.item-0 .entry-title{font-size:18px!important}
 .grid-block-1 .entry-image-link,.grid-block-2 .entry-image-link,.related-posts .entry-image-link{height:100px}
 .index-post .entry-title{font-size:18px}
-/*.item-post h1.entry-title{font-size:23px;}*/
+.item-post h1.entry-title{font-size:1.8rem;} /*23px*/
 .item-post .blog-entry-header .entry-meta {
 font-size: 0.8rem;
 padding: 1px 3px 1px 7px;
