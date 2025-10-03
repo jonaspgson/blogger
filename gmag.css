@@ -52,7 +52,7 @@ font-family:var(--body-font);font-size:14px;color:#171c24;font-weight:400;font-s
 body.background-cover{background-attachment:fixed;background-size:cover;background-position:center center;background-repeat:no-repeat}
 .rtl{direction:rtl}
 .no-items.section{display:none}
-h1,h2,h3,h4,h5,h6{font-family:var(--title-font);font-weight:700}
+h1,h2,h3,h4,h5,h6{font-family:var(--title-font);font-weight:700;}
 #outer-wrapper{position:relative;width:100%;max-width:100%;margin:0 auto;background-color:transparent;padding:0} /* OBS overflow:hidden; */
 .floating-mode:not(.boxed) #outer-wrapper{background-color:rgba(0,0,0,0);box-shadow:none}
 .boxed #outer-wrapper {
@@ -559,11 +559,12 @@ to{opacity:1;transform:translate3d(0,0,0)}
 .rtl #breadcrumb .delimiter:after, .rtl #breadcrumb delimiter:after{content:'\f053'}
 .item-post .blog-entry-header{position:relative;float:left;width:100%;overflow:hidden;box-sizing:border-box;padding:15px;margin:0;border-bottom:1px solid rgba(155,155,155,0.1); }
 .item-post h1.entry-title {
-font-size: 2rem; /*29px*/
-font-weight:700;
-position:relative;
-display: inline;
-margin-right: 10px;
+  font-size: 2rem; /*29px*/
+  font-weight:700;
+  position:relative;
+  display: inline;
+  margin-right: 10px;
+  hyphens: auto;
 }
 .item-post .has-meta h1.entry-title{margin-bottom:15px}
 .entry-content-wrap{position:relative;float:left;width:100%;box-sizing:border-box;margin:0;}
