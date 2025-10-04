@@ -291,7 +291,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 @media (width < 650px) {
 	.gear-info .grid2 { display:block; }
 	.gear-info .grid2 > div { margin-bottom:2rem; }
-	.post-body .gear-info :is(h3, .footer) { text-align: left; }
+	.post-body .gear-info :is(h3, .footer) { text-align: left !important; }
 }
 
 /* Articles Grid - for linking to subpages -------------*/
