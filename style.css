@@ -974,7 +974,8 @@ image-caption {
 	z-index: 100;
 	background: transparent;
 }
-  
+
+/*
 .youtube-player img {
 	object-fit: cover;
 	display: block;
@@ -992,6 +993,21 @@ image-caption {
 	-webkit-transition: 0.4s all;
 	-moz-transition: 0.4s all;
 	transition: 0.4s all;
+}*/
+
+.youtube-player img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s all;
+  z-index: 90;
 }
   
 .youtube-player img:hover {
@@ -1012,6 +1028,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
