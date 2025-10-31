@@ -170,7 +170,9 @@ body {
   border-bottom-left-radius: 25px 60px;
   box-shadow: -10px 5px 15px #000;
 }
-
+.post-body img:first-of-type {
+	margin-top: 0;
+}
 
 /* Mobile */
 .gmag-pro-mobile-menu ul li {
