@@ -794,3 +794,8 @@ sticky-navigation .active-tab a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+:is(image-gallery, .gallery) * {
+	border-radius: 0;
+	gap: 0;
+}
