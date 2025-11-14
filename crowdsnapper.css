@@ -11,6 +11,11 @@
 
 * { border-radius: var(--border-radius); }
 
+@media (max-width: 500px) {
+	.post-body * {
+		border-radius: 0;
+	}
+}
 
 /* Blogg-specifika overrides */
 #post-body { font-size: 18px; }
@@ -474,7 +479,7 @@ filter: brightness(150%);
 		width: 100%;
 	}
 
-	.blurb-container .blurb {
+	.post-body :is(.related-content, .related-content-auto) .blurb {
 		margin: 5px;
 	}
 	
