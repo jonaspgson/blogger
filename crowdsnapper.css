@@ -395,7 +395,7 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 }
 
 .post-body :is(.related-content, .related-content-auto) .blurb-container .blurb {
-	max-height:350px;
+	max-height: 200px;
 	gap: 5px;
 }
 
