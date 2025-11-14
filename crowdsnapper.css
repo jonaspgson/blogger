@@ -808,6 +808,11 @@ sticky-navigation .active-tab a {
   	background-color: #000;
 }
 
+@media (max-width: 880px) {
+	#featured-wrapper * {
+		border-radius: 0;
+	}
+}
 @media (max-width: 500px) {
 	.post-body :is(img, image-caption) {
 		border-radius: 0;
