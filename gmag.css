@@ -315,6 +315,7 @@ to{transform:translate3d(0,0,0)}
 .main-navbar-menu ul li:first-child {
 background-color: var(--site-nav-active-tab-bgcolor,#fff);
 box-shadow: 0 0 5px #ddd;
+  border-radius: 8px 8px 0 0;
 }
 .main-navbar-menu ul li:first-child a {
   color: var(--site-nav-active-tab-color, #555);
