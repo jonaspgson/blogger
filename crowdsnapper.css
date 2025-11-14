@@ -780,8 +780,8 @@ sticky-navigation .active-tab a {
   border-bottom-right-radius: 0;
 }
 
-.sidebar > .widget .widget-title > h3 {
-  padding-bottom: var(--border-radius-compensation);
+.sidebar > .widget .widget-title {
+  padding-bottom: 38px;
 }
 
 #breadcrumb, byline-title, .post-body .gear-info h3, footer, footer *, .main-navbar-menu ul li:first-child {
