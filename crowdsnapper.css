@@ -799,7 +799,9 @@ sticky-navigation .active-tab a {
   border-top-right-radius: 0;
 }
 
-:is(image-gallery, .gallery) * {
+:is(image-gallery, .gallery) *,
+#featured-wrapper img
+{
 	border-radius: 0;
 }
 
@@ -807,6 +809,7 @@ sticky-navigation .active-tab a {
 	gap: 1px;
   	background-color: #000;
 }
+
 
 @media (max-width: 880px) {
 	#featured-wrapper * {
