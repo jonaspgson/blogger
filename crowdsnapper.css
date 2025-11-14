@@ -802,6 +802,9 @@ sticky-navigation .active-tab a {
 
 :is(image-gallery, .gallery) * {
 	border-radius: 0;
+}
+
+:is(image-gallery, .gallery)  {
 	gap: 1px;
   	background-color: #000;
 }
