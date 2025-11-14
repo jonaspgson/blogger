@@ -394,7 +394,11 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	grid-auto-flow: column;
 	gap: 3px;
 }
-  
+
+.post-body .blurb-container {
+	gap: 5px;
+}
+
 .post-body :is(.related-content, .related-content-auto) .blurb-container .blurb {
 	max-height:350px;
 }
@@ -797,5 +801,6 @@ sticky-navigation .active-tab a {
 
 :is(image-gallery, .gallery) * {
 	border-radius: 0;
-	gap: 0;
+	gap: 1px;
+  	background-color: #000;
 }
