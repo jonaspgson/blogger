@@ -372,7 +372,7 @@ image-gallery, .gallery {
   z-index: 1;
   background: #222;
   padding: 10px 12px;
-  border-radius: 0px;
+  border-radius: 40px;
   font-family: var(--body-font);
   transition: .2s;
   width: 100%;
@@ -714,6 +714,7 @@ ul.cons li::before {
   outline: none;
   font-size: 1.2rem;
   transition: 1s;
+  border-radius: 8px 8px 0 0;
 }
 
 .accordion.active, .accordion:hover {
@@ -741,6 +742,8 @@ ul.cons li::before {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .panel p:first-child {
@@ -978,6 +981,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
