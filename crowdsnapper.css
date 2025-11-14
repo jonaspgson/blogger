@@ -775,7 +775,7 @@ sticky-navigation .active-tab a {
 .item-post .blog-entry-header,
 .sidebar > .widget .widget-title {
   margin-bottom: var(--border-radius-offset);
-  padding-bottom: var(--border-radius-compensation);
+  padding-bottom: 27px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
