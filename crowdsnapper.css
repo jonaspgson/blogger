@@ -3,8 +3,14 @@
 	--text-font: 'Lora','serif';
 	--image-caption-bgcolor: #eee;
 	--image-caption-color: #555;
+	--border-radius: 8px;
+	--border-radius-offset: calc(var(--border-radius) * -1);
+  	--border-radius-compensation: 25px;
 	/*--image-caption-linkcolor:*/
 }
+
+* { border-radius: var(--border-radius); }
+
 
 /* Blogg-specifika overrides */
 #post-body { font-size: 18px; }
@@ -760,4 +766,22 @@ sticky-navigation .active-tab a {
    		font-family: FontAwesome; 
     		content: '\f103';
 	}
+}
+
+
+
+/*------- Border Radius-justeringar --------*/
+
+.item-post .blog-entry-header, .widget-title {
+  margin-bottom: calc(var(--border-radius-offset);
+  padding-bottom: var(--border-radius-compensation);
+}
+
+#breadcrumb, byline-title, .post-body .gear-info h3, footer *, .menu li {
+  border-radius: 0;
+}
+
+.tr-caption, .image-caption, image-caption {
+  margin-top: var(--border-radius-offset);
+  padding-top: var(--border-radius-compensation);
 }
