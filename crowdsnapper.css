@@ -5,7 +5,7 @@
 	--image-caption-color: #555;
 	--border-radius: 8px;
 	--border-radius-offset: calc(var(--border-radius) * -1);
-  	--border-radius-compensation: 25px;
+  	--border-radius-compensation: 16px;
 	/*--image-caption-linkcolor:*/
 }
 
@@ -775,13 +775,17 @@ sticky-navigation .active-tab a {
 .item-post .blog-entry-header, .widget-title {
   margin-bottom: var(--border-radius-offset);
   padding-bottom: var(--border-radius-compensation);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-#breadcrumb, byline-title, .post-body .gear-info h3, footer, footer div, .main-navbar-menu ul li:first-child {
+#breadcrumb, byline-title, .post-body .gear-info h3, footer, footer *, .main-navbar-menu ul li:first-child {
   border-radius: 0;
 }
 
 .tr-caption, .image-caption, image-caption {
   margin-top: var(--border-radius-offset);
   padding-top: var(--border-radius-compensation);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
