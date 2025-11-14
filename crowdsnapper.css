@@ -774,9 +774,12 @@ sticky-navigation .active-tab a {
 
 .sidebar > .widget .widget-title {
   margin-bottom: var(--border-radius-offset);
-  padding-bottom: var(--border-radius-compensation);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.sidebar > .widget .widget-title > h3 {
+  padding-bottom: var(--border-radius-compensation);
 }
 
 #breadcrumb, byline-title, .post-body .gear-info h3, footer, footer *, .main-navbar-menu ul li:first-child {
