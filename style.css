@@ -103,7 +103,7 @@ byline-image {
 byline-image, byline-image img {
 	width: 80px;
 	height: 80px;
-	border-radius: 40px;
+	border-radius: 40px !important;
 	background-size: contain;
 }
 
@@ -978,6 +978,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
