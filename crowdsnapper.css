@@ -799,8 +799,7 @@ sticky-navigation .active-tab a {
   border-top-right-radius: 0;
 }
 
-:is(image-gallery, .gallery) *,
-#featured-wrapper img
+:is(image-gallery, .gallery) *
 {
 	border-radius: 0;
 }
