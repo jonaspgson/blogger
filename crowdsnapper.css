@@ -773,7 +773,7 @@ sticky-navigation .active-tab a {
 /*------- Border Radius-justeringar --------*/
 
 .item-post .blog-entry-header, .widget-title {
-  margin-bottom: calc(var(--border-radius-offset);
+  margin-bottom: var(--border-radius-offset);
   padding-bottom: var(--border-radius-compensation);
 }
 
