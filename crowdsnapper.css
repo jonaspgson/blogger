@@ -11,12 +11,6 @@
 
 * { border-radius: var(--border-radius); }
 
-@media (max-width: 500px) {
-	.post-body * {
-		border-radius: 0;
-	}
-}
-
 /* Blogg-specifika overrides */
 #post-body { font-size: 18px; }
 .img-container {margin:0 !important;}
@@ -812,4 +806,10 @@ sticky-navigation .active-tab a {
 :is(image-gallery, .gallery)  {
 	gap: 1px;
   	background-color: #000;
+}
+
+@media (max-width: 500px) {
+	.post-body :is(img, image-caption) {
+		border-radius: 0;
+	}
 }
