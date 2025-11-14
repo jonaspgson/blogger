@@ -777,7 +777,7 @@ sticky-navigation .active-tab a {
   padding-bottom: var(--border-radius-compensation);
 }
 
-#breadcrumb, byline-title, .post-body .gear-info h3, footer *, .menu li {
+#breadcrumb, byline-title, .post-body .gear-info h3, footer, footer div, .main-navbar-menu ul li:first-child {
   border-radius: 0;
 }
 
