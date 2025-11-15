@@ -295,6 +295,16 @@ inline-heading, :is(h1,h2,h3,h4).inline {
  	margin-top: 1rem;
 }
 
+.post-body .gear-info sub {
+	display: block;
+	font-size: .8em;
+	line-height: 1;
+}
+  
+.post-body .gear-info li {
+   	color: #abc; 
+}
+
 @media (width < 650px) {
 	.gear-info .grid2 { display:block; }
 	.gear-info .grid2 > div { margin-bottom:2rem; }
