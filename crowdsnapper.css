@@ -254,6 +254,14 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	line-height: 1;
 }
 
+/* Subtext */
+.post-body sub {
+	display: block;
+	font-size: .8em;
+	line-height: 1;
+	margin-bottom: .8em;
+}
+
 /* GEAR INFO BOX */
 
 .post-body .gear-info {
@@ -293,12 +301,6 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 .post-body .gear-info .footer {
  	text-align: center;
  	margin-top: 1rem;
-}
-
-.post-body .gear-info sub {
-	display: block;
-	font-size: .8em;
-	line-height: 1;
 }
   
 .post-body .gear-info li {
