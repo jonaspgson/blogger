@@ -195,7 +195,13 @@ fancy-box, .fancy-box { display:block; background: linear-gradient(54deg, #def, 
 .post-body .social li { list-style: none; font-size: 4rem; display: inline-block; padding: 0 .6rem; transition: .3s; }
 .post-body .social li:hover { transform: scale(1.3); }
 .post-body .social li a { color: #000; }
-social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7); text-align: center; padding-bottom: 1rem; }
+social-tag, .social-tag { display:block; font-size: 1.5rem; color: rgba(0,0,0,.7); text-align: center; padding-bottom: 1rem; font-family: var(--body-font); }
+
+@media (width < 460px) {
+	.post-body .social li {
+		font-size: 10vw;
+	}
+}
 
 
 .post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6 {
@@ -981,6 +987,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
