@@ -98,6 +98,56 @@ function initBylines() {
 /* ---------------- INIT PUBLISH DATE ----------------- */
 
 function initPublishDate() {
+  const el = document.getElementById("pub-data");
+
+  // --- Helper: format ISO date → "27 Jan, 2025" ---
+  function formatDate(iso) {
+    if (!iso) return null;
+    const date = new Date(iso);
+    const parts = date.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).split(" ");
+    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+  }
+
+  // --- 1. Get Blogger's own published date ---
+  let bloggerPublished =
+    document.querySelector('meta[property="article:published_time"]')?.content ||
+    document.querySelector(".published")?.title ||
+    null;
+
+  // --- 2. Get Blogger's own modified date ---
+  let bloggerModified =
+    document.querySelector('meta[property="article:modified_time"]')?.content ||
+    document.querySelector(".updated")?.title ||
+    null;
+
+  // --- 3. Override published date if pub-data exists ---
+  let published = el?.dataset.published || bloggerPublished;
+  let updated = bloggerModified;
+
+  const publishedPretty = formatDate(published);
+  const updatedPretty = formatDate(updated);
+
+  // --- 4. Insert visual <pub-date> block ---
+  const bylines = document.querySelectorAll(".byline");
+  if (bylines.length > 0 && (publishedPretty || updatedPretty)) {
+    const lastByline = bylines[bylines.length - 1];
+    const infoBox = document.createElement("pub-date");
+
+    let html = "";
+    if (publishedPretty) html += `<div class="published-date">Published: ${publishedPretty}</div>`;
+    if (updatedPretty) html += `<div class="updated-date">Last Edit: ${updatedPretty}</div>`;
+
+    infoBox.innerHTML = html;
+    lastByline.insertAdjacentElement("afterend", infoBox);
+  }
+}
+
+/*
+function initPublishDate() {
 	const el = document.getElementById("pub-data");
 	if (!el) {
 		//console.warn("No pub-data found on this page ❌");
@@ -170,8 +220,7 @@ function initPublishDate() {
 	
 	document.body.appendChild(script);
 }
-
-
+*/
 
 
 /* ---------- INIT Accordion - requires additional CSS. --------------- */
