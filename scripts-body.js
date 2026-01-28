@@ -112,13 +112,11 @@ function initPublishDate() {
     return `${parts[0]} ${parts[1]}, ${parts[2]}`;
   }
 
-  // --- 1. Get Blogger's own published date ---
+  // --- 1. Blogger's published date (guaranteed in your template) ---
   let bloggerPublished =
-    document.querySelector('meta[property="article:published_time"]')?.content ||
-    document.querySelector(".published")?.title ||
-    null;
+    document.querySelector("time.published")?.getAttribute("datetime") || null;
 
-  // --- 2. Get Blogger's own modified date ---
+  // --- 2. Blogger's modified date ---
   let bloggerModified =
     document.querySelector('meta[property="article:modified_time"]')?.content ||
     document.querySelector(".updated")?.title ||
