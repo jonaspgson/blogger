@@ -141,11 +141,11 @@ byline-links a {
 pub-date {
 	margin: -3.5rem 0 0; /*compensate byline margin*/
 	display: block;
-	background-color: #aaa;
-	color: #fff;
+	background-color: #ddd;
+	color: #777;
 	padding: .3rem 1rem;
 	font-family: var(--body-font);
-	font-size: .9rem;
+	font-size: .85rem;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	border-top: .5rem solid #eee;
@@ -1013,6 +1013,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
