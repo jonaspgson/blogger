@@ -8,7 +8,29 @@ document.addEventListener("DOMContentLoaded", function () {
   initTagLabels();
 });
 
-/* ---------- 1. Split post titles at ":" ---------- */
+
+/* ---------- 1. Add tooltips to clamped titles ---------- */
+function initTooltips() {
+  function addTooltips() {
+    const selectors = [".item-title a", ".entry-title a"];
+    selectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(link => {
+        const fullText = link.textContent.trim();
+        if (fullText && !link.hasAttribute("title")) {
+          link.setAttribute("title", fullText);
+        }
+      });
+    });
+  }
+
+  addTooltips();
+
+  const observer = new MutationObserver(addTooltips);
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+
+/* ---------- 2. Split post titles at ":" ---------- */
 function initSplitHeadings() {
   function splitHeadings(container) {
     const entryTitles = container.querySelectorAll(".entry-title");
@@ -42,25 +64,7 @@ function initSplitHeadings() {
   observer.observe(document.body, { childList: true, subtree: true });
 }
 
-/* ---------- 2. Add tooltips to clamped titles ---------- */
-function initTooltips() {
-  function addTooltips() {
-    const selectors = [".item-title a", ".entry-title a"];
-    selectors.forEach(selector => {
-      document.querySelectorAll(selector).forEach(link => {
-        const fullText = link.textContent.trim();
-        if (fullText && !link.hasAttribute("title")) {
-          link.setAttribute("title", fullText);
-        }
-      });
-    });
-  }
 
-  addTooltips();
-
-  const observer = new MutationObserver(addTooltips);
-  observer.observe(document.body, { childList: true, subtree: true });
-}
 
 /* ---------- 3. Insert Google Ads in post content ---------- */
 function initAds() {
@@ -323,6 +327,7 @@ function initAutoRelatedPosts() {
 
 
 /* ---------- 5. Apply alt texts to image galleries ---------- */
+
 function initAltTextHandler() {
   window.applyAltTexts = function ({
     artist,
