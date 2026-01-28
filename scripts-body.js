@@ -107,15 +107,15 @@ function initPublishDate() {
   const published = el.dataset.published;
   const updated = el.dataset.updated;
 
-  // --- Helper: format ISO date → "27 January 2025" ---
+  // --- Helper: format ISO date → "27 Jan, 2025" ---
   function formatDate(iso) {
-    if (!iso) return null;
-    const date = new Date(iso);
-    return date.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
+	if (!iso) return null;
+	const date = new Date(iso);
+	return date.toLocaleDateString("en-GB", {
+	  day: "numeric",
+	  month: "short",
+	  year: "numeric"
+	}).replace(" ", " ").replace(" ", ", ");
   }
 
   const publishedPretty = formatDate(published);
