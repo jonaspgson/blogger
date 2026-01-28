@@ -98,74 +98,77 @@ function initBylines() {
 /* ---------------- INIT PUBLISH DATE ----------------- */
 
 function initPublishDate() {
-  const el = document.getElementById("pub-data");
-  if (!el) {
-    //console.warn("No pub-data found on this page ❌");
-    return;
-  }
+	const el = document.getElementById("pub-data");
+	if (!el) {
+		//console.warn("No pub-data found on this page ❌");
+		return;
+	}
+	
+	const published = el.dataset.published;
+	const updated = el.dataset.updated;
+	
+	// --- Helper: format ISO date → "27 Jan, 2025" ---
+	function formatDate(iso) {
+		if (!iso) return null;
+		const date = new Date(iso);
+		
+		const parts = date.toLocaleDateString("en-GB", {
+			day: "numeric",
+			month: "short",
+			year: "numeric"
+		}).split(" ");
+		// en-GB ger normalt: ["27", "Jan", "2025"]
+		
+		if (parts.length !== 3) return iso; // fallback om något oväntat händer
+		
+		return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+	}
+	
+	
+	const publishedPretty = formatDate(published);
+	const updatedPretty = formatDate(updated);
+	
+	// --- 1. Insert visual <pub-date> block after last .byline ---
+	const bylines = document.querySelectorAll(".byline");
+	if (bylines.length > 0 && (publishedPretty || updatedPretty)) {
+		const lastByline = bylines[bylines.length - 1];
+		const infoBox = document.createElement("pub-date");
+		let html = "";
+		if (publishedPretty) html += `<div class="published-date">Published: ${publishedPretty}</div>`;
+		if (updatedPretty) html += `<div class="updated-date">Last Edit: ${updatedPretty}</div>`;
+		infoBox.innerHTML = html;
+		lastByline.insertAdjacentElement("afterend", infoBox);
+	}
 
-  const published = el.dataset.published;
-  const updated = el.dataset.updated;
-
-  // --- Helper: format ISO date → "27 Jan, 2025" ---
-  function formatDate(iso) {
-	if (!iso) return null;
-	const date = new Date(iso);
-	return date.toLocaleDateString("en-GB", {
-	  day: "numeric",
-	  month: "short",
-	  year: "numeric"
-	}).replace(" ", " ").replace(" ", ", ");
-  }
-
-  const publishedPretty = formatDate(published);
-  const updatedPretty = formatDate(updated);
-
-  // --- 1. Insert visual <pub-date> block after last .byline ---
-  const bylines = document.querySelectorAll(".byline");
-  if (bylines.length > 0 && (publishedPretty || updatedPretty)) {
-    const lastByline = bylines[bylines.length - 1];
-
-    const infoBox = document.createElement("pub-date");
-
-    let html = "";
-    if (publishedPretty) html += `<div class="published-date">Published: ${publishedPretty}</div>`;
-    if (updatedPretty) html += `<div class="updated-date">Last Edit: ${updatedPretty}</div>`;
-
-    infoBox.innerHTML = html;
-
-    lastByline.insertAdjacentElement("afterend", infoBox);
-  }
-
-  // --- 2. Generate Schema.org JSON-LD metadata ---
-  const headline =
-    document.querySelector("h3.post-title, h1.post-title")?.innerText ||
-    document.title;
-
-  const url = window.location.href;
-
-  const authorEl = document.querySelector(".post-author, .fn, .author");
-  const author = authorEl ? authorEl.innerText.trim() : "Unknown";
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": headline,
-    "url": url,
-    "author": {
-      "@type": "Person",
-      "name": author
-    }
-  };
-
-  if (published) schema.datePublished = published;
-  if (updated) schema.dateModified = updated;
-
-  const script = document.createElement("script");
-  script.type = "application/ld+json";
-  script.textContent = JSON.stringify(schema, null, 2);
-
-  document.body.appendChild(script);
+	// --- 2. Generate Schema.org JSON-LD metadata ---
+	const headline =
+		document.querySelector("h3.post-title, h1.post-title")?.innerText ||
+		document.title;
+	
+	const url = window.location.href;
+	
+	const authorEl = document.querySelector(".post-author, .fn, .author");
+	const author = authorEl ? authorEl.innerText.trim() : "Unknown";
+	
+	const schema = {
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": headline,
+		"url": url,
+		"author": {
+			"@type": "Person",
+			"name": author
+		}
+	};
+	
+	if (published) schema.datePublished = published;
+	if (updated) schema.dateModified = updated;
+	
+	const script = document.createElement("script");
+	script.type = "application/ld+json";
+	script.textContent = JSON.stringify(schema, null, 2);
+	
+	document.body.appendChild(script);
 }
 
 
