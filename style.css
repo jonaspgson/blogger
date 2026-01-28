@@ -1,3 +1,8 @@
+:root {
+	--byline-bg: #eee;
+	--byline-margin-bottom: 3rem;
+}
+
 h1,h2,h3,h4,h5,h6 {
 	text-wrap: balance;
 	hyphens: auto;
@@ -87,11 +92,11 @@ image-container img:hover {
 
 .byline {
 	display: flex;
-	background: #eee;
+	background: var(--byline-bg, #eee);
 	align-items: center;
 	font-family: var(--body-font);
 	padding: 1rem;
-	margin-bottom: 3rem;
+	margin-bottom: var(--byline-bg, 3rem);
 }
 
 byline-image, byline-title, byline-name, byline-links { display: block; }
@@ -130,6 +135,9 @@ byline-links a {
 	display: inline-block;
 	margin-right: .35em;
 }
+
+
+
 
 /* INGRESS */
 .preamble {
@@ -987,6 +995,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
