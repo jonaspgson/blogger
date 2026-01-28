@@ -100,7 +100,7 @@ function initBylines() {
 function initPublishDate() {
   const el = document.getElementById("pub-data");
 
-  // --- Helper: format ISO date → "27 Jan, 2025" ---
+  // Format ISO → "27 Jan, 2025"
   function formatDate(iso) {
     if (!iso) return null;
     const date = new Date(iso);
@@ -112,24 +112,39 @@ function initPublishDate() {
     return `${parts[0]} ${parts[1]}, ${parts[2]}`;
   }
 
-  // --- 1. Blogger's published date (guaranteed in your template) ---
-  let bloggerPublished =
-    document.querySelector("time.published")?.getAttribute("datetime") || null;
+  // --- Hämta Bloggers datum direkt från JSON-LD ---
+  function getDatesFromJsonLd() {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent);
 
-  // --- 2. Blogger's modified date ---
-  let bloggerModified =
-    document.querySelector('meta[property="article:modified_time"]')?.content ||
-    document.querySelector(".updated")?.title ||
-    null;
+        // Vi vill bara ha NewsArticle (Blogger desktop)
+        if (data["@type"] === "NewsArticle") {
+          return {
+            published: data.datePublished || null,
+            modified: data.dateModified || null
+          };
+        }
+      } catch (e) {
+        // Ignorera script som inte är ren JSON
+      }
+    }
+    return { published: null, modified: null };
+  }
 
-  // --- 3. Override published date if pub-data exists ---
-  let published = el?.dataset.published || bloggerPublished;
-  let updated = bloggerModified;
+  const bloggerDates = getDatesFromJsonLd();
+
+  // --- Publiceringsdatum ---
+  const published = el?.dataset.published || bloggerDates.published;
+
+  // --- Uppdateringsdatum ---
+  const updated = bloggerDates.modified;
 
   const publishedPretty = formatDate(published);
   const updatedPretty = formatDate(updated);
 
-  // --- 4. Insert visual <pub-date> block ---
+  // --- Visa <pub-date> ---
   const bylines = document.querySelectorAll(".byline");
   if (bylines.length > 0 && (publishedPretty || updatedPretty)) {
     const lastByline = bylines[bylines.length - 1];
