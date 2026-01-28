@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   initTooltips();
   initSplitHeadings();
+  initPublishDate();
   initAds();
   initRelatedPosts();
   initAutoRelatedPosts();
@@ -65,8 +66,34 @@ function initSplitHeadings() {
 }
 
 
+/* ---------- 3. Insert publish/edit date after byline ------------ */
 
-/* ---------- 3. Insert Google Ads in post content ---------- */
+function initPublishDate() {
+  const el = document.getElementById("pub-data");
+  if (!el) return;
+
+  const published = el.dataset.published;
+  const updated = el.dataset.updated;
+
+  const bylines = document.querySelectorAll(".byline");
+  if (bylines.length === 0) return;
+
+  const lastByline = bylines[bylines.length - 1];
+
+  const infoBox = document.createElement("pub-date");
+
+  let html = "";
+  if (published) html += `<div class="published-date">Publicerad: ${published}</div>`;
+  if (updated) html += `<div class="updated-date">Senast ändrad: ${updated}</div>`;
+
+  infoBox.innerHTML = html;
+
+  lastByline.insertAdjacentElement("afterend", infoBox);
+}
+
+
+/* ---------- 4. Insert Google Ads in post content ---------- */
+
 function initAds() {
   const postBody = document.querySelector("#post-body");
   if (!postBody) return;
@@ -93,7 +120,7 @@ function initAds() {
 
 
 
-/* ---------- 4A. Show related posts for given tags (manual version) ---------- 
+/* ---------- 5A. Show related posts for given tags (manual version) ---------- 
  * Use: <div class="related-content" 
  *           data-tags="tag 1, tag 2, etc" 
  *           data-caption="Optional heading"
@@ -234,7 +261,7 @@ function initRelatedPosts() {
 }
 
 
-/* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
+/* ---------- 5B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
   const MAX_RELATED_POSTS = 6;
   const MAX_TAGS = 3;
@@ -326,7 +353,7 @@ function initAutoRelatedPosts() {
 }
 
 
-/* ---------- 5. Apply alt texts to image galleries ---------- */
+/* ---------- 6. Apply alt texts to image galleries ---------- */
 
 function initAltTextHandler() {
   window.applyAltTexts = function ({
@@ -370,7 +397,7 @@ function initAltTextHandler() {
 }
 
 
-/* -------------------- 6. Adjust custom post tags -------------------------- */
+/* -------------------- 7. Adjust custom post tags -------------------------- */
 
 function initTagLabels() {
   document.querySelectorAll('.entry-tags a.label-link').forEach(link => {
