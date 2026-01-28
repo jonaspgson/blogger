@@ -67,7 +67,7 @@ function initSplitHeadings() {
 
 
 /* ---------- 3. Insert publish/edit date after byline and sets the Blogger meta accordingly ------------ */
-
+/*
 function initPublishDate() {
   const el = document.getElementById("pub-data");
   if (!el) {
@@ -124,7 +124,7 @@ function initPublishDate() {
 
   document.body.appendChild(script);
 }
-
+*/
 
 /* ---------- 4. Insert Google Ads in post content ---------- */
 
