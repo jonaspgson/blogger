@@ -85,25 +85,6 @@ function initAds() {
       (adsbygoogle = window.adsbygoogle || []).push({});
     }
   });
-
-  // Lägg till annons efter sista .byline
-  /*
-  const bylines = postBody.querySelectorAll(".byline");
-  if (bylines.length > 0) {
-    const lastByline = bylines[bylines.length - 1];
-    const ad = document.createElement("ins");
-    ad.className = "adsbygoogle";
-    ad.style.display = "block";
-    ad.style.textAlign = "center";
-    ad.setAttribute("data-ad-layout", "in-article");
-    ad.setAttribute("data-ad-format", "fluid");
-    ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
-    ad.setAttribute("data-ad-slot", "7820669675");
-
-    lastByline.parentNode.insertBefore(ad, lastByline.nextSibling);
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  }
-  */
 }
 
 
@@ -248,100 +229,6 @@ function initRelatedPosts() {
   });
 }
 
-/*
-function initRelatedPosts() {
-  const containers = document.querySelectorAll(".related-content");
-  const currentUrl = window.location.href;
-  const relatedQueue = [];
-
-  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
-  const DEFAULT_MAX_POSTS = 6;
-  const DEFAULT_SHOW_DATE = true;
-  const DEFAULT_CAPTION = "Also on CrowdSnapper";
-
-  window.renderRelatedPosts = function (data) {
-    const task = relatedQueue.shift();
-    if (!task) return;
-
-    const { label, sectionId, seenUrls, showDate } = task;
-    const entries = data.feed?.entry || [];
-    const inner = document.getElementById(`${sectionId}-inner`);
-    let count = 0;
-
-    entries.forEach(entry => {
-      const postUrl = entry.link.find(l => l.rel === "alternate")?.href;
-      if (!postUrl || postUrl === currentUrl || seenUrls.has(postUrl)) return;
-
-      seenUrls.add(postUrl);
-      const title = entry.title?.$t || "Untitled";
-      const content = entry.content?.$t || "";
-      const published = entry.published?.$t || "";
-      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
-
-      const dateStr = showDate && published
-        ? `<p class="post-date">${new Date(published).toLocaleDateString()}</p>`
-        : "";
-
-      const div = document.createElement("div");
-      div.className = "blurb";
-      div.innerHTML = `
-        <a href="${postUrl}">
-          <img src="${imgSrc}" alt="${title}" />
-          <div class="blurb-text">
-            <h3 class="entry-title">${title}</h3>
-            ${dateStr}
-          </div>
-        </a>
-      `;
-      inner.appendChild(div);
-      count++;
-    });
-
-    if (count === 0) {
-      document.getElementById(sectionId)?.remove();
-    }
-  };
-
-  containers.forEach((container, containerIndex) => {
-    const rawTags = container.getAttribute("data-tags");
-    if (!rawTags) return; // 🚫 Hoppa över om inga taggar finns
-
-    const labels = rawTags.split(",").map(l => l.trim());
-
-    const rawCaption = container.getAttribute("data-caption");
-    const caption = rawCaption === null ? DEFAULT_CAPTION : rawCaption;
-    const showCaption = caption.trim() !== "";
-
-    const rawShowDate = container.getAttribute("data-showdate");
-    const showDate = rawShowDate === null
-      ? DEFAULT_SHOW_DATE
-      : rawShowDate.toLowerCase() === "yes";
-
-    const maxPostsAttr = container.getAttribute("data-maxposts");
-    const maxPosts = parseInt(maxPostsAttr, 10);
-    const maxResults = isNaN(maxPosts) ? DEFAULT_MAX_POSTS : maxPosts;
-
-    if (showCaption) {
-      container.innerHTML = `<h2 class="caption">${caption}</h2>`;
-    }
-
-    const sectionId = `related-${containerIndex}`;
-    const section = document.createElement("div");
-    section.id = sectionId;
-    section.innerHTML = `<div class="blurb-container" id="${sectionId}-inner"></div>`;
-    container.appendChild(section);
-
-    labels.forEach(label => {
-      relatedQueue.push({ label, sectionId, currentUrl, seenUrls: new Set(), showDate });
-
-      const script = document.createElement("script");
-      script.src = `/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json-in-script&max-results=${maxResults}&callback=renderRelatedPosts`;
-      document.body.appendChild(script);
-    });
-  });
-}
-*/
 
 /* ---------- 4B. Show related posts for given tags (automatic version) ---------- */
 function initAutoRelatedPosts() {
@@ -435,95 +322,6 @@ function initAutoRelatedPosts() {
 }
 
 
-/*
-function initAutoRelatedPosts() {
-  const MAX_RELATED_POSTS = 6;
-  const MAX_TAGS = 3;
-  const PLACEHOLDER_IMAGE = "https://via.placeholder.com/500x300";
-
-  if (document.querySelector(".related-content")) return;
-
-  const tagElements = document.querySelectorAll('.entry-tags a.label-link');
-  const tags = Array.from(tagElements).map(el => el.textContent.trim()).slice(0, MAX_TAGS);
-
-  const currentUrl = window.location.href;
-  const relatedCandidates = [];
-  const seenUrls = new Set();
-  let pendingFeeds = tags.length;
-
-  tags.forEach((tag, index) => {
-    const callbackName = `handleAutoRelatedPosts_${index}`;
-    const feedUrl = `/feeds/posts/default/-/${encodeURIComponent(tag)}?alt=json-in-script&max-results=15`;
-    const script = document.createElement('script');
-    script.src = `${feedUrl}&callback=${callbackName}`;
-    document.body.appendChild(script);
-
-    window[callbackName] = function(json) {
-      if (json.feed?.entry) {
-        json.feed.entry.forEach(entry => {
-          const link = entry.link.find(l => l.rel === 'alternate')?.href;
-          if (!link || link === currentUrl || seenUrls.has(link)) return;
-
-          seenUrls.add(link);
-
-          relatedCandidates.push({
-            title: entry.title?.$t || "Untitled",
-            link,
-            content: entry.content?.$t || "",
-            published: entry.published?.$t || ""
-          });
-        });
-      }
-
-      pendingFeeds--;
-      if (pendingFeeds === 0) renderRelatedPosts();
-    };
-  });
-
-  function renderRelatedPosts() {
-    const container = document.getElementById("related-content-placeholder");
-    if (!container) return;
-
-    if (relatedCandidates.length === 0) {
-      container.innerHTML = `<p class="caption">Inga relaterade inlägg hittades.</p>`;
-      return;
-    }
-
-    relatedCandidates.sort((a, b) => new Date(b.published) - new Date(a.published));
-
-    const inner = document.createElement("div");
-    inner.className = "blurb-container";
-
-    relatedCandidates.slice(0, MAX_RELATED_POSTS).forEach(post => {
-      const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
-      const imgSrc = imgMatch ? imgMatch[1] : PLACEHOLDER_IMAGE;
-
-      const dateStr = post.published
-        ? `<p class="post-date">${new Date(post.published).toLocaleDateString()}</p>`
-        : "";
-
-      const div = document.createElement("div");
-      div.className = "blurb";
-      div.innerHTML = `
-        <a href="${post.link}">
-          <img src="${imgSrc}" alt="${post.title}" />
-          <div class="blurb-text">
-            <h3 class="entry-title">${post.title}</h3>
-            ${dateStr}
-          </div>
-        </a>
-      `;
-
-      inner.appendChild(div);
-    });
-
-    container.innerHTML = `<h2 class="caption">Also on CrowdSnapper</h2>`;
-    container.appendChild(inner);
-  }
-}
-*/
-
-
 /* ---------- 5. Apply alt texts to image galleries ---------- */
 function initAltTextHandler() {
   window.applyAltTexts = function ({
@@ -565,6 +363,7 @@ function initAltTextHandler() {
     console.log("Hittade", imgs.length, "bilder i <image-gallery>");
   });
 }
+
 
 /* -------------------- 6. Adjust custom post tags -------------------------- */
 
