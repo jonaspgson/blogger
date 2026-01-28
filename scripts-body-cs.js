@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   initTooltips();
   initSplitHeadings();
-  initPublishDate();
+  //initPublishDate();
   initAds();
   initRelatedPosts();
   initAutoRelatedPosts();
