@@ -66,29 +66,63 @@ function initSplitHeadings() {
 }
 
 
-/* ---------- 3. Insert publish/edit date after byline ------------ */
+/* ---------- 3. Insert publish/edit date after byline and sets the Blogger meta accordingly ------------ */
 
 function initPublishDate() {
   const el = document.getElementById("pub-data");
-  if (!el) return;
+  if (!el) {
+    //console.warn("No pub-data found on this page ❌");
+    return;
+  }
 
   const published = el.dataset.published;
   const updated = el.dataset.updated;
 
+  // --- 1. Insert visual <pub-date> block after last .byline ---
   const bylines = document.querySelectorAll(".byline");
-  if (bylines.length === 0) return;
+  if (bylines.length > 0 && (published || updated)) {
+    const lastByline = bylines[bylines.length - 1];
 
-  const lastByline = bylines[bylines.length - 1];
+    const infoBox = document.createElement("pub-date");
 
-  const infoBox = document.createElement("pub-date");
+    let html = "";
+    if (published) html += `<div class="published-date">Published: ${published}</div>`;
+    if (updated) html += `<div class="updated-date">Last Edit: ${updated}</div>`;
 
-  let html = "";
-  if (published) html += `<div class="published-date">Published: ${published}</div>`;
-  if (updated) html += `<div class="updated-date">Last Edit: ${updated}</div>`;
+    infoBox.innerHTML = html;
 
-  infoBox.innerHTML = html;
+    lastByline.insertAdjacentElement("afterend", infoBox);
+  }
 
-  lastByline.insertAdjacentElement("afterend", infoBox);
+  // --- 2. Generate Schema.org JSON-LD metadata ---
+  const headline =
+    document.querySelector("h3.post-title, h1.post-title")?.innerText ||
+    document.title;
+
+  const url = window.location.href;
+
+  const authorEl = document.querySelector(".post-author, .fn, .author");
+  const author = authorEl ? authorEl.innerText.trim() : "Unknown";
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": headline,
+    "url": url,
+    "author": {
+      "@type": "Person",
+      "name": author
+    }
+  };
+
+  if (published) schema.datePublished = published;
+  if (updated) schema.dateModified = updated;
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema, null, 2);
+
+  document.body.appendChild(script);
 }
 
 
