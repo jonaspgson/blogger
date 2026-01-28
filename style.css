@@ -139,7 +139,7 @@ byline-links a {
 
 /* Publicerings-/ändringsdatum (hämtas från manuell meta i inlägg) */
 pub-date {
-	margin: -3.5rem 0 0; /*compensate byline margin*/
+	margin: -3.5rem 0 2.5rem; /*compensate byline margin*/
 	display: block;
 	background-color: #ddd;
 	color: #777;
@@ -1013,6 +1013,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
