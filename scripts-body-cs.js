@@ -83,8 +83,8 @@ function initPublishDate() {
   const infoBox = document.createElement("pub-date");
 
   let html = "";
-  if (published) html += `<div class="published-date">Publicerad: ${published}</div>`;
-  if (updated) html += `<div class="updated-date">Senast ändrad: ${updated}</div>`;
+  if (published) html += `<div class="published-date">Published: ${published}</div>`;
+  if (updated) html += `<div class="updated-date">Last Edit: ${updated}</div>`;
 
   infoBox.innerHTML = html;
 
