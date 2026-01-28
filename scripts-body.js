@@ -111,7 +111,7 @@ function initPublishDate() {
   function formatDate(iso) {
     if (!iso) return null;
     const date = new Date(iso);
-    return date.toLocaleDateString("en-US", {
+    return date.toLocaleDateString("en-GB", {
       day: "numeric",
       month: "long",
       year: "numeric"
