@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   initTooltips();
   initSplitHeadings();
-  //initPublishDate();
+  initEventInfo();
   initAds();
   initRelatedPosts();
   initAutoRelatedPosts();
@@ -66,65 +66,82 @@ function initSplitHeadings() {
 }
 
 
-/* ---------- 3. Insert publish/edit date after byline and sets the Blogger meta accordingly ------------ */
-/*
-function initPublishDate() {
-  const el = document.getElementById("pub-data");
-  if (!el) {
-    //console.warn("No pub-data found on this page ❌");
-    return;
+/* ---------- 3. Inserts an event info box below the byline, including date of last post update ------------ */
+
+function initEventInfo() {
+  // Format ISO → "7 Nov, 2025"
+  function formatDate(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    const parts = d.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).split(" ");
+    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
   }
 
-  const published = el.dataset.published;
-  const updated = el.dataset.updated;
-
-  // --- 1. Insert visual <pub-date> block after last .byline ---
-  const bylines = document.querySelectorAll(".byline");
-  if (bylines.length > 0 && (published || updated)) {
-    const lastByline = bylines[bylines.length - 1];
-
-    const infoBox = document.createElement("pub-date");
-
-    let html = "";
-    if (published) html += `<div class="published-date">Published: ${published}</div>`;
-    if (updated) html += `<div class="updated-date">Last Edit: ${updated}</div>`;
-
-    infoBox.innerHTML = html;
-
-    lastByline.insertAdjacentElement("afterend", infoBox);
+  // Format ISO → "20:00"
+  function formatTime(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    return d.toLocaleTimeString("sv-SE", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
   }
 
-  // --- 2. Generate Schema.org JSON-LD metadata ---
-  const headline =
-    document.querySelector("h3.post-title, h1.post-title")?.innerText ||
-    document.title;
+  // --- 1. Event date & time from Blogger ---
+  const publishedEl = document.querySelector("time.published");
+  const eventISO = publishedEl?.getAttribute("datetime") || null;
+  const eventDate = formatDate(eventISO);
+  const eventTime = formatTime(eventISO);
 
-  const url = window.location.href;
+  // --- 2. Venue & city from alttext-data ---
+  const alt = document.getElementById("alttext-data");
+  const venue = alt?.dataset.venue || null;
+  const city = alt?.dataset.city || null;
 
-  const authorEl = document.querySelector(".post-author, .fn, .author");
-  const author = authorEl ? authorEl.innerText.trim() : "Unknown";
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": headline,
-    "url": url,
-    "author": {
-      "@type": "Person",
-      "name": author
+  // --- 3. Updated date from JSON-LD ---
+  function getModifiedFromJsonLd() {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent);
+        if (data["@type"] === "NewsArticle" && data.dateModified) {
+          return data.dateModified;
+        }
+      } catch (e) {}
     }
-  };
+    return null;
+  }
 
-  if (published) schema.datePublished = published;
-  if (updated) schema.dateModified = updated;
+  const updatedISO = getModifiedFromJsonLd();
+  const updatedDate = formatDate(updatedISO);
 
-  const script = document.createElement("script");
-  script.type = "application/ld+json";
-  script.textContent = JSON.stringify(schema, null, 2);
+  // --- 4. Build the <event-info> box ---
+  const bylines = document.querySelectorAll(".byline");
+  if (bylines.length === 0) return;
 
-  document.body.appendChild(script);
+  const lastByline = bylines[bylines.length - 1];
+  const box = document.createElement("event-info");
+
+  let html = "";
+
+  // Event line
+  if (eventDate && eventTime && venue && city) {
+    html += `<div class="event-line">Event: ${eventDate} 🕒 ${eventTime} at ${venue}, ${city}</div>`;
+  }
+
+  // Updated line
+  if (updatedDate) {
+    html += `<div class="updated-line">Updated: ${updatedDate}</div>`;
+  }
+
+  box.innerHTML = html;
+  lastByline.insertAdjacentElement("afterend", box);
 }
-*/
+
 
 /* ---------- 4. Insert Google Ads in post content ---------- */
 
