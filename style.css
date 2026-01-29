@@ -138,7 +138,7 @@ byline-links a {
 
 
 /* Publicerings-/ändringsdatum (hämtas från manuell meta i inlägg) */
-pub-date {
+pub-date, event-info {
 	margin: -3.5rem 0 2.5rem; /*compensate byline margin*/
 	display: block;
 	background-color: #ddd;
@@ -151,7 +151,7 @@ pub-date {
 	border-top: .5rem solid #eee;
 	text-align: center;
 }
-pub-date div {
+pub-date div, event-info div {
 	display: inline-block;
 	margin: 0 .6rem;
 }
@@ -1013,6 +1013,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
