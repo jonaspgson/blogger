@@ -138,8 +138,46 @@ byline-links a {
 
 
 /* Publicerings-/ändringsdatum (hämtas från manuell meta i inlägg) */
+
 pub-date, event-info {
-	margin: -3.5rem 0 2.5rem; /*compensate byline margin*/
+  margin: -3.5rem 0 2.5rem;
+  display: block;
+  background-color: #ddd;
+  color: #777;
+  padding: .3rem 1rem;
+  font-family: var(--body-font);
+  font-size: .85rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: .5rem solid #eee;
+  text-align: center; /* fallback for small screens */
+}
+
+/* Raderna */
+pub-date div, event-info div {
+  display: block; /* ändras i media query */
+  margin: .2rem 0;
+  line-height: 1.3;
+}
+
+/* --- Större skärmar: lägg raderna på samma rad --- */
+@media (min-width: 700px) {
+  pub-date, event-info {
+    text-align: left; /* låt flex styra layouten */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  pub-date div, event-info div {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+/*
+pub-date, event-info {
+	margin: -3.5rem 0 2.5rem;
 	display: block;
 	background-color: #ddd;
 	color: #777;
@@ -154,8 +192,9 @@ pub-date, event-info {
 pub-date div, event-info div {
 	display: inline-block;
 	margin: 0 .6rem;
+	line-height: 1.3;
 }
-
+*/
 
 /* INGRESS */
 .preamble {
@@ -1013,6 +1052,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
