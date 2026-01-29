@@ -69,6 +69,107 @@ function initSplitHeadings() {
 /* ---------- 3. Inserts an event info box below the byline, including date of last post update ------------ */
 
 function initEventInfo() {
+  // Format ISO → "5 Feb, 2025"
+  function formatDate(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    const parts = d.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).split(" ");
+    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+  }
+
+  // Format ISO → "18:45"
+  function formatTime(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    return d.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+  }
+
+  // --- 1. Event date & time from Blogger ---
+  const publishedEl = document.querySelector("time.published");
+  const eventISO = publishedEl?.getAttribute("datetime") || null;
+  const eventDate = formatDate(eventISO);
+  const eventTime = formatTime(eventISO);
+
+  // --- 2. Metadata from event-data or alttext-data ---
+  const meta =
+    document.getElementById("event-data") ||
+    document.getElementById("alttext-data");
+
+  let venue = null;
+  let city = null;
+  let duration = null;
+
+  if (meta) {
+    venue = meta.dataset.venue || null;
+    city = meta.dataset.city || null;
+    duration = meta.dataset.duration || null;
+  }
+
+  // --- 3. Updated date from JSON-LD ---
+  function getModifiedFromJsonLd() {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent);
+        if (data["@type"] === "NewsArticle" && data.dateModified) {
+          return data.dateModified;
+        }
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  const updatedISO = getModifiedFromJsonLd();
+  const updatedDate = formatDate(updatedISO);
+
+  // --- 4. Build the <event-info> box ---
+  const bylines = document.querySelectorAll(".byline");
+  if (bylines.length === 0) return;
+
+  const lastByline = bylines[bylines.length - 1];
+  const box = document.createElement("event-info");
+
+  let html = "";
+
+  // Date/Time
+  if (eventDate && eventTime) {
+    html += `<div class="time-line"><label-s>Date/Time:</label-s>${eventDate} 🕒 ${eventTime}</div>`;
+  }
+
+  // Venue
+  if (venue) {
+    html += `<div class="venue-line"><label-s>Venue:</label-s>${venue}</div>`;
+  }
+
+  // City
+  if (city) {
+    html += `<div class="city-line"><label-s>City:</label-s>${city}</div>`;
+  }
+
+  // Duration
+  if (duration) {
+    html += `<div class="duration-line"><label-s>Duration:</label-s>${duration}</div>`;
+  }
+
+  // Updated
+  if (updatedDate) {
+    html += `<div class="updated-line"><label-s>Updated:</label-s>${updatedDate}</div>`;
+  }
+
+  box.innerHTML = html;
+  lastByline.insertAdjacentElement("afterend", box);
+}
+
+/*
+function initEventInfo() {
   // Format ISO → "7 Nov, 2025"
   function formatDate(iso) {
     if (!iso) return null;
@@ -165,7 +266,7 @@ function initEventInfo() {
   box.innerHTML = html;
   lastByline.insertAdjacentElement("afterend", box);
 }
-
+*/
 
 
 /* ---------- 4. Insert Google Ads in post content ---------- */
