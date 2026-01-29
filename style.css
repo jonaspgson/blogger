@@ -137,51 +137,53 @@ byline-links a {
 }
 
 
-/* Publicerings-/ändringsdatum (hämtas från manuell meta i inlägg) */
+/* EVENT INFO BOX (CS) */
 
-pub-date, event-info {
+event-info {
   margin: -3.5rem 0 2.5rem;
-  display: block;
-  background-color: #ddd;
-  color: #777;
-  padding: .3rem 1rem;
+  background-color: #f5f5f5;
+  color: #555;
+  padding: 1rem 1.5rem;
   font-family: var(--body-font);
-  font-size: .85rem;
+  font-size: 0.9rem;
+  border-top: 0.5rem solid #e0e0e0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-top: .5rem solid #eee;
-  text-align: center; /* fallback for small screens */
+  line-height: 1.6;
+  text-align: left;
 }
 
-/* Raderna */
-pub-date div, event-info div {
-  display: block; /* ändras i media query */
-  margin: .5rem 0;
-  line-height: 1.3;
+/* Mobil: staplade rader */
+event-info div {
+  display: block;
+  margin: 0.6rem 0;
 }
 
-:is(pub-date, event-info) div.updated-line {
-	font-style: italic;
+/* Etiketter */
+label-s {
+  display: block;
+  font-size: 0.7rem;
+  margin-bottom: 0.1rem;
+  color: #666;
 }
 
-event-info label-s {
-	display: block;
-	font-size: .7rem;
-	/*font-style: italic;*/
-	margin-bottom: .1rem;
-}
-
-/* --- Större skärmar: lägg raderna på samma rad --- */
+/* Desktop: vänsterställda fält + updated till höger */
 @media (min-width: 700px) {
-  pub-date, event-info {
-    text-align: left; /* låt flex styra layouten */
+  event-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: flex-start;
   }
 
-  pub-date div, event-info div {
-    display: inline-block;
+  event-info div {
+    margin: 0;
+  }
+
+  /* Updated-raden trycks till höger */
+  .updated-line {
+    margin-left: auto;
+    text-align: right;
   }
 }
 
@@ -1043,6 +1045,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
