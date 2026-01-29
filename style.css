@@ -151,6 +151,9 @@ event-info {
   border-top-right-radius: 0;
   line-height: 1.6;
   text-align: left;
+
+  /* Mobil: 1 kolumn */
+  display: block;
 }
 
 /* Mobil: staplade rader */
@@ -165,6 +168,27 @@ label-s {
   font-size: 0.7rem;
   margin-bottom: 0.1rem;
   color: #666;
+}
+
+/* Mellanskärmar: två kolumner med grid */
+@media (min-width: 480px) and (max-width: 699px) {
+  event-info {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem 2rem; /* rad/kolumn-gap */
+    align-items: start;
+  }
+
+  event-info div {
+    margin: 0; /* grid hanterar spacing */
+  }
+
+  /* Updated alltid längst till höger */
+  .updated-line {
+    grid-column: 2;
+    justify-self: end;
+    text-align: right;
+  }
 }
 
 /* Desktop: vänsterställda fält + updated till höger */
@@ -1045,6 +1069,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
