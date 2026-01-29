@@ -166,80 +166,6 @@ function initEventInfo() {
   lastByline.insertAdjacentElement("afterend", box);
 }
 
-/*
-function initEventInfo() {
-  // Format ISO → "7 Nov, 2025"
-  function formatDate(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    const parts = d.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    }).split(" ");
-    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
-  }
-
-  // Format ISO → "20:00"
-  function formatTime(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    return d.toLocaleTimeString("sv-SE", {
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-  }
-
-  // --- 1. Event date & time from Blogger ---
-  const publishedEl = document.querySelector("time.published");
-  const eventISO = publishedEl?.getAttribute("datetime") || null;
-  const eventDate = formatDate(eventISO);
-  const eventTime = formatTime(eventISO);
-
-  // --- 2. Venue (full string) from alttext-data ---
-  const alt = document.getElementById("alttext-data");
-  const venueFull = alt?.dataset.venue || null;
-
-  // --- 3. Updated date from JSON-LD ---
-  function getModifiedFromJsonLd() {
-    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-    for (const script of scripts) {
-      try {
-        const data = JSON.parse(script.textContent);
-        if (data["@type"] === "NewsArticle" && data.dateModified) {
-          return data.dateModified;
-        }
-      } catch (e) {}
-    }
-    return null;
-  }
-
-  const updatedISO = getModifiedFromJsonLd();
-  const updatedDate = formatDate(updatedISO);
-
-  // --- 4. Build the <event-info> box ---
-  const bylines = document.querySelectorAll(".byline");
-  if (bylines.length === 0) return;
-
-  const lastByline = bylines[bylines.length - 1];
-  const box = document.createElement("event-info");
-
-  let html = "";
-
-  // Event line
-  if (eventDate && eventTime && venueFull) {
-    html += `<div class="event-line">Event: ${eventDate} 🕒 ${eventTime} at ${venueFull}</div>`;
-  }
-
-  // Updated line
-  if (updatedDate) {
-    html += `<div class="updated-line">Updated: ${updatedDate}</div>`;
-  }
-
-  box.innerHTML = html;
-  lastByline.insertAdjacentElement("afterend", box);
-}
-*/
 
 
 /* ---------- 4. Insert Google Ads in post content ---------- */
@@ -503,8 +429,73 @@ function initAutoRelatedPosts() {
 }
 
 
-/* ---------- 6. Apply alt texts to image galleries ---------- */
+/* ---------- 6. Applies alt texts to image galleries ---------- */
 
+function initAltTextHandler() {
+  window.applyAltTexts = function ({
+    artist,
+    venue,
+    year,
+    credit = "Jonas Gustafsson/CrowdSnapper",
+    selector = "image-gallery img"
+  }) {
+    const images = document.querySelectorAll(selector);
+    images.forEach((img, index) => {
+      img.alt = `${artist} live at ${venue} ${year} – Photo ${index + 1} by ${credit}`;
+      img.title = `Photo ${index + 1} of ${artist} at ${venue}, ${year} – Click to view`;
+    });
+  };
+
+  window.addEventListener("load", function () {
+    // --- 1. Hitta metadata (nytt ID först, gammalt som fallback) ---
+    const el =
+      document.getElementById("event-data") ||
+      document.getElementById("alttext-data");
+
+    if (!el) {
+      console.warn("Ingen event-data eller alttext-data hittades på sidan ❌");
+      return;
+    }
+
+    // --- 2. Hämta artist ---
+    const artist = el.dataset.artist || null;
+
+    // --- 3. Hämta venue (stöd för både gammalt och nytt format) ---
+    let venue = null;
+
+    if (el.dataset.venue && el.dataset.city) {
+      // Ny modell: separata fält
+      venue = `${el.dataset.venue}, ${el.dataset.city}`;
+    } else if (el.dataset.venue) {
+      // Gammal modell: venue + city i samma sträng
+      venue = el.dataset.venue;
+    }
+
+    // --- 4. Hämta år ---
+    const year = el.dataset.year || null;
+
+    const data = { artist, venue, year };
+
+    console.log("Hittade data för alttexter:", data);
+
+    // --- 5. Kör applyAltTexts om allt nödvändigt finns ---
+    if (!artist || !venue || !year) {
+      console.warn("Alttext-data saknar nödvändiga fält ❌", data);
+      return;
+    }
+
+    if (typeof applyAltTexts === "function") {
+      applyAltTexts(data);
+    } else {
+      console.warn("applyAltTexts-funktionen finns inte 🙃");
+    }
+
+    const imgs = document.querySelectorAll("image-gallery img");
+    console.log("Hittade", imgs.length, "bilder i <image-gallery>");
+  });
+}
+
+/*
 function initAltTextHandler() {
   window.applyAltTexts = function ({
     artist,
@@ -545,6 +536,7 @@ function initAltTextHandler() {
     console.log("Hittade", imgs.length, "bilder i <image-gallery>");
   });
 }
+*/
 
 
 /* -------------------- 7. Adjust custom post tags -------------------------- */
