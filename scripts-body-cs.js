@@ -97,10 +97,9 @@ function initEventInfo() {
   const eventDate = formatDate(eventISO);
   const eventTime = formatTime(eventISO);
 
-  // --- 2. Venue & city from alttext-data ---
+  // --- 2. Venue (full string) from alttext-data ---
   const alt = document.getElementById("alttext-data");
-  const venue = alt?.dataset.venue || null;
-  const city = alt?.dataset.city || null;
+  const venueFull = alt?.dataset.venue || null;
 
   // --- 3. Updated date from JSON-LD ---
   function getModifiedFromJsonLd() {
@@ -129,8 +128,8 @@ function initEventInfo() {
   let html = "";
 
   // Event line
-  if (eventDate && eventTime && venue && city) {
-    html += `<div class="event-line">Event: ${eventDate} 🕒 ${eventTime} at ${venue}, ${city}</div>`;
+  if (eventDate && eventTime && venueFull) {
+    html += `<div class="event-line">Event: ${eventDate} 🕒 ${eventTime} at ${venueFull}</div>`;
   }
 
   // Updated line
