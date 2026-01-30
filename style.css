@@ -170,7 +170,7 @@ label-s {
 }
 
 /* Mellanskärmar: två kolumner med grid */
-@media (min-width: 480px) and (max-width: 699px) {
+@media (min-width: 400px) and (max-width: 699px) {
   event-info {
     column-count: 2;
     column-gap: 2rem;
@@ -1060,6 +1060,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
