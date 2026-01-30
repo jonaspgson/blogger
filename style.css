@@ -162,6 +162,11 @@ event-info div {
   margin: 0.6rem 0;
 }
 
+/* FontAwesome-ikon */
+event-info div i {
+	margin-left: .25rem;
+}
+
 /* Etiketter */
 label-s {
   display: block;
@@ -1060,6 +1065,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
