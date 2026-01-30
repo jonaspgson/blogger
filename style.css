@@ -142,11 +142,11 @@ byline-links a {
 event-info {
   margin: -3.5rem 0 2.5rem;
   background-color: #f5f5f5;
-  color: #555;
+  color: #777;
   padding: .6rem 1rem;
   font-family: var(--body-font);
   font-size: 0.9rem;
-  border-top: 0.5rem solid #e0e0e0;
+  border-top: 0.5rem solid #eee;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   line-height: 1.6;
@@ -167,7 +167,6 @@ label-s {
   display: block;
   font-size: 0.7rem;
   margin-bottom: 0.1rem;
-  color: #666;
 }
 
 /* Mellanskärmar: två kolumner med grid */
@@ -1061,6 +1060,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
