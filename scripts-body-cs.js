@@ -141,7 +141,7 @@ function initEventInfo() {
 
   // Date/Time
   if (eventDate && eventTime) {
-    html += `<div class="time-line"><label-s>Date/Time:</label-s>${eventDate} 🕒 ${eventTime}</div>`;
+    html += `<div class="time-line"><label-s>Date/Time:</label-s>${eventDate} <i class="fa-regular fa-clock"></i> ${eventTime}</div>`;
   }
 
   // Venue
