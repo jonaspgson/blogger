@@ -51,10 +51,10 @@ function showcaseProduct(title,subtitle,imageUrl,theme='') {
 
 //Amazon Associate Tags
 const AMZ_COM_AT = 'jonzaasprytte-20';
-const AMZ_CA_AT  = 'thejo07f-20';
+const AMZ_CA_AT  = 'thejo0eb-20';
 const AMZ_UK_AT  = 'thejo-21';
-const AMZ_DE_AT  = 'thejo0b-21';
-const AMZ_SE_AT  = 'thejo0d-21';
+const AMZ_DE_AT  = 'thejo01-21';
+const AMZ_SE_AT  = 'thejo0ed-21';
 
 
 function getAmazonLinks(productName) {
