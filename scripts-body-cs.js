@@ -106,6 +106,114 @@ function initEventInfo() {
   let venue = null;
   let city = null;
   let duration = null;
+  let organiser = null;
+
+  if (meta) {
+    venue = meta.dataset.venue || null;
+    city = meta.dataset.city || null;
+    duration = meta.dataset.duration || null;
+    organiser = meta.dataset.organiser || null;
+  }
+
+  // --- 3. Updated date from JSON-LD ---
+  function getModifiedFromJsonLd() {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent);
+        if (data["@type"] === "NewsArticle" && data.dateModified) {
+          return data.dateModified;
+        }
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  const updatedISO = getModifiedFromJsonLd();
+  const updatedDate = formatDate(updatedISO);
+
+  // --- 4. Build the <event-info> box ---
+  const bylines = document.querySelectorAll(".byline");
+  if (bylines.length === 0) return;
+
+  const lastByline = bylines[bylines.length - 1];
+  const box = document.createElement("event-info");
+
+  let html = "";
+
+  // Date/Time
+  if (eventDate && eventTime) {
+    html += `<div class="time-line"><label-s>Date/Time:</label-s>${eventDate} <i class="fa-regular fa-clock"></i> ${eventTime}</div>`;
+  }
+
+  // Venue
+  if (venue) {
+    html += `<div class="venue-line"><label-s>Venue:</label-s>${venue}</div>`;
+  }
+
+  // City
+  if (city) {
+    html += `<div class="city-line"><label-s>City:</label-s>${city}</div>`;
+  }
+
+  // Organiser
+  if (organiser) {
+    html += `<div class="organiser-line"><label-s>Organiser:</label-s>${organiser}</div>`;
+  }
+
+  // Duration
+  if (duration) {
+    html += `<div class="duration-line"><label-s>Duration:</label-s>${duration}</div>`;
+  }
+
+  // Updated
+  if (updatedDate) {
+    html += `<div class="updated-line"><label-s>Updated:</label-s>${updatedDate}</div>`;
+  }
+
+  box.innerHTML = html;
+  lastByline.insertAdjacentElement("afterend", box);
+}
+
+/*
+function initEventInfo() {
+  // Format ISO → "5 Feb, 2025"
+  function formatDate(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    const parts = d.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }).split(" ");
+    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+  }
+
+  // Format ISO → "18:45"
+  function formatTime(iso) {
+    if (!iso) return null;
+    const d = new Date(iso);
+    return d.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+  }
+
+  // --- 1. Event date & time from Blogger ---
+  const publishedEl = document.querySelector("time.published");
+  const eventISO = publishedEl?.getAttribute("datetime") || null;
+  const eventDate = formatDate(eventISO);
+  const eventTime = formatTime(eventISO);
+
+  // --- 2. Metadata from event-data or alttext-data ---
+  const meta =
+    document.getElementById("event-data") ||
+    document.getElementById("alttext-data");
+
+  let venue = null;
+  let city = null;
+  let duration = null;
 
   if (meta) {
     venue = meta.dataset.venue || null;
@@ -162,105 +270,6 @@ function initEventInfo() {
   // Updated
   if (updatedDate) {
     html += `<div class="updated-line"><label-s>Updated:</label-s>${updatedDate}</div>`;
-  }
-
-  box.innerHTML = html;
-  lastByline.insertAdjacentElement("afterend", box);
-}
-
-/*
-function initEventInfo() {
-  // Format ISO → "7 Nov, 2025"
-  function formatDate(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    const parts = d.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    }).split(" ");
-    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
-  }
-
-  // Format ISO → "20:00"
-  function formatTime(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    return d.toLocaleTimeString("sv-SE", {
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-  }
-
-  // --- 1. Event date & time from Blogger ---
-  const publishedEl = document.querySelector("time.published");
-  const eventISO = publishedEl?.getAttribute("datetime") || null;
-  const eventDate = formatDate(eventISO);
-  const eventTime = formatTime(eventISO);
-
-  // --- 2. Event metadata (supports both old and new IDs) ---
-  const meta =
-    document.getElementById("event-data") ||
-    document.getElementById("alttext-data");
-
-  // Venue handling (supports both old and new formats)
-  let venueFull = null;
-
-  if (meta) {
-    if (meta.dataset.venue && meta.dataset.city) {
-      // New model: separate fields
-      venueFull = `${meta.dataset.venue}, ${meta.dataset.city}`;
-    } else if (meta.dataset.venue) {
-      // Old model: full string already combined
-      venueFull = meta.dataset.venue;
-    }
-  }
-
-  // Optional duration
-  const duration = meta?.dataset.duration || null;
-
-  // --- 3. Updated date from JSON-LD ---
-  function getModifiedFromJsonLd() {
-    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-    for (const script of scripts) {
-      try {
-        const data = JSON.parse(script.textContent);
-        if (data["@type"] === "NewsArticle" && data.dateModified) {
-          return data.dateModified;
-        }
-      } catch (e) {}
-    }
-    return null;
-  }
-
-  const updatedISO = getModifiedFromJsonLd();
-  const updatedDate = formatDate(updatedISO);
-
-  // --- 4. Build the <event-info> box ---
-  const bylines = document.querySelectorAll(".byline");
-  if (bylines.length === 0) return;
-
-  const lastByline = bylines[bylines.length - 1];
-  const box = document.createElement("event-info");
-
-  let html = "";
-
-  // Event line (only if we have at least date + venue)
-  if (eventDate && venueFull) {
-    html += `<div class="event-line">Event: ${eventDate}`;
-
-    if (eventTime) html += ` 🕒 ${eventTime}`;
-    html += ` at ${venueFull}</div>`;
-  }
-
-  // Duration line (optional)
-  if (duration) {
-    html += `<div class="duration-line">Duration: ${duration}</div>`;
-  }
-
-  // Updated line (optional)
-  if (updatedDate) {
-    html += `<div class="updated-line">Updated: ${updatedDate}</div>`;
   }
 
   box.innerHTML = html;
