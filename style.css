@@ -1,6 +1,7 @@
 :root {
 	--byline-bg: #eee;
 	--byline-margin-bottom: 3rem;
+	--dark-bg: #171c24;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -595,7 +596,7 @@ image-carousel image-caption {
 }
 
 .dark {
-	background-color: #171c24;
+	background-color: var(--dark-bg, #171c24);
 	color: #fff;
 }
 
@@ -607,6 +608,7 @@ image-carousel image-caption {
     background: #fff;
     /*border-radius: 1rem;
     margin: 1rem;*/
+	border: 5px solid var(--dark-bg);
     padding: 1rem;
 	box-sizing: border-box;
 }
@@ -1066,6 +1068,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
