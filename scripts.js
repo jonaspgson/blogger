@@ -18,6 +18,143 @@ function rateThis(n) {
 } 
 
 
+/* --------------- AFFILIATE LINKS ------------ */
+
+// === Helper: Insert HTML at the script tag position ===
+function insertAtScriptTag(html) {
+    const scriptTag = document.currentScript;
+    const container = document.createElement("div");
+    container.className = "showcase-block";
+    scriptTag.insertAdjacentElement("beforebegin", container);
+    container.insertAdjacentHTML("beforeend", html);
+}
+
+// === Showcase Album ===
+function showcaseAlbum(artist, title, imageUrl, theme='') {
+
+    let output = `
+        <div class="img-container ${theme}">
+            <div class="img">
+                <img src="${imageUrl}" alt="${artist} - ${title} album cover">
+            </div>
+            <div class="text">
+                <h3>${title}</h3>by ${artist}
+                ${getAmazonLinks(`${artist} - ${title}`)}
+            </div>
+        </div>
+    `;
+
+    insertAtScriptTag(output);
+}
+
+// === Showcase Product ===
+function showcaseProduct(title, subtitle, imageUrl, theme='') {
+
+    let output = `
+        <div class="img-container ${theme}">
+            <div class="img">
+                <img src="${imageUrl}" alt="${title} - ${subtitle} product image">
+            </div>
+            <div class="text">
+                <h3>${title}</h3>${subtitle}
+                ${getAmazonLinks(`${title} ${subtitle}`)}
+            </div>
+        </div>
+    `;
+
+    insertAtScriptTag(output);
+}
+
+// === Amazon Associate Tags ===
+const AMZ_COM_AT = 'jonzaasprytte-20';
+const AMZ_CA_AT  = 'thejo0eb-20';
+const AMZ_UK_AT  = 'thejo-21';
+const AMZ_DE_AT  = 'thejo01-21';
+const AMZ_SE_AT  = 'thejo0ed-21';
+
+// === Amazon Link Builder ===
+function getAmazonLinks(productName) {
+
+    const searchString = productName.replace(/ /g, "+");
+
+    let output = `
+        <h4>Get it on Amazon</h4>
+        <div class="link-buttons">
+            <p>Check Price and Availability:</p>
+
+            <a href="https://www.amazon.com/s?k=${searchString}&tag=${AMZ_COM_AT}" target="_blank" title="Buy from the USA">
+                <span class="flag-icon flag-icon-us"></span> US
+            </a>
+
+            <a href="https://www.amazon.ca/s?k=${searchString}&tag=${AMZ_CA_AT}" target="_blank" title="Buy from Canada">
+                <span class="flag-icon flag-icon-ca"></span> CA
+            </a>
+
+            <a href="https://www.amazon.co.uk/s?k=${searchString}&tag=${AMZ_UK_AT}" target="_blank" title="Buy from the UK">
+                <span class="flag-icon flag-icon-gb"></span> UK
+            </a>
+
+            <a href="https://www.amazon.de/s?k=${searchString}&tag=${AMZ_DE_AT}" target="_blank" title="Buy from Germany">
+                <span class="flag-icon flag-icon-de"></span> DE/EU
+            </a>
+
+            <a href="https://www.amazon.se/s?k=${searchString}&tag=${AMZ_SE_AT}" target="_blank" title="Buy from Sweden">
+                <span class="flag-icon flag-icon-se"></span> SE
+            </a>
+
+            <a href="https://www.ebay.com/sch/i.html?_nkw=${searchString}&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5338818368&customid=&toolid=10001&mkevt=1"
+               target="_blank" title="Buy Used on eBay">
+               <i class="fab fa-ebay"></i> Buy Used
+            </a>
+        </div>
+
+        <p class="amazon-disclaimer">(As an Amazon and eBay Associate, I earn from qualifying purchases.)</p>
+    `;
+
+    return output;
+}
+
+// === Compact version ===
+function createCompactAmazonLinks(productName) {
+
+    const searchString = productName.replace(/ /g, "+");
+
+    let output = `
+        <div class="link-buttons-compact">
+            <p>Check local prices <span class="muted">(Amazon/eBay):</span></p>
+
+            <a href="https://www.amazon.com/s?k=${searchString}&tag=${AMZ_COM_AT}" target="_blank" title="Buy from the USA">
+                <span class="flag-icon flag-icon-us"></span>
+            </a>
+
+            <a href="https://www.amazon.ca/s?k=${searchString}&tag=${AMZ_CA_AT}" target="_blank" title="Buy from Canada">
+                <span class="flag-icon flag-icon-ca"></span>
+            </a>
+
+            <a href="https://www.amazon.co.uk/s?k=${searchString}&tag=${AMZ_UK_AT}" target="_blank" title="Buy from the UK">
+                <span class="flag-icon flag-icon-gb"></span>
+            </a>
+
+            <a href="https://www.amazon.de/s?k=${searchString}&tag=${AMZ_DE_AT}" target="_blank" title="Buy from Germany">
+                <span class="flag-icon flag-icon-de"></span>
+            </a>
+
+            <a href="https://www.amazon.se/s?k=${searchString}&tag=${AMZ_SE_AT}" target="_blank" title="Buy from Sweden">
+                <span class="flag-icon flag-icon-se"></span>
+            </a>
+
+            <a href="https://www.ebay.com/sch/i.html?_nkw=${searchString}&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5338818368&customid=&toolid=10001&mkevt=1"
+               target="_blank" title="Buy Used on eBay">
+               <i class="fab fa-ebay"></i>
+            </a>
+        </div>
+    `;
+
+    insertAtScriptTag(output);
+}
+
+
+/*
 function showcaseAlbum(artist,title,imageUrl,theme='') {
 
 	var output = ``;
@@ -93,6 +230,8 @@ function createCompactAmazonLinks(productName) {
     output += '</div>';
     document.write(output);
 }
+*/
+
 
 /*
  BYLINE (old code). Input title (optional) could be "written by", "images and words," etc.
