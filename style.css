@@ -590,7 +590,7 @@ image-carousel image-caption {
 @media screen and (max-width: 500px) {
     .img-container .img {
         flex-basis: 100%;
-	padding: 15px;
+		padding: 15px;
     }
 }
 
@@ -605,9 +605,10 @@ image-carousel image-caption {
 
 .img-container.rounded .img {
     background: #fff;
-    border-radius: 1rem;
-    margin: 1rem;
+    /*border-radius: 1rem;
+    margin: 1rem;*/
     padding: 1rem;
+	box-sizing: border-box;
 }
 
 
@@ -1065,6 +1066,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
