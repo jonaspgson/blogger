@@ -225,8 +225,77 @@ function initImageCarousels() {
   });
 }
 
-/* Adds a "Show More" button to image galleries larger than a specific height that can be clicked to expand them. */
+
+/* -------------- Gallery Toggle ------------------
+ * Adds a "Show More" button to image galleries larger than a specific height that can be clicked to expand them. */
+
 function initGalleryToggle() {
+  const galleries = document.querySelectorAll("image-gallery");
+  const maxHeight = 560; // matchas mot max-height på .gallery-wrapper
+
+  galleries.forEach(function (gallery) {
+    // Skapa wrapper
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("gallery-wrapper");
+
+    // Flytta galleriet in i wrappern
+    gallery.parentNode.insertBefore(wrapper, gallery);
+    wrapper.appendChild(gallery);
+
+    // Vänta tills layouten är klar
+    requestAnimationFrame(() => {
+      const actualHeight = gallery.scrollHeight;
+
+      if (actualHeight > maxHeight) {
+        // Skapa toggle-knapp
+        const toggle = document.createElement("button");
+        toggle.className = "toggle-gallery";
+        toggle.type = "button";
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.innerHTML = '<span class="arrow">▼</span> <span class="label">Show More</span>';
+
+        // Lägg till efter wrappern
+        wrapper.parentNode.insertBefore(toggle, wrapper.nextSibling);
+
+        // 🔥 NY TOGGLE-FUNKTION MED AUTOMATISK SCROLL-UP VID MINIMISERING
+        toggle.addEventListener("click", function () {
+          const isExpanded = wrapper.classList.contains("expanded");
+
+          if (isExpanded) {
+            // Användaren vill minimera → scrolla upp först
+            const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY - 20;
+
+            window.scrollTo({
+              top: wrapperTop,
+              behavior: "smooth"
+            });
+
+            // Vänta lite innan vi minimerar, så scrollen hinner börja
+            setTimeout(() => {
+              wrapper.classList.remove("expanded");
+              toggle.setAttribute("aria-expanded", false);
+              toggle.querySelector(".label").textContent = "Show More";
+            }, 250);
+
+          } else {
+            // Expandera direkt
+            wrapper.classList.add("expanded");
+            toggle.setAttribute("aria-expanded", true);
+            toggle.querySelector(".label").textContent = "Minimise";
+          }
+        });
+
+      } else {
+        // Om galleriet är kort – ta bort max-height och fade
+        wrapper.style.maxHeight = "none";
+        wrapper.classList.add("expanded");
+      }
+    });
+  });
+}
+
+
+/*function initGalleryToggle() {
   const galleries = document.querySelectorAll("image-gallery");
   const maxHeight = 560; // matchas mot max-height på .gallery-wrapper
 
@@ -267,4 +336,4 @@ function initGalleryToggle() {
       }
     });
   });
-}
+}*/
