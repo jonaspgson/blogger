@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initAltTextHandler();
   initTagLabels();
   insertCopyrightNotice();
+  initImageProtection();
 });
 
 
@@ -690,3 +691,48 @@ function insertCopyrightNotice() {
         gallery.parentNode.insertBefore(info, gallery.nextSibling);
     });
 }
+
+
+/* -------------------- 9. Image Download Prevention ------------------- */
+
+function initImageProtection() {
+  // Selektorer för bilder du vill skydda
+  const protectedSelectors = [
+    ".post-body img",      // alla bilder i inlägg
+    ".CSS_LIGHTBOX img"    // bilder i Bloggers lightbox
+  ];
+
+  // Skapa toast-element
+  const toast = document.createElement("div");
+  toast.className = "cs-toast";
+  toast.textContent = "Downloading images is not permitted.";
+  document.body.appendChild(toast);
+
+  function showToast() {
+    toast.classList.add("visible");
+    setTimeout(() => toast.classList.remove("visible"), 2000);
+  }
+
+  // Hjälpfunktion: är detta en skyddad bild?
+  function isProtectedImage(target) {
+    if (target.tagName !== "IMG") return false;
+    return protectedSelectors.some(sel => target.closest(sel.replace(" img", "")));
+  }
+
+  // Blockera högerklick
+  document.addEventListener("contextmenu", function (e) {
+    if (isProtectedImage(e.target)) {
+      e.preventDefault();
+      showToast();
+    }
+  });
+
+  // Blockera långtryck (mobil)
+  document.addEventListener("touchstart", function (e) {
+    if (isProtectedImage(e.target)) {
+      e.preventDefault();
+      showToast();
+    }
+  }, { passive: false });
+}
+
