@@ -671,7 +671,7 @@ function initTagLabels() {
 
 /* --------------------- 8. Insert copyright notice after galleries ------------------------ */
 function insertCopyrightNotice() {
-    const galleries = document.querySelectorAll('image-gallery');
+    const galleries = document.querySelectorAll('.gallery-wrapper');
 
     galleries.forEach(gallery => {
         // Avoid inserting duplicate notices if the function runs multiple times
