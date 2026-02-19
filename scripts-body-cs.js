@@ -682,7 +682,7 @@ function insertCopyrightNotice() {
         const info = document.createElement('info-box');
         info.className = 'cs-copyright-info';
         info.innerHTML = `
-            All photos © Jonas Gustafsson / CrowdSnapper. Unauthorised use, reproduction or distribution is prohibited. 
+            <strong>All photos © Jonas Gustafsson / CrowdSnapper.</strong> Unauthorised use, reproduction or distribution is prohibited. 
             Please see our <a href="/p/terms-of-use.html">Terms of Use</a> for licensing information.
         `;
 
