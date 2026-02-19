@@ -316,14 +316,14 @@ label-s {
 
 .cs-toast {
   position: fixed;
-  bottom: 20px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: rgba(0,0,0,0.85);
   color: #fff;
   padding: 10px 16px;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
