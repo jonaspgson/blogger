@@ -262,22 +262,23 @@ function initGalleryToggle() {
           const isExpanded = wrapper.classList.contains("expanded");
 
           if (isExpanded) {
-            // Användaren vill minimera → scrolla upp först
-            const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY - 20;
-
-            window.scrollTo({
-              top: wrapperTop,
-              behavior: "smooth"
-            });
-
-            // Vänta lite innan vi minimerar, så scrollen hinner börja
-            setTimeout(() => {
-              wrapper.classList.remove("expanded");
-              toggle.setAttribute("aria-expanded", false);
-              toggle.querySelector(".label").textContent = "Show More";
-            }, 250);
-
-          } else {
+		    const header = document.querySelector(".headerify-inner"); // justera selektorn vid behov
+		    const headerHeight = header ? header.offsetHeight : 0;
+		
+		    const wrapperTop =
+		      wrapper.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
+		
+		    window.scrollTo({
+		      top: wrapperTop,
+		      behavior: "smooth"
+		    });
+		
+		    setTimeout(() => {
+		      wrapper.classList.remove("expanded");
+		      toggle.setAttribute("aria-expanded", false);
+		      toggle.querySelector(".label").textContent = "Show More";
+		    }, 250);
+		  } else {
             // Expandera direkt
             wrapper.classList.add("expanded");
             toggle.setAttribute("aria-expanded", true);
