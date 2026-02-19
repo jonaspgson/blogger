@@ -312,6 +312,29 @@ label-s {
 }
 
 
+/* Varningsmeddelande vid försök till nedladdning */
+
+.cs-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.cs-toast.visible {
+  opacity: 1;
+}
+
+
 /* Inline heading */
 
 inline-heading, :is(h1,h2,h3,h4).inline { 
