@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initAutoRelatedPosts();
   initAltTextHandler();
   initTagLabels();
+  insertCopyrightNotice();
 });
 
 
@@ -666,4 +667,26 @@ function initTagLabels() {
       link.textContent = "🎉 " + text.replace(/\s*\(event\)$/, "");
     }
   });
+}
+
+/* --------------------- 8. Insert copyright notice after galleries ------------------------ */
+function insertCopyrightNotice() {
+    const galleries = document.querySelectorAll('image-gallery');
+
+    galleries.forEach(gallery => {
+        // Avoid inserting duplicate notices if the function runs multiple times
+        if (gallery.previousElementSibling?.classList.contains('cs-copyright-info')) {
+            return;
+        }
+
+        const info = document.createElement('info-box');
+        info.className = 'cs-copyright-info';
+        info.innerHTML = `
+            All photos © Jonas Gustafsson / CrowdSnapper. Unauthorised use, reproduction or distribution is prohibited. 
+            Please see our <a href="/p/terms-of-use.html">Terms of Use</a> for licensing information.
+        `;
+
+      	// Insert AFTER the gallery
+        gallery.parentNode.insertBefore(info, gallery.nextSibling);
+    });
 }
