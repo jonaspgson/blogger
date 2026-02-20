@@ -160,7 +160,7 @@ function initEventInfo() {
 
   // Organiser
   if (organiser) {
-    html += `<div class="organiser-line"><label-s>Organiser:</label-s>${organiser}</div>`;
+    html += `<div class="organiser-line"><label-s>Organiser(s):</label-s>${organiser}</div>`;
   }
 
   // Duration
