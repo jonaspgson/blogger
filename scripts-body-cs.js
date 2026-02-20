@@ -732,11 +732,23 @@ function initImageProtection() {
   });
 
   // Blockera långtryck (mobil)
+  let longPressTimer = null;
   document.addEventListener("touchstart", function (e) {
-    if (isProtectedImage(e.target)) {
+    if (!isProtectedImage(e.target)) return;
+  
+    longPressTimer = setTimeout(() => {
+      // Blockera long press
       e.preventDefault();
       showToast();
-    }
+    }, 500); // 500 ms = typisk long-press-tröskel
   }, { passive: false });
+  
+  document.addEventListener("touchend", function () {
+    clearTimeout(longPressTimer);
+  });
+  
+  document.addEventListener("touchmove", function () {
+    clearTimeout(longPressTimer);
+  });
 }
 
