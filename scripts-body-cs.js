@@ -705,7 +705,7 @@ function initImageProtection() {
   // Skapa toast-element
   const toast = document.createElement("div");
   toast.className = "cs-toast";
-  toast.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Downloading images is not permitted.';
+  toast.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i><br/>Downloading images is not permitted.';
   document.body.appendChild(toast);
 
   function showToast() {
