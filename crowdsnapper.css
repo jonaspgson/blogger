@@ -319,11 +319,12 @@ label-s {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.75);
   color: #fff;
   padding: 10px 16px;
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
