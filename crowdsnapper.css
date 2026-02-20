@@ -321,15 +321,23 @@ label-s {
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,0.75);
   color: #fff;
-  padding: 10px 16px;
+  padding: 20px 24px;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
+  max-width: 80%;
+  line-height: 1.4;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
   z-index: 9999;
+}
+
+.cs-toast i {
+  display: block;          /* gör att ikonen hamnar på egen rad */
+  font-size: 2rem;         /* större ikon */
+  margin-bottom: 12px;     /* luft under ikonen */
 }
 
 .cs-toast.visible {
