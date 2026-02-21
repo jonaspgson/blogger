@@ -291,7 +291,30 @@ label-s {
   }
 }
 
-/* Desktop: vänsterställda fält + updated till höger */
+
+/* Desktop: 3-kolumnslösning */
+@media (min-width: 700px) {
+  event-info {
+    column-count: 3;
+    column-gap: 2rem;
+  }
+
+  event-info div {
+    break-inside: avoid;
+    margin: 0 0 .6rem 0;
+  }
+
+  /* Updated i full bredd under */
+  /*
+  .updated-line {
+    column-span: all;
+    margin-top: .8rem;
+    opacity: .8;
+  }*/
+}
+
+/* Desktop: enradig flexvariant med vänsterställda fält + updated till höger */
+/*
 @media (min-width: 700px) {
   event-info {
     display: flex;
@@ -304,12 +327,11 @@ label-s {
     margin: 0;
   }
 
-  /* Updated-raden trycks till höger */
   .updated-line {
     margin-left: auto;
     text-align: right;
   }
-}
+}*/
 
 
 /* Varningsmeddelande vid försök till nedladdning */
