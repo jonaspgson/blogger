@@ -34,6 +34,42 @@ function initTooltips() {
 
 
 /* ---------- 2. Split post titles at ":" ---------- */
+
+function initSplitHeadings() {
+  function splitHeadings(container) {
+    const entryTitles = container.querySelectorAll(".entry-title");
+    entryTitles.forEach(el => {
+      if (el.textContent.includes(":") && !el.innerHTML.includes("subheadline")) {
+        const link = el.querySelector("a");
+        const target = link || el;
+        const text = target.textContent.trim();
+        const parts = text.split(":");
+        if (parts.length === 2) {
+          const main = parts[0].trim();
+          const sub = parts[1].trim();
+          const subCap = sub.charAt(0).toUpperCase() + sub.slice(1);
+          target.innerHTML = `${main} <span class="subheadline">${subCap}</span>`;
+        }
+      }
+    });
+  }
+
+  splitHeadings(document);
+
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          splitHeadings(node);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+/*
 function initSplitHeadings() {
   function splitHeadings(container) {
     const entryTitles = container.querySelectorAll(".entry-title");
@@ -66,6 +102,7 @@ function initSplitHeadings() {
 
   observer.observe(document.body, { childList: true, subtree: true });
 }
+*/
 
 
 /* ---------- 3. Inserts an event info box below the byline, including date of last post update ------------ */
