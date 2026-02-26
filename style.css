@@ -62,11 +62,19 @@ h4 { font-size: 1.05rem; }
 }
 
 /* Firefox lightbox fix */
-.CSS_LIGHTBOX img,
-.CSS_LIGHTBOX_SCALED_IMAGE_IMG {
-  box-sizing: border-box !important;
-  max-width: 100% !important;
+.CSS_LIGHTBOX_SCALED_IMAGE_IMG,
+.CSS_LIGHTBOX_SCALED_IMAGE,
+.CSS_LIGHTBOX_IMAGE_CONTAINER,
+.CSS_LAYOUT_COMPONENT {
   width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
 }
 
 
@@ -1005,6 +1013,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
