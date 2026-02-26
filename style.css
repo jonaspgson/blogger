@@ -61,6 +61,15 @@ h4 { font-size: 1.05rem; }
 	font-family: var(--body-font);
 }
 
+/* Firefox lightbox fix */
+.CSS_LIGHTBOX img,
+.CSS_LIGHTBOX_SCALED_IMAGE_IMG {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  width: auto !important;
+}
+
+
 /* Image container for vertical images – can be used in the enclosing <a> tag. */
 image-container {
   display: block;
@@ -996,6 +1005,7 @@ image-caption {
 	cursor: pointer;
 }
   
+
 
 
 
