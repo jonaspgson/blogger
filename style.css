@@ -430,7 +430,6 @@ image-carousel carousel-slide img {
 .carousel .title,
 image-carousel image-caption {
 	/*font-family:var(--body-font);*/ 
-	font-size: 90%; line-height: 1.2; 
   	position:absolute; left:0; bottom:0; 
 	width:100%; padding:0.2rem; 
 	color:#fff; background-color: hsla(0, 0%, 0%, 0.6);
@@ -898,6 +897,7 @@ body { word-wrap: normal !important; }
 .post-body .tr-caption-container, 
 .post-body .image-caption, 
 image-caption {
+	font-size: 90%; line-height: 1.2;
 	background-color: var(--image-caption-bgcolor, #3c3c3c); 
 	color: var(--image-caption-color, #fff); 
 	display: block; 
