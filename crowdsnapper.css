@@ -948,6 +948,7 @@ footer *
 .tr-caption, .image-caption, image-caption {
   margin-top: var(--border-radius-offset);
   padding-top: var(--border-radius-compensation);
+  margin-bottom: 2rem;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
