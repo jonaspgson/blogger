@@ -11,6 +11,10 @@
 
 * { border-radius: var(--border-radius); }
 
+@media (width < 1000px) {
+	.header-ad-wrap { display: none; }
+}
+
 /* Blogg-specifika overrides */
 #post-body { font-size: 18px; }
 .img-container {margin:0 !important;}
