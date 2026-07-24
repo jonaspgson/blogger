@@ -211,12 +211,14 @@ function initAds() {
     }
   });
 
-  // Annons efter varje <event-info>
-  eventInfos.forEach(info => {
-    const ad = createAd();
-    info.parentNode.insertBefore(ad, info.nextSibling);
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  });
+  // Annons efter <event-info> — endast på små skärmar (<1220px)
+  if (window.innerWidth < 1220) {
+    eventInfos.forEach(info => {
+      const ad = createAd();
+      info.parentNode.insertBefore(ad, info.nextSibling);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+  }
 }
 
 
