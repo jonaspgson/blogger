@@ -11,7 +11,7 @@
 
 * { border-radius: var(--border-radius); }
 
-@media (width < 1000px) {
+@media (width < 1220px) {
 	.header-ad-wrap { display: none; }
 }
 
