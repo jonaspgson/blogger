@@ -69,41 +69,6 @@ function initSplitHeadings() {
   observer.observe(document.body, { childList: true, subtree: true });
 }
 
-/*
-function initSplitHeadings() {
-  function splitHeadings(container) {
-    const entryTitles = container.querySelectorAll(".entry-title");
-    entryTitles.forEach(el => {
-      if (el.textContent.includes(":") && !el.innerHTML.includes("subheadline")) {
-        const link = el.querySelector("a");
-        const target = link || el;
-        const text = target.textContent.trim();
-        const parts = text.split(":");
-        if (parts.length === 2) {
-          const main = parts[0].trim();
-          const sub = parts[1].trim();
-          target.innerHTML = `${main} <span class="subheadline">${sub}</span>`;
-        }
-      }
-    });
-  }
-
-  splitHeadings(document);
-
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node.nodeType === 1) {
-          splitHeadings(node);
-        }
-      });
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-}
-*/
-
 
 /* ---------- 3. Inserts an event info box below the byline, including date of last post update ------------ */
 
@@ -214,111 +179,48 @@ function initEventInfo() {
   lastByline.insertAdjacentElement("afterend", box);
 }
 
-/*
-function initEventInfo() {
-  // Format ISO → "5 Feb, 2025"
-  function formatDate(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    const parts = d.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric"
-    }).split(" ");
-    return `${parts[0]} ${parts[1]}, ${parts[2]}`;
-  }
-
-  // Format ISO → "18:45"
-  function formatTime(iso) {
-    if (!iso) return null;
-    const d = new Date(iso);
-    return d.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    });
-  }
-
-  // --- 1. Event date & time from Blogger ---
-  const publishedEl = document.querySelector("time.published");
-  const eventISO = publishedEl?.getAttribute("datetime") || null;
-  const eventDate = formatDate(eventISO);
-  const eventTime = formatTime(eventISO);
-
-  // --- 2. Metadata from event-data or alttext-data ---
-  const meta =
-    document.getElementById("event-data") ||
-    document.getElementById("alttext-data");
-
-  let venue = null;
-  let city = null;
-  let duration = null;
-
-  if (meta) {
-    venue = meta.dataset.venue || null;
-    city = meta.dataset.city || null;
-    duration = meta.dataset.duration || null;
-  }
-
-  // --- 3. Updated date from JSON-LD ---
-  function getModifiedFromJsonLd() {
-    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-    for (const script of scripts) {
-      try {
-        const data = JSON.parse(script.textContent);
-        if (data["@type"] === "NewsArticle" && data.dateModified) {
-          return data.dateModified;
-        }
-      } catch (e) {}
-    }
-    return null;
-  }
-
-  const updatedISO = getModifiedFromJsonLd();
-  const updatedDate = formatDate(updatedISO);
-
-  // --- 4. Build the <event-info> box ---
-  const bylines = document.querySelectorAll(".byline");
-  if (bylines.length === 0) return;
-
-  const lastByline = bylines[bylines.length - 1];
-  const box = document.createElement("event-info");
-
-  let html = "";
-
-  // Date/Time
-  if (eventDate && eventTime) {
-    html += `<div class="time-line"><label-s>Date/Time:</label-s>${eventDate} <i class="fa-regular fa-clock"></i> ${eventTime}</div>`;
-  }
-
-  // Venue
-  if (venue) {
-    html += `<div class="venue-line"><label-s>Venue:</label-s>${venue}</div>`;
-  }
-
-  // City
-  if (city) {
-    html += `<div class="city-line"><label-s>City:</label-s>${city}</div>`;
-  }
-
-  // Duration
-  if (duration) {
-    html += `<div class="duration-line"><label-s>Duration:</label-s>${duration}</div>`;
-  }
-
-  // Updated
-  if (updatedDate) {
-    html += `<div class="updated-line"><label-s>Updated:</label-s>${updatedDate}</div>`;
-  }
-
-  box.innerHTML = html;
-  lastByline.insertAdjacentElement("afterend", box);
-}
-*/
 
 
 /* ---------- 4. Insert Google Ads in post content ---------- */
 
+function initAds() {
+  const postBody = document.querySelector("#post-body");
+  if (!postBody) return;
+
+  const paragraphs = Array.from(postBody.children).filter(el => el.tagName === "P");
+  const eventInfos = Array.from(postBody.querySelectorAll("event-info"));
+
+  function createAd() {
+    const ad = document.createElement("ins");
+    ad.className = "adsbygoogle";
+    ad.style.display = "block";
+    ad.style.textAlign = "center";
+    ad.setAttribute("data-ad-layout", "in-article");
+    ad.setAttribute("data-ad-format", "fluid");
+    ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
+    ad.setAttribute("data-ad-slot", "7820669675");
+    return ad;
+  }
+
+  // Annons efter vart fjärde stycke
+  paragraphs.forEach((p, index) => {
+    if ((index + 1) % 4 === 0) {
+      const ad = createAd();
+      p.parentNode.insertBefore(ad, p.nextSibling);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  });
+
+  // Annons efter varje <event-info>
+  eventInfos.forEach(info => {
+    const ad = createAd();
+    info.parentNode.insertBefore(ad, info.nextSibling);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  });
+}
+
+
+/*
 function initAds() {
   const postBody = document.querySelector("#post-body");
   if (!postBody) return;
@@ -342,7 +244,7 @@ function initAds() {
     }
   });
 }
-
+*/
 
 
 /* ---------- 5A. Show related posts for given tags (manual version) ---------- 
