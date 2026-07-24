@@ -185,11 +185,8 @@ function initEventInfo() {
 
 function initAds() {
   const postBody = document.querySelector("#post-body");
-  if (!postBody) return;
 
-  const paragraphs = Array.from(postBody.children).filter(el => el.tagName === "P");
-  const eventInfos = Array.from(postBody.querySelectorAll("event-info"));
-
+  // Funktion för att skapa annons
   function createAd() {
     const ad = document.createElement("ins");
     ad.className = "adsbygoogle";
@@ -202,7 +199,33 @@ function initAds() {
     return ad;
   }
 
-  // Annons efter vart fjärde stycke
+  // -----------------------------
+  // 1) Header-annons (endast ≥1220px)
+  // -----------------------------
+  if (window.innerWidth >= 1220) {
+    const headerSlot = document.getElementById("header-ad-slot");
+    if (headerSlot) {
+      const headerAd = document.createElement("ins");
+      headerAd.className = "adsbygoogle";
+      headerAd.style.display = "block";
+      headerAd.setAttribute("data-ad-client", "ca-pub-8323647897395400");
+      headerAd.setAttribute("data-ad-slot", "7695997854");
+      headerAd.setAttribute("data-ad-format", "auto");
+      headerAd.setAttribute("data-full-width-responsive", "true");
+
+      headerSlot.appendChild(headerAd);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  }
+
+  // Om det inte finns något postBody, avsluta här
+  if (!postBody) return;
+
+  // -----------------------------
+  // 2) Annons efter vart 4:e stycke
+  // -----------------------------
+  const paragraphs = Array.from(postBody.children).filter(el => el.tagName === "P");
+
   paragraphs.forEach((p, index) => {
     if ((index + 1) % 4 === 0) {
       const ad = createAd();
@@ -211,8 +234,11 @@ function initAds() {
     }
   });
 
-  // Annons efter <event-info> — endast på små skärmar (<1220px)
+  // -----------------------------
+  // 3) Annons efter <event-info> (endast <1220px)
+  // -----------------------------
   if (window.innerWidth < 1220) {
+    const eventInfos = Array.from(postBody.querySelectorAll("event-info"));
     eventInfos.forEach(info => {
       const ad = createAd();
       info.parentNode.insertBefore(ad, info.nextSibling);
@@ -220,6 +246,7 @@ function initAds() {
     });
   }
 }
+
 
 
 /*
