@@ -449,6 +449,21 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 	.post-body .gear-info :is(h3, .footer) { text-align: left !important; }
 }
 
+
+.spotify-link {
+	font-family: var(--body-font);
+	color: #777 !important;
+}
+  
+.spotify-link::after {
+	content: "\f1bc";
+	font-family: "Font Awesome 6 Brands"; /* Eller "FontAwesome" om du kör äldre v4 */
+	font-weight: 400; /* Krävs för Font Awesome Brands */
+	display: inline-block;
+	margin-left: 5px; /* Valfritt avstånd till texten */
+	color: #1ED760;
+}
+
 /* Articles Grid - for linking to subpages -------------*/
 
 .articles {
