@@ -221,7 +221,7 @@ function initAds() {
   // -----------------------------
   // 2) Viewport-baserat avstånd
   // -----------------------------
-  const MIN_DISTANCE = window.innerHeight * 1.1; // 110vh
+  const MIN_DISTANCE = window.innerHeight * 1.4; // 140vh
   let lastAdY = -Infinity;
 
   // Samla alla relevanta element i ordning
