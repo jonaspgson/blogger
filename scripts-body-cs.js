@@ -185,6 +185,82 @@ function initEventInfo() {
 
 function initAds() {
   const postBody = document.querySelector("#post-body");
+  if (!postBody) return;
+
+  function createAd() {
+    const ad = document.createElement("ins");
+    ad.className = "adsbygoogle";
+    ad.style.display = "block";
+    ad.style.textAlign = "center";
+    ad.setAttribute("data-ad-layout", "in-article");
+    ad.setAttribute("data-ad-format", "fluid");
+    ad.setAttribute("data-ad-client", "ca-pub-8323647897395400");
+    ad.setAttribute("data-ad-slot", "7820669675");
+    return ad;
+  }
+
+  // -----------------------------
+  // 1) Header-annons (endast desktop)
+  // -----------------------------
+  if (window.innerWidth >= 1220) {
+    const headerSlot = document.getElementById("header-ad-slot");
+    if (headerSlot) {
+      const headerAd = document.createElement("ins");
+      headerAd.className = "adsbygoogle";
+      headerAd.style.display = "block";
+      headerAd.setAttribute("data-ad-client", "ca-pub-8323647897395400");
+      headerAd.setAttribute("data-ad-slot", "7695997854");
+      headerAd.setAttribute("data-ad-format", "auto");
+      headerAd.setAttribute("data-full-width-responsive", "true");
+
+      headerSlot.appendChild(headerAd);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  }
+
+  // -----------------------------
+  // 2) Viewport-baserat avstånd
+  // -----------------------------
+  const MIN_DISTANCE = window.innerHeight * 1.1; // 110vh
+  let lastAdY = -Infinity;
+
+  // Samla alla relevanta element i ordning
+  const elements = Array.from(postBody.children).filter(el =>
+    el.tagName === "P" || el.tagName === "EVENT-INFO"
+  );
+
+  elements.forEach(el => {
+    const isEventInfo = el.tagName === "EVENT-INFO";
+
+    // Mobil: event-info ska ALLTID kunna få annons (första annonsen)
+    if (window.innerWidth < 1220 && isEventInfo) {
+      const rect = el.getBoundingClientRect();
+      const y = rect.top + window.scrollY;
+
+      const ad = createAd();
+      el.parentNode.insertBefore(ad, el.nextSibling);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      lastAdY = y;
+      return; // hoppa vidare
+    }
+
+    // Övriga annonser följer spacing-regeln
+    const rect = el.getBoundingClientRect();
+    const y = rect.top + window.scrollY;
+
+    if (y - lastAdY >= MIN_DISTANCE) {
+      const ad = createAd();
+      el.parentNode.insertBefore(ad, el.nextSibling);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      lastAdY = y;
+    }
+  });
+}
+
+
+/*
+function initAds() {
+  const postBody = document.querySelector("#post-body");
 
   // Funktion för att skapa annons
   function createAd() {
@@ -246,7 +322,7 @@ function initAds() {
     });
   }
 }
-
+*/
 
 
 /*
