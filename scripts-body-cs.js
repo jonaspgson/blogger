@@ -184,6 +184,15 @@ function initEventInfo() {
 /* ---------- 4. Insert Google Ads in post content ---------- */
 
 function initAds() {
+  const url = window.location.pathname;
+
+  // Stoppa annonser på vissa URL:er
+  if (url.includes("/terms-of-use") ||
+      url.includes("/about") ||
+      url.includes("/contact")) {
+    return;
+  }
+  
   const postBody = document.querySelector("#post-body");
   if (!postBody) return;
 
