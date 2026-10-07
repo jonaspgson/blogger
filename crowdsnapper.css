@@ -232,6 +232,12 @@ artist-list {
 
 /*------------- POSTS ---------------*/
 
+/* Sans-serif på b och a */
+#post-body :is(b, a) {
+  font-family: var(--body-font);
+  font-weight: 600;
+}
+
 /* INGRESS */
 .preamble {
 	padding: 0 1rem;
