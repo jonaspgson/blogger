@@ -480,6 +480,13 @@ image-carousel .button-right::after {
     transition: opacity 0.2s ease-in-out;
 }
 
+@media (width < 400px) {
+    image-carousel .button-left::after,
+    image-carousel .button-right::after {
+        font-size: 60px;
+    }
+}
+
 image-carousel .button-left:hover::after,
 image-carousel .button-right:hover::after {
     opacity: 1; /* helt opak vid hover */
