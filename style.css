@@ -63,6 +63,10 @@ s { text-decoration: line-through; }
 	font-family: var(--body-font);
 }
 
+/* AdSense */
+#post-body .adsbygoogle {
+  margin: 2rem 0;
+}
 
 
 /* Image container for vertical images – can be used in the enclosing <a> tag. */
