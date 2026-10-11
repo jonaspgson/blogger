@@ -433,9 +433,10 @@ image-carousel carousel-slide {
 image-carousel carousel-slide img { 
 	max-width: 100%; margin: auto; 
 }
+
+/*
 .carousel .title,
 image-carousel image-caption {
-	/*font-family:var(--body-font);*/ 
   	position:absolute; left:0; bottom:0; 
 	width:100%; padding:0.2rem; 
 	color:#fff; background-color: hsla(0, 0%, 0%, 0.6);
@@ -443,7 +444,44 @@ image-carousel image-caption {
   	text-wrap: balance;
 	margin-bottom: 0;
 }
+*/
 
+/* Carousel buttons */
+
+/* Navigeringsknappar – stora klickytor */
+image-carousel .button {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 25%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+/* Vänster */
+image-carousel .button-left { left: 0; }
+
+/* Höger */
+image-carousel .button-right { right: 0; }
+
+/* Pilarna */
+image-carousel .button-left::after,
+image-carousel .button-right::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    color: #fff;
+    pointer-events: none;
+}
+
+image-carousel .button-left::after { content: '❮'; left: 15px; }
+image-carousel .button-right::after { content: '❯'; right: 15px; }
+
+/*
 :is(.carousel, image-carousel) .button {
     background-color: #ccc;
     color: #000;
@@ -465,7 +503,7 @@ image-carousel image-caption {
 :is(.carousel, image-carousel) .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
 :is(.carousel, image-carousel) .button-left::after { content: '❮'}
 :is(.carousel, image-carousel) .button-right::after { content: '❯'}
-
+*/
 
 
 /* Horizontal image container. Image goes on the left, text on the right */
