@@ -232,7 +232,7 @@ function initAds() {
   // -----------------------------
   const MIN_DISTANCE = window.innerWidth < 1220
   ? window.innerHeight * 1.4   // Mobil
-  : window.innerHeight * 1.5;  // Desktop
+  : window.innerHeight * 1.6;  // Desktop
 
   let lastAdY = -Infinity;
 
