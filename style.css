@@ -473,9 +473,16 @@ image-carousel .button-right::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 4rem;
+    font-size: 5rem;
     color: #fff;
     pointer-events: none;
+    opacity: 0.5; /* halvtransparent som standard */
+    transition: opacity 0.2s ease-in-out;
+}
+
+image-carousel .button-left:hover::after,
+image-carousel .button-right:hover::after {
+    opacity: 1; /* helt opak vid hover */
 }
 
 image-carousel .button-left::after { content: '❮'; left: 15px; }
