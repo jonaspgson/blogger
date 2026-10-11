@@ -236,7 +236,7 @@ function initAds() {
 
   let lastAdY = -Infinity;
 
-  const allowedTags = ["P", "UL", "OL", "DIV", "INFO-BOX"];
+  const allowedTags = ["P", "UL", "OL", "DIV", "INFO-BOX", "IMAGE-CAROUSEL", "IMAGE-CAPTION"];
   
   const elements = Array.from(postBody.children).filter(el =>
     allowedTags.includes(el.tagName)
