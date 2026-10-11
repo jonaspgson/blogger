@@ -473,10 +473,10 @@ image-carousel .button-right::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 5rem;
+    font-size: clamp(24px, 8vh, 72px);
     color: #fff;
     pointer-events: none;
-    opacity: 0.5; /* halvtransparent som standard */
+    opacity: 0.6; /* halvtransparent som standard */
     transition: opacity 0.2s ease-in-out;
 }
 
