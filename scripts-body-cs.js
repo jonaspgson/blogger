@@ -230,7 +230,10 @@ function initAds() {
   // -----------------------------
   // 2) Viewport-baserat avstånd
   // -----------------------------
-  const MIN_DISTANCE = window.innerHeight * 1.4; // 140vh
+  const MIN_DISTANCE = window.innerWidth < 1220
+  ? window.innerHeight * 1.4   // Mobil
+  : window.innerHeight * 1.8;  // Desktop
+
   let lastAdY = -Infinity;
 
   // Samla alla relevanta element i ordning
