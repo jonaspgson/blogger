@@ -236,9 +236,10 @@ function initAds() {
 
   let lastAdY = -Infinity;
 
-  // Samla alla relevanta element i ordning
+  const allowedTags = ["P", "UL", "OL", "DIV", "INFO-BOX"];
+  
   const elements = Array.from(postBody.children).filter(el =>
-    el.tagName === "P" || el.tagName === "EVENT-INFO"
+    allowedTags.includes(el.tagName)
   );
 
   elements.forEach(el => {
