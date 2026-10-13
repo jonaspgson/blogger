@@ -95,9 +95,13 @@ body {
 }
 
 /* Home Page */
+
+/*
 .home #content-wrapper {
     margin: 2rem auto 1rem;
 }
+*/
+
 .widget .title-wrap {
 	height: auto;
 	float: none;
