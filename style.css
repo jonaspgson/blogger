@@ -417,107 +417,125 @@ image-gallery, .gallery {
 }
 
 
-/* Image carousel - req. additional JS */
+/*------ IMAGE CAROUSEL - req. additional JS ------*/
 
-image-carousel, image-slide { display:block; }
-
-.carousel, 
-image-carousel { 
-	position:relative; margin-top: 2rem;
-}
-.carousel .slide,
-image-carousel carousel-slide {
-	display:none; text-align: center; background-color: #eee;
-}
-.carousel .slide img,
-image-carousel carousel-slide img { 
-	max-width: 100%; margin: auto; 
+image-carousel {
+    display: block;
+    width: 100%;
+    overflow: hidden;
 }
 
-/*
-.carousel .title,
+.slides-wrapper {
+    display: flex;
+    width: 100%;
+    transition: none; /* ★ ingen svepanimation */
+}
+
+carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Animerade bildtexter */
 image-carousel image-caption {
-  	position:absolute; left:0; bottom:0; 
-	width:100%; padding:0.2rem; 
-	color:#fff; background-color: hsla(0, 0%, 0%, 0.6);
-	box-sizing: border-box;
-  	text-wrap: balance;
-	margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
 }
-*/
 
-/* Carousel buttons */
+image-carousel image-caption.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-/* Navigeringsknappar – stora klickytor */
-image-carousel .button {
+/* Pilar */
+.image-wrapper .button {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     height: 100%;
     width: 50%;
     background: transparent;
     border: none;
     cursor: pointer;
-    pointer-events: auto;
-    z-index: 10;
+    z-index: 20;
 }
 
-/* Vänster */
-image-carousel .button-left { left: 0; }
+.image-wrapper .button-left { left: 0; }
+.image-wrapper .button-right { right: 0; }
 
-/* Höger */
-image-carousel .button-right { right: 0; }
-
-/* Pilarna */
-image-carousel .button-left::after,
-image-carousel .button-right::after {
+.image-wrapper .button-left::after,
+.image-wrapper .button-right::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     font-size: 75px;
     color: #fff;
-    pointer-events: none;
-    opacity: 0.6; /* halvtransparent som standard */
+    opacity: 0.6;
     transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.image-wrapper .button-left::after {
+    content: '❮';
+    left: 20px;
+}
+
+.image-wrapper .button-right::after {
+    content: '❯';
+    right: 20px;
+}
+
+.image-wrapper .button-left:hover::after,
+.image-wrapper .button-right:hover::after {
+    opacity: 1;
+}
+
+
+/* Prickar */
+.image-wrapper .carousel-dots {
+    position: absolute;
+    bottom: 10px; /* ★ nederkant av bilden */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 30;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+    background-color: #fff;
 }
 
 @media (width < 400px) {
-    image-carousel .button-left::after,
-    image-carousel .button-right::after {
+    .image-wrapper .button-left::after,
+    .image-wrapper .button-right::after {
         font-size: 60px;
     }
 }
 
-image-carousel .button-left:hover::after,
-image-carousel .button-right:hover::after {
-    opacity: 1; /* helt opak vid hover */
-}
 
-image-carousel .button-left::after { content: '❮'; left: 15px; }
-image-carousel .button-right::after { content: '❯'; right: 15px; }
-
-/*
-:is(.carousel, image-carousel) .button {
-    background-color: #ccc;
-    color: #000;
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 50%;
-    vertical-align: middle;
-    overflow: hidden;
-    text-align: center;
-    cursor: pointer;
-    white-space: nowrap;
-}
-:is(.carousel, image-carousel) .button:hover {color:#fff!important; background-color:#222!important}
-
-:is(.carousel, image-carousel) .button-left {position:absolute;top:50%;left:1%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
-:is(.carousel, image-carousel) .button-right{position:absolute;top:50%;right:1%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
-:is(.carousel, image-carousel) .button-left::after { content: '❮'}
-:is(.carousel, image-carousel) .button-right::after { content: '❯'}
-*/
 
 
 /* Horizontal image container. Image goes on the left, text on the right */
