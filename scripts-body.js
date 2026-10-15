@@ -184,6 +184,113 @@ function initAccordions() {
 /* ------------- INIT Image carousel - requires additional CSS. ----------------- */
 
 function initImageCarousels() {
+    const carousels = [...document.querySelectorAll("image-carousel")];
+
+    carousels.forEach((carousel) => {
+
+        const slides = [...carousel.querySelectorAll(":scope > carousel-slide")];
+        if (slides.length === 0) return;
+
+        /* --- Skapa wrappern som sveper --- */
+        const wrapper = document.createElement("div");
+        wrapper.className = "slides-wrapper";
+        carousel.insertBefore(wrapper, slides[0]);
+        slides.forEach(slide => wrapper.appendChild(slide));
+
+        /* --- Event-logik --- */
+        let currentIndex = 0;
+
+        /* --- Skapa image-wrapper + navigation per slide --- */
+        slides.forEach((slide, index) => {
+
+            const img = slide.querySelector("img");
+            if (!img) return;
+
+            // Skapa wrapper
+            const imgWrap = document.createElement("div");
+            imgWrap.className = "image-wrapper";
+            slide.insertBefore(imgWrap, img);
+            imgWrap.appendChild(img);
+
+            // Skapa pilar (NYA per slide)
+            const leftBtn = document.createElement("button");
+            leftBtn.className = "button button-left";
+
+            const rightBtn = document.createElement("button");
+            rightBtn.className = "button button-right";
+
+            imgWrap.appendChild(leftBtn);
+            imgWrap.appendChild(rightBtn);
+
+            // Skapa prickar (NYA per slide)
+            const dotsContainer = document.createElement("div");
+            dotsContainer.className = "carousel-dots";
+
+            slides.forEach((_, dotIndex) => {
+                const dot = document.createElement("button");
+                dot.className = "carousel-dot";
+                dot.dataset.index = dotIndex;
+                dotsContainer.appendChild(dot);
+            });
+
+            imgWrap.appendChild(dotsContainer);
+        });
+
+        function showSlide(index) {
+            wrapper.style.transform = `translateX(-${index * 100}%)`;
+
+            // Prickar
+            const allDots = carousel.querySelectorAll(".carousel-dot");
+            allDots.forEach(dot => dot.classList.remove("active"));
+
+            const dotsInCurrent = slides[index].querySelectorAll(".carousel-dot");
+            if (dotsInCurrent[index]) {
+                dotsInCurrent[index].classList.add("active");
+            }
+
+            // ★ Mjuk fade + slide för bildtexten
+            slides.forEach(slide => {
+                slide.querySelector("image-caption").classList.remove("visible");
+            });
+
+            slides[index].querySelector("image-caption").classList.add("visible");
+        }
+
+
+        function animateCaption(caption) {
+            const startHeight = caption.offsetHeight;
+            caption.style.height = startHeight + "px";
+            caption.offsetHeight; // force reflow
+            const endHeight = caption.scrollHeight;
+            caption.style.height = endHeight + "px";
+        }
+
+        /* Klick på prickar */
+        carousel.addEventListener("click", (e) => {
+            if (e.target.classList.contains("carousel-dot")) {
+                currentIndex = parseInt(e.target.dataset.index);
+                showSlide(currentIndex);
+            }
+        });
+
+        /* Klick på pilar */
+        carousel.addEventListener("click", (e) => {
+            if (e.target.classList.contains("button-left")) {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+            if (e.target.classList.contains("button-right")) {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+        });
+
+        showSlide(currentIndex);
+    });
+}
+
+/*
+function initImageCarousels() {
   const carousels = [
     ...document.querySelectorAll(".carousel"),
     ...document.querySelectorAll("image-carousel")
@@ -224,6 +331,7 @@ function initImageCarousels() {
     showSlide(currentIndex);
   });
 }
+*/
 
 
 /* -------------- Gallery Toggle ------------------
