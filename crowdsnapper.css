@@ -470,22 +470,29 @@ inline-heading, :is(h1,h2,h3,h4).inline {
 }
 
 .band-links li::after {
+  color: #ccc;
   font-family: "Font Awesome 6 Brands"; /* Eller "FontAwesome" om du kör äldre v4 */
   font-weight: 400; /* Krävs för Font Awesome Brands */
   display: inline-block;
-  margin-left: 5px; /* Valfritt avstånd till texten */
+  margin-left: 0.3em; /* Valfritt avstånd till texten */
+  transition: 0.3s;
 }
 
 .band-links li.spotify::after {
   content: "\f1bc";
+}
+
+.band-links li.spotify:hover::after {
   color: #1ED760;
 }
 
 .band-links li.facebook::after {
   content: "\f09a";
-  color: #1877F2;
 }
 
+.band-links li.facebook:hover::after {
+  color: #1877F2;
+}
 
 .spotify-link {
 	font-family: var(--body-font);
