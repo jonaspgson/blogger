@@ -478,21 +478,18 @@ inline-heading, :is(h1,h2,h3,h4).inline {
   transition: 0.3s;
 }
 
-.band-links li.spotify::after {
-  content: "\f1bc";
-}
+.band-links li.spotify::after { content: "\f1bc"; }
+.band-links li.spotify:hover::after { color: #1ED760; }
 
-.band-links li.spotify:hover::after {
-  color: #1ED760;
-}
+.band-links li.facebook::after { content: "\f09a"; }
+.band-links li.facebook:hover::after { color: #1877F2; }
 
-.band-links li.facebook::after {
-  content: "\f09a";
-}
+.band-links li.instagram::after { content: "\f16d"; }
+.band-links li.instagram:hover::after { color: #8134AF; }
 
-.band-links li.facebook:hover::after {
-  color: #1877F2;
-}
+.band-links li.website::after { content: "\f0ac"; }
+.band-links li.website:hover::after { color: #000; }
+
 
 .spotify-link {
 	font-family: var(--body-font);
