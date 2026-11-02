@@ -988,7 +988,8 @@ image-caption {
 .tr-caption, .image-caption, image-caption { padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
 
-.post-body img:has(+ image-caption) {
+.post-body img:has(+ image-caption),
+.post-body a:has(+ image-caption) img {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
