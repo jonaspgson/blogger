@@ -164,7 +164,7 @@ body {
 .item-post h1.entry-title { 
 	color:#fff;
 	display: block;
-	line-height: 1.2;
+	line-height: 1;
 	margin: 1rem 0 0;
 	hyphens: none;
 }
