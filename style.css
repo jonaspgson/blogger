@@ -16,7 +16,8 @@ s { text-decoration: line-through; }
 .entry-title .subheadline {
   display: block;
   font-weight: 500;
-  color: #999;
+  /*color: #999;*/
+  opacity: .7;
 }
 .item-post .entry-title .subheadline {
   margin-top: .4em;
