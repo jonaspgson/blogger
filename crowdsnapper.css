@@ -1026,7 +1026,7 @@ footer *
 	}
 }
 @media (max-width: 500px) {
-	.post-body :is(img, image-caption) {
+	.post-body :is(img, image-caption, image-carousel) {
 		border-radius: 0;
 	}
 }
