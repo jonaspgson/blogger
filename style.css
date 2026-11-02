@@ -988,6 +988,11 @@ image-caption {
 .tr-caption, .image-caption, image-caption { padding:10px; text-align:center !important;}
 .tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
 
+.post-body img:has(+ image-caption) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .post-body table td,.post-body table th{box-sizing:border-box;} 
 .post-body table img { width: 100%; height:auto; display:block; } /* rad tillagd */
 
