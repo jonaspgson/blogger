@@ -69,6 +69,16 @@ body {
 	/* background: linear-gradient(#eee,#fff); */
 }
 
+.featured-posts *,
+.videos-block * {
+  border-radius: 0;
+}
+
+.featured-posts,
+.videos-block {
+  background-color: #000;
+}
+
 /* Trim homepage link titles to 2 lines of text */
 .home :is(.featured-posts, .videos-block) .entry-title a,
 .popular-post .entry-title a {
