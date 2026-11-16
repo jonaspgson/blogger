@@ -1091,54 +1091,17 @@ image-caption {
 
 
 
+/* Sänker lagret för Googles fästa annonser och sidopanel-annonser */
+ins.adsbygoogle[data-anchor-status],
+ins.adsbygoogle[data-ad-status] {
+  z-index: 999 !important;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Lyfter Bloggers inbyggda lightbox ovanför annonserna */
+.CSS_LIGHTBOX_BG_MASK,
+.CSS_LIGHTBOX_SCALED_IMAGE_CONTAINER,
+.CSS_LIGHTBOX_BTN_CLOSE,
+.CSS_LIGHTBOX_FILMSTRIP,
+.CSS_LIGHTBOX_ATTRIBUTION_INFO_CONTAINER {
+  z-index: 100000 !important;
+}
