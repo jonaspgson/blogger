@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initAccordions();
 	initImageCarousels();
 	initGalleryToggle();
-	initLightboxAdToggle();
 });
 
 
@@ -404,29 +403,3 @@ function initGalleryToggle() {
   });
 }
 
-
-/*************** Lightbox Ad Toggle ********************
- * Hides siderail ads when a lightbox is active
- */
-function initLightboxAdToggle() {
-  const observer = new MutationObserver(function() {
-    const lightbox = document.querySelector('.CSS_LIGHTBOX_BG_MASK');
-    const isLightboxOpen = lightbox && window.getComputedStyle(lightbox).display !== 'none';
-    const sideRails = document.querySelectorAll('ins.adsbygoogle[data-side-rail-status], .right-side-rail-edge, .right-side-rail-dismiss-btn');
-
-    sideRails.forEach(function(el) {
-      if (isLightboxOpen) {
-        el.style.setProperty('display', 'none', 'important');
-      } else {
-        el.style.removeProperty('display');
-      }
-    });
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['style', 'class']
-  });
-});
