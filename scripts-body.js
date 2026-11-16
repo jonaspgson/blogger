@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initAccordions();
 	initImageCarousels();
 	initGalleryToggle();
+	initLightboxAdToggle();
 });
 
 
@@ -404,45 +405,28 @@ function initGalleryToggle() {
 }
 
 
-/*function initGalleryToggle() {
-  const galleries = document.querySelectorAll("image-gallery");
-  const maxHeight = 560; // matchas mot max-height på .gallery-wrapper
+/*************** Lightbox Ad Toggle ********************
+ * Hides siderail ads when a lightbox is active
+ */
+function initLightboxAdToggle() {
+  const observer = new MutationObserver(function() {
+    const lightbox = document.querySelector('.CSS_LIGHTBOX_BG_MASK');
+    const isLightboxOpen = lightbox && window.getComputedStyle(lightbox).display !== 'none';
+    const sideRails = document.querySelectorAll('ins.adsbygoogle[data-side-rail-status], .right-side-rail-edge, .right-side-rail-dismiss-btn');
 
-  galleries.forEach(function (gallery) {
-    // Skapa wrapper
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("gallery-wrapper");
-
-    // Flytta galleriet in i wrappern
-    gallery.parentNode.insertBefore(wrapper, gallery);
-    wrapper.appendChild(gallery);
-
-    // Vänta tills layouten är klar
-    requestAnimationFrame(() => {
-      const actualHeight = gallery.scrollHeight;
-
-      if (actualHeight > maxHeight) {
-        // Skapa toggle-knapp
-        const toggle = document.createElement("button");
-        toggle.className = "toggle-gallery";
-        toggle.type = "button";
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.innerHTML = '<span class="arrow">▼</span> <span class="label">Show More</span>';
-
-        // Lägg till efter wrappern
-        wrapper.parentNode.insertBefore(toggle, wrapper.nextSibling);
-
-        // Toggle-funktion
-        toggle.addEventListener("click", function () {
-          const expanded = wrapper.classList.toggle("expanded");
-          toggle.setAttribute("aria-expanded", expanded);
-          toggle.querySelector(".label").textContent = expanded ? "Minimise" : "Show More";
-        });
+    sideRails.forEach(function(el) {
+      if (isLightboxOpen) {
+        el.style.setProperty('display', 'none', 'important');
       } else {
-        // Om galleriet är kort – ta bort max-height och fade
-        wrapper.style.maxHeight = "none";
-        wrapper.classList.add("expanded");
+        el.style.removeProperty('display');
       }
     });
   });
-}*/
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['style', 'class']
+  });
+});
