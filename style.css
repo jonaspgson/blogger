@@ -1089,24 +1089,3 @@ image-caption {
 
 
 
-
-
-/* 1. Tvinga ner Googles sidopanel- och fästa annonser */
-ins.adsbygoogle[data-side-rail-status],
-ins.adsbygoogle[data-anchor-status],
-ins.adsbygoogle {
-  z-index: 500 !important;
-}
-
-/* 2. Den mörka bakgrunden i Bloggers lightbox */
-.CSS_LIGHTBOX_BG_MASK {
-  z-index: 10000 !important;
-}
-
-/* 3. Själva bilden, krysset och miniatyrerna (måste ha HÖGRE värde än bakgrunden) */
-.CSS_LIGHTBOX_SCALED_IMAGE_CONTAINER,
-.CSS_LIGHTBOX_BTN_CLOSE,
-.CSS_LIGHTBOX_FILMSTRIP,
-.CSS_LIGHTBOX_ATTRIBUTION_INFO_CONTAINER {
-  z-index: 10001 !important;
-}
