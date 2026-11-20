@@ -990,7 +990,9 @@ image-caption {
 .tr-caption a, .image-caption a, image-caption a { color: var(--image-caption-linkcolor, #ffde17); }
 
 .post-body img:has(+ image-caption),
-.post-body a:has(+ image-caption) img {
+.post-body a:has(+ image-caption) img,
+.post-body .youtube-player:has(+ image-caption)
+{
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
